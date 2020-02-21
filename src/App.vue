@@ -1,17 +1,21 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <app-title></app-title>
+    <cse-sel></cse-sel>
+    <cmpl-box></cmpl-box>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Title from './components/Title.vue'
+import CourseSelection from './components/CourseSelection.vue'
+import CompletedBox from './components/CompletedBox.vue'
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    'app-title': Title,
+    'cse-sel': CourseSelection,
+    'cmpl-box': CompletedBox
   }
 }
 </script>
