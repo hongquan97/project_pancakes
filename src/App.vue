@@ -1,19 +1,22 @@
 <template>
   <div id="app">
-    <app-title></app-title>
+    <NUStudyHeader></NUStudyHeader>
     <cse-sel></cse-sel>
     <cmpl-box></cmpl-box>
+    <Logo></Logo>
   </div>
 </template>
 
 <script>
-import Title from './components/Title.vue'
+import NUStudyHeader from './components/NUStudyHeader.vue'
+import Logo from './components/Logo.vue'
 import CourseSelection from './components/CourseSelection.vue'
 import CompletedBox from './components/CompletedBox.vue'
 export default {
   name: 'App',
   components: {
-    'app-title': Title,
+    NUStudyHeader,
+    Logo,
     'cse-sel': CourseSelection,
     'cmpl-box': CompletedBox
   }
@@ -27,6 +30,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 5px;
 }
 </style>
