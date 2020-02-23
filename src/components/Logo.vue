@@ -21,7 +21,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 footer{
-    padding: 150px 0px 0px;
+    padding: 200px 0px 0px;
 }
 p{
     font-size: 15px;
