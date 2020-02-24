@@ -3,6 +3,8 @@
     <app-title></app-title>
     <cse-sel></cse-sel>
     <cmpl-box></cmpl-box>
+    <CMProgressBar></CMProgressBar>
+    <Logo></Logo>
   </div>
 </template>
 
@@ -10,12 +12,14 @@
 import Title from './components/Title.vue'
 import CourseSelection from './components/CourseSelection.vue'
 import CompletedBox from './components/CompletedBox.vue'
+import CMProgressBar from './components/CM_Progress.vue'
 export default {
   name: 'App',
   components: {
     'app-title': Title,
     'cse-sel': CourseSelection,
-    'cmpl-box': CompletedBox
+    'cmpl-box': CompletedBox,
+    CMProgressBar
   }
 }
 </script>
