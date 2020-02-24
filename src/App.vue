@@ -3,6 +3,7 @@
     <NUStudyHeader></NUStudyHeader>
     <cse-sel></cse-sel>
     <cmpl-box></cmpl-box>
+    <CMProgressBar></CMProgressBar>
     <Logo></Logo>
   </div>
 </template>
