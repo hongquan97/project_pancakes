@@ -35,14 +35,16 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 #CM, #PE, #UE, #GE {
+  border-radius: 15px;
   display: inline-block;
   box-sizing: border-box;
   padding: 10px;
-  margin: 0;
-  border: 2px solid black; 
-  width: 25%;
+  margin: 0; 
+  width: 24.5%;
   height: 180px;
   overflow: auto;
+  border-collapse: separate;
+  border-spacing: 10px;
 } 
 #CM {
   background: #fbefcc;
