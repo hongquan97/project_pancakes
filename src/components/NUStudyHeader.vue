@@ -1,8 +1,10 @@
 <template>
-  <div>
+  <div class="headerStyle">
+
     <header>
-      <h1>{{title}}</h1>
+      <h1>{{header}}</h1>
     </header>
+
   </div>
 </template>
 
@@ -10,7 +12,7 @@
 export default {
   data() {
     return {
-      title: 'NUStudy'
+      header: 'NUStudy'
     }
   }
 }
@@ -18,10 +20,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-header {
-  
-}
-h1 {
+h1{
   font-size: 50px;
   color: darkorange;
   text-align: center;
