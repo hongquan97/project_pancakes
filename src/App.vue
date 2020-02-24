@@ -12,13 +12,15 @@ import NUStudyHeader from './components/NUStudyHeader.vue'
 import Logo from './components/Logo.vue'
 import CourseSelection from './components/CourseSelection.vue'
 import CompletedBox from './components/CompletedBox.vue'
+import CMProgressBar from './components/CM_Progress.vue'
 export default {
   name: 'App',
   components: {
     NUStudyHeader,
     Logo,
     'cse-sel': CourseSelection,
-    'cmpl-box': CompletedBox
+    'cmpl-box': CompletedBox,
+    CMProgressBar
   }
 }
 </script>
