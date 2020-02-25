@@ -156,9 +156,11 @@ export default {
     Module: function(){
       if(this.CompletedCore.index(this.Module) == -1){
         this.CompletedCore.push(this.Module);
-        for(m in courseList){
-          if(m.modCode==this.Module){
-            m.Completed=true;
+        var list = this.courseList;
+        for(let i = 0; i<list.length; i++){
+          if(list[i].modCode==this.Module){
+            list[i].Completed=true;
+            break;
           }
         }
       }
