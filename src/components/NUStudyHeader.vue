@@ -20,7 +20,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1{
+header {
+  theme-color: #ffffff;
+  background-color: #ffffff;
+}
+h1 {
   font-size: 50px;
   color: darkorange;
   text-align: center;

@@ -1,25 +1,21 @@
 <template>
-  <div>
-    Completed Module Code:
-    <input type="text" maxlength="8" v-model="Module"/>
+  <div> 
+    <h1>Completed Modules</h1>
 
-    <p id="Completed">
-      <h1>Completed Modules</h1>
-
-      <div id="CM">
-        <b>Core Modules</b>
-        {{CompletedCore}}
-      </div>
-      <div id="PE">
-        <b>Programme Electives</b>
-      </div>
-      <div id="UE">
-        <b>Unrestricted Electives</b>
-      </div>
-      <div id="GE">
-        <b>General Electives</b>
-      </div>
-
+    <div id="CM">
+      <b>Core Modules</b>
+      {{CompletedCore}}
+    </div>
+    <div id="PE">
+      <b>Programme Electives</b>
+    </div>
+    <div id="UE">
+      <b>Unrestricted Electives</b>
+    </div>
+    <div id="GE">
+      <b>General Electives</b>
+    </div>
+    
   </div>
 </template>
 
