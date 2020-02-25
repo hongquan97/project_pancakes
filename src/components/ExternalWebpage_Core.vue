@@ -26,7 +26,9 @@
 
 export default {
   props:{
-    Module: String
+    CoreModule:{
+      type: String
+    }
   },
   data() {
     return {  
@@ -153,12 +155,12 @@ export default {
   },
   
   watch:{
-    Module: function(){
-      if(this.CompletedCore.index(this.Module) == -1){
-        this.CompletedCore.push(this.Module);
+    CoreModule: function(){
+      if(this.CompletedCore.indexOf(this.CoreModule) == -1){
+        this.CompletedCore.push(this.CoreModule);
         var list = this.courseList;
         for(let i = 0; i<list.length; i++){
-          if(list[i].modCode==this.Module){
+          if(list[i].modCode==this.CoreModule){
             list[i].Completed=true;
             break;
           }
