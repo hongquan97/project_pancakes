@@ -1,8 +1,10 @@
 <template>
-  <div>
+  <div class="headerStyle">
+
     <header>
-      <h1>{{title}}</h1>
+      <h1>{{header}}</h1>
     </header>
+
   </div>
 </template>
 
@@ -10,7 +12,7 @@
 export default {
   data() {
     return {
-      title: 'NUStudy'
+      header: 'NUStudy'
     }
   }
 }
@@ -18,11 +20,15 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+<<<<<<< HEAD:src/components/Title.vue
 header {
   theme-color: #ffffff;
   background-color: #ffffff;
 }
 h1 {
+=======
+h1{
+>>>>>>> 7909c9485a8952f4bf36f5f3cce7b44f9ff2d959:src/components/NUStudyHeader.vue
   font-size: 50px;
   color: darkorange;
   text-align: center;

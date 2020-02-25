@@ -1,8 +1,11 @@
 <template>
   <div>
+    Completed Module Code:
+    <input type="text" maxlength="8" v-model="Module"/>
+
     <p id="Completed">
       <h1>Completed Modules</h1>
-      <br>
+
       <div id="CM">
         <b>Core Modules</b>
         {{CompletedCore}}
@@ -16,8 +19,7 @@
       <div id="GE">
         <b>General Electives</b>
       </div>
-      <br><br>
-      Enter Completed Module Code:
+
   </div>
 </template>
 
@@ -25,8 +27,8 @@
 export default {
   data() {
     return {
-      completed_core: [],
-      module: ""
+      CompletedCore: [],
+      Module: ""
     }
   }
 }
