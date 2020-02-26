@@ -3,29 +3,22 @@
     Completed Module Code:
     <input type="text" maxlength="8" v-model="Module"/>
     <input type="button" value="Enter" v-on:click="CheckModule()"/>
-
-    <p id="Completed">
-      <h1>Completed Modules</h1>
-
-      <div id="CM">
-        <b>Core Modules</b>
-        {{CompletedCore}}
-      </div>
-      <div id="PE">
-        <b>Programme Electives</b>
-      </div>
-      <div id="UE">
-        <b>Unrestricted Electives</b>
-      </div>
-      <div id="GE">
-        <b>General Electives</b>
-      </div>
-      <External :CoreModule = "CoreModule"/>
-      <External2 :PeModule = "PeModule"/>
-
-       <div> 
     <h1>Completed Modules</h1>
 
+    <div id="CM">
+      <b>Core Modules</b>
+      {{CompletedCore}}
+    </div>
+    <div id="PE">
+      <b>Programme Electives</b>
+    </div>
+    <div id="UE">
+      <b>Unrestricted Electives</b>
+    </div>
+    <div id="GE">
+      <b>General Electives</b>
+    </div>
+    
   </div>
 </template>
 

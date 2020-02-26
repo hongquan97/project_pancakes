@@ -3,25 +3,25 @@
     <NUStudyHeader></NUStudyHeader>
     <cse-sel></cse-sel>
     <cmpl-box></cmpl-box>
+    <CMProgressBar></CMProgressBar>
     <Logo></Logo>
   </div>
 </template>
 
 <script>
 import NUStudyHeader from './components/NUStudyHeader.vue'
-import Logo from './components/Logo.vue'
 import CourseSelection from './components/CourseSelection.vue'
 import CompletedBox from './components/CompletedBox.vue'
 import CMProgressBar from './components/CM_Progress.vue'
+import Logo from './components/Logo.vue'
 export default {
   name: 'App',
   components: {
     NUStudyHeader,
-    Logo,
     'cse-sel': CourseSelection,
     'cmpl-box': CompletedBox,
-   CMProgressBar,
-   Logo
+    CMProgressBar,
+    Logo
   }
 }
 </script>
