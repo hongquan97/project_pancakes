@@ -23,6 +23,9 @@
       <External :CoreModule = "CoreModule"/>
       <External2 :PeModule = "PeModule"/>
 
+       <div> 
+    <h1>Completed Modules</h1>
+
   </div>
 </template>
 

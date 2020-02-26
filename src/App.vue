@@ -20,7 +20,8 @@ export default {
     Logo,
     'cse-sel': CourseSelection,
     'cmpl-box': CompletedBox,
-   CMProgressBar
+   CMProgressBar,
+   Logo
   }
 }
 </script>
