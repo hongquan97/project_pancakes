@@ -1,5 +1,6 @@
 <template>
   <div>
+    <br>
     <select required v-model="major">        
       <optgroup label="Degree Type">
         <option value="" disabled selected hidden>Please select your course of study</option>

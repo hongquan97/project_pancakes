@@ -12,7 +12,7 @@
 </template>
 
 <script>
-//import External1 from './ExternalWebpage_PE.vue' 
+//import External from './ExternalWebpage_PE.vue'
 
 export default {
   props: ['Module'],
