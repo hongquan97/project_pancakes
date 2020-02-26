@@ -20,13 +20,15 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-header {
-  theme-color: #ffffff;
-  background-color: #ffffff;
-}
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Oswald:300,400,700');
 h1 {
-  font-size: 50px;
-  color: darkorange;
   text-align: center;
+  font-family: "Oswald", sans;
+  color:orange;
+  font-size: 4rem;
+  font-weight: normal;
+  margin: 0px;
 }
+
 </style>

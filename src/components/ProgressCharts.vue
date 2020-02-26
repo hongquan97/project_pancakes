@@ -1,5 +1,10 @@
 <template>
   <div id="app" class = "container">
+    <CMProgress></CMProgress>
+    <PEProgress></PEProgress>
+    <UEProgress></UEProgress>
+    <GEProgress></GEProgress>
+  <!-- comment 
     <Progress strokeColor="#fbefcc" :transitionDuration="1000" :radius="70" :strokeWidth="15" value="70.00">
       <template v-slot:footer>
         <b>Core Module</b>
@@ -23,37 +28,29 @@
         <b>General Electives</b>
       </template>
     </Progress>
+  --->
 
   </div>
 </template>
 
 <script>
-import Progress from "./index.vue";
+import CMProgress from './CMProgress.vue'
+import PEProgress from './PEProgress.vue'
+import UEProgress from './UEProgress.vue'
+import GEProgress from './GEProgress.vue'
 
 export default {
   name: "app",
   components: {
-    Progress
+    CMProgress,
+    PEProgress,
+    UEProgress,
+    GEProgress
   }
 };
 </script>
 
 <style lang="scss">
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  height: 10vh;
-  color: #000000;
-  background:#ffffff;
-  justify-content: center;
-  align-items: center;
-}
-body {
-  margin: 0;
-  padding: 0;
-}
 .container > div {
     display: inline-block;
     display: -moz-inline-box;
