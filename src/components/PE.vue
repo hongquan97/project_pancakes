@@ -8,7 +8,8 @@
 </template>
 
 <script>
-//import CompletedBox from './CompletedBox.vue'
+import External from './ExternalWebpage_PE.vue'
+
 export default {
   props: ['Module'],
   data() {
