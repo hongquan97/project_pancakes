@@ -55,10 +55,7 @@ export default {
 
   methods: {
     CheckModule: function() {
-      const searchTerm = this.Module.toUpperCase().trim();
-      if (searchTerm == "") {
-        alert("Enter something!");
-      } 
+      
       if (this.Core.indexOf(searchTerm) != -1 & this.CompletedCore.indexOf(searchTerm)==-1) {
           this.CompletedCore.push(searchTerm);
           this.UC_CM_Count-=4;
