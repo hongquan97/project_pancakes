@@ -1,10 +1,9 @@
 <template>
 <div id="CM">
     <b>Core Modules</b><br>
-    <div v-if="Module!==none">{{checkModule()}}</div>
+    <div v-if="Module !== none">{{checkModule()}}</div>
     <div v-for="(cm,index) in completed_cm" :cm = "cm" :key="index">
-    {{cm}}<button v-on:click="remove(cm)" >x</button> </div>
-    <External :CM = "CM"/>
+    {{cm}}<button v-on:click="remove(cm)"> x </button> </div>
 </div>
 </template>
 
@@ -45,7 +44,7 @@ export default {
 </script>
 
 <style scoped>
-#CM{
+#CM {
   display: inline-block;
   border-radius: 15px;
   box-sizing: border-box;
@@ -67,5 +66,8 @@ export default {
 h1 {
   color: black;
   text-align: center;
+}
+button {
+  color: red;
 }
 </style>
