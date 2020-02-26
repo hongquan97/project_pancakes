@@ -2,7 +2,6 @@
   <div id="app">
     <NUStudyHeader></NUStudyHeader>
     <cse-sel></cse-sel>
-    <cmpl-box></cmpl-box>
     <CMProgressBar></CMProgressBar>
     <Logo></Logo>
     
@@ -13,7 +12,6 @@
 <script>
 import NUStudyHeader from './components/NUStudyHeader.vue'
 import CourseSelection from './components/CourseSelection.vue'
-import CompletedBox from './components/CompletedBox.vue'
 import CMProgressBar from './components/CM_Progress.vue'
 import Logo from './components/Logo.vue'
 export default {
@@ -21,7 +19,6 @@ export default {
   components: {
     NUStudyHeader,
     'cse-sel': CourseSelection,
-    'cmpl-box': CompletedBox,
     CMProgressBar,
     Logo
   },
@@ -56,7 +53,7 @@ export default {
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
