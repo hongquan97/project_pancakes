@@ -11,7 +11,6 @@
       </optgroup>
     </select>    
     <br>
-    <font>You have selected: </font><b><i>{{major}}</i></b>
   </div>
 </template>
 
@@ -28,12 +27,12 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 select {
-  color: orange;
-  font: 12px/30px Georgia, serif;
+  color: rgba(255, 115, 0, 0.849);
+  font: 10px/30px Optima, sans-serif;
   font-size: 18px;
 }
 optgroup {
-  background-color: black;
+  background-color: white;
   color: orange;
 }
 </style>
