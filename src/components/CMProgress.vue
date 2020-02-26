@@ -1,18 +1,18 @@
 <template>
-  <div id="app1">
+  <div>
     <Progress strokeColor="#fbefcc" :transitionDuration="1000" :radius="70" :strokeWidth="15" value="70.00">
       <template v-slot:footer>
-        <b>Core Module</b>
+        <nav>
+          <a :href="$router.resolve(to='/CM').href"><b>Core Modules</b></a>
+        </nav>
       </template>
     </Progress>
-    </div>
+  </div>
 </template>
 
 <script>
 import Progress from "./index.vue";
-
 export default {
-  name: "app1",
   components: {
     Progress
   }
@@ -20,8 +20,8 @@ export default {
 </script>
 
 <style lang="scss">
-#app1 {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+Progress {
+  font-family: Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -30,7 +30,6 @@ export default {
   background:#ffffff;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
 }
 body {
   margin: 0;
