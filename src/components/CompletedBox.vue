@@ -42,6 +42,10 @@ export default {
       //this.extra = "";
     },
     assign() {
+      const searchTerm = this.mod.toUpperCase().trim();
+      if (searchTerm == "") {
+        alert("Enter something!");
+      }
       this.Module = this.mod;
       this.mod = "";
 
