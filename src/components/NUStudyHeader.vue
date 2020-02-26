@@ -20,11 +20,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
-@import url('https://fonts.googleapis.com/css?family=Open+Sans|Oswald:300,400,700');
 h1 {
   text-align: center;
-  font-family: "Oswald", sans;
+  font-family: Helvetica, sans-serif;
   color:orange;
   font-size: 4rem;
   font-weight: normal;

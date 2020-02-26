@@ -1,20 +1,29 @@
 <template>
       <div id="PE">
+        
         <b>Programme Electives</b>
         <div v-if="Module!==none">{{checkModule()}}</div>
+        
     <div v-for="(pe,index) in completed_pe" :pe = "pe" :key="index">
     {{pe}} <button v-on:click="remove(pe)">x</button></div>
+    <External1 :PeM = "PeM"/>
       </div>
+      
 </template>
 
 <script>
-//import CompletedBox from './CompletedBox.vue'
+import External1 from './ExternalWebpage_PE.vue' 
+
 export default {
   props: ['Module'],
+  components:{
+    External1
+  },
   data() {
     return {
         PE : ["BT4013", "BT4016", "IS4228", "BT4012", "BT4221", "BT4222", "IS4234", "IS4302"],
         completed_pe: [],
+        PeM: ""
     }
   },
   methods: {
@@ -22,6 +31,7 @@ export default {
       if(!this.completed_pe.includes(this.Module)) {
         if (this.PE.includes(this.Module)) {
         this.completed_pe.push(this.Module);
+        this.PeM = this.Module;
         } 
       } // if (!this.PE.includes(this.Module)) {
         //.$emit("goToUE", this.Module);

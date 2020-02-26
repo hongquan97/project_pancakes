@@ -1,9 +1,9 @@
 <template>
 <div id="UE">
     <b>Unrestricted Electives</b>
-    <div v-if="extra!==none">{{checkModule()}}</div>
-    <div v-for="(ue,index) in completed_ue" :ue = "ue" :key="index">
-    {{ue}}<button v-on:click="remove(ue)">x</button> </div>
+    <div v-if="extra !== none">{{checkModule()}}</div>
+    <div v-for="(ue, index) in completed_ue" :ue = "ue" :key="index">
+    {{ue}}<button v-on:click="remove(ue)"> x </button> </div>
 </div>
 </template>
 
@@ -34,7 +34,7 @@ export default {
 
 <style scoped>
 #UE {
-border-radius: 15px;
+  border-radius: 15px;
   display: inline-block;
   box-sizing: border-box;
   padding: 10px;
@@ -43,6 +43,8 @@ border-radius: 15px;
   height: 180px;
   overflow: auto;
   background:#f4a688;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 } 
 
 @media only screen and (max-width: 768px) {

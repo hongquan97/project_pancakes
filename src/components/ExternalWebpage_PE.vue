@@ -24,7 +24,7 @@
 <script>
 export default {
   props:{
-    PeModule:{
+    PeM:{
       type: String
     }
   },
@@ -264,12 +264,12 @@ export default {
   },
   
   watch:{
-    PeModule: function(){
-      if(this.CompletedPe.indexOf(this.PeModule) == -1){
-        this.CompletedPe.push(this.PeModule);
+    PeM: function(){
+      if(this.CompletedPe.indexOf(this.PeM) == -1){
+        this.CompletedPe.push(this.PeM);
         var list = this.listA;
         for(let i = 0; i<list.length; i++){
-          if(list[i].modCode==this.PeModule){
+          if(list[i].modCode==this.PeM){
             list[i].Completed=true;
             break;
           }
