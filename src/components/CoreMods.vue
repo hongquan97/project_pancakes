@@ -4,6 +4,7 @@
     <div v-if="Module!==none">{{checkModule()}}</div>
     <div v-for="(cm,index) in completed_cm" :cm = "cm" :key="index">
     {{cm}}<button v-on:click="remove(cm)" >x</button> </div>
+    <External :CM = "CM"/>
 </div>
 </template>
 
@@ -18,13 +19,17 @@ export default {
         "BT2102", "CS2030", "CS2040", "IS2101", "ST2334", "BT3102", "BT3103", "IS3103", "BT4103", "IS4010",
         "BT4101"],
         completed_cm: [],
+        CM: ""
     }
   },
   methods: {
     checkModule() {
+      
       if(!this.completed_cm.includes(this.Module)) {
         if (this.core.includes(this.Module)) {
         this.completed_cm.push(this.Module);
+        this.CM = this.Module;
+
       }
       } //else if (!this.core.includes(this.Module)) {
         //this.$emit("goToUE", this.Module);
