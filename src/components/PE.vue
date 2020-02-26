@@ -1,11 +1,14 @@
 <template>
       <div id="PE">
+        
         <b>Programme Electives</b>
-        <div v-if="Module!==none">{{checkModule()}}</div>
+        <div v-if="Module!==null">{{checkModule()}}</div>
+        
     <div v-for="(pe,index) in completed_pe" :pe = "pe" :key="index">
-    {{pe}} <button v-on:click="remove(pe)">x</button></div>
-    <External :PeM = "PeM"/>
+    {{pe}}   <button v-on:click="remove(pe)">x</button></div>
+    <External1 :PeM = "PeM"/>
       </div>
+      
 </template>
 
 <script>
@@ -13,6 +16,9 @@
 
 export default {
   props: ['Module'],
+  components:{
+    //External1
+  },
   data() {
     return {
         PE : ["BT4013", "BT4016", "IS4228", "BT4012", "BT4221", "BT4222", "IS4234", "IS4302"],
@@ -62,5 +68,8 @@ export default {
 h1 {
   color: black;
   text-align: center;
+}
+button {
+  color: red;
 }
 </style>
