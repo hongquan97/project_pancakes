@@ -12,6 +12,9 @@ import External from './ExternalWebpage_Core.vue'
 
 export default {
   props: ['Module'],
+  components:{
+    External
+  },
   data() {
     return {
         core: ["BT1101", "CS1010S", "EC1301", "IS1103", "MA1101R", "MA1521", "MA1102R", "MKT1705X", "BT2101",
