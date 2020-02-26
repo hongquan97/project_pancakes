@@ -4,6 +4,7 @@
     <div v-if="Module !== null">{{checkModule()}}</div>
     <div v-for="(cm,index) in completed_cm" :cm = "cm" :key="index">
     {{cm}}<button v-on:click="remove(cm)"> x </button> </div>
+    <External :CM = "CM"/>
 </div>
 </template>
 
@@ -12,6 +13,9 @@
 
 export default {
   props: ['Module'],
+  components:{
+    External
+  },
   data() {
     return {
         core: ["BT1101", "CS1010S", "EC1301", "IS1103", "MA1101R", "MA1521", "MA1102R", "MKT1705X", "BT2101",

@@ -22,8 +22,6 @@
 </template>
 
 <script>
-
-
 export default {
   props:{
     PeM:{
@@ -32,10 +30,11 @@ export default {
   },
   data() {
     return {  
-    CompletedPe:[],  
+    CompletedPe:[], 
+
+
     listA: [
     {
- 
       modCode: "DBA3712",
       modTitle: "Dynamic Pricing and Revenue Management",
       MCs: 4,
@@ -78,18 +77,18 @@ export default {
       Specialisation: "Marketing"
     },
     {
-      modCode: "DBA4811",
-      modTitle: "Analytical Tools for Consulting",
-      MCs: 4,
-      Completed: false,
-      Specialisation: "None"
-    },
-    {
       modCode: "BT4212",
       modTitle: "Search Engine Optimisation and Analytics",
       MCs: 4,
       Completed: false,
       Specialisation: "Marketing"
+    },
+    {
+      modCode: "DBA4811",
+      modTitle: "Analytical Tools for Consulting",
+      MCs: 4,
+      Completed: false,
+      Specialisation: "None"
     },
     {
       modCode: "IS4241",
@@ -111,6 +110,152 @@ export default {
       MCs: 4,
       Completed: false,
       Specialisation: "None"
+    }],
+
+
+    listB: [
+    {
+      modCode: "IE2110",
+      modTitle: "Operations Research I",
+      MCs: 4,
+      Completed: false,
+      Specialisation: "None"
+    },
+    {
+      modCode: "DBA3701",
+      modTitle: "Introduction to Optimisation",
+      MCs: 4,
+      Completed: false,
+      Specialisation: "None"
+    },
+    {
+      modCode: "CS3244",
+      modTitle: "Machine Learning",
+      MCs: 4,
+      Completed: false,
+      Specialisation: "None"
+    },
+    {
+      modCode: "DBA3803",
+      modTitle: "Predictive Analytics in Business",
+      MCs: 4,
+      Completed: false,
+      Specialisation: "None"
+    },
+    {
+      modCode: "BSE4711",
+      modTitle: "Econometrics for Business II",
+      MCs: 4,
+      Completed: false,
+      Specialisation: "None"
+    },
+    {
+      modCode: "BT4012",
+      modTitle: "Fraud Analytics",
+      MCs: 4,
+      Completed: false,
+      Specialisation: "Financial"
+    },
+    {
+      modCode: "BT4015",
+      modTitle: "Geospatial Analytics",
+      MCs: 4,
+      Completed: false,
+      Specialisation: "Marketing"
+    },
+    {
+      modCode: "BT4221",
+      modTitle: "Big Data Techniques and Technologies",
+      MCs: 4,
+      Completed: false,
+      Specialisation: "Both"
+    },
+    {
+      modCode: "BT4222",
+      modTitle: "Mining Web Data for Business Insights",
+      MCs: 4,
+      Completed: false,
+      Specialisation: "Both"
+    },
+    {
+      modCode: "BT4240",
+      modTitle: "Machine Learning for Predictive Data Analytics",
+      MCs: 4,
+      Completed: false,
+      Specialisation: "None"
+    },
+    {
+      modCode: "IS4241",
+      modTitle: "Social Media Network Analysis",
+      MCs: 4,
+      Completed: false,
+      Specialisation: "Marketing"
+    },
+    {
+      modCode: "IE4210",
+      modTitle: "Operations Research II",
+      MCs: 4,
+      Completed: false,
+      Specialisation: "None"
+    },
+    {
+      modCode: "ST3131",
+      modTitle: "Regression Analysis",
+      MCs: 4,
+      Completed: false,
+      Specialisation: "None"
+    },
+    {
+      modCode: "ST4245",
+      modTitle: "Statistical Methods for Finance",
+      MCs: 4,
+      Completed: false,
+      Specialisation: "None"
+    }],
+
+
+    listC: [
+    {
+      modCode: "IS3221",
+      modTitle: "ERP Systems with Analytics Solutions",
+      MCs: 4,
+      Completed: false,
+      Specialisation: "None"
+    },
+    {
+      modCode: "IS3261",
+      modTitle: "Mobile Solutions Design and Development",
+      MCs: 4,
+      Completed: false,
+      Specialisation: "None"
+    },
+    {
+      modCode: "BT4014",
+      modTitle: "Analytics Driven Design of Adaptive Systems",
+      MCs: 4,
+      Completed: false,
+      Specialisation: "Marketing"
+    },
+    {
+      modCode: "IS4228",
+      modTitle: "Information Technologies in Financial Services",
+      MCs: 4,
+      Completed: false,
+      Specialisation: "Financial"
+    },
+    {
+      modCode: "IS4302",
+      modTitle: "Blockchain and Distributed Ledger Technologies",
+      MCs: 4,
+      Completed: false,
+      Specialisation: "Financial"
+    },
+    { // IS4234 is not in any list on NUS website
+      modCode: "IS4234",
+      modTitle: "Compliance and Regulation Technology",
+      MCs: 4,
+      Completed: false,
+      Specialisation: "Financial"
     }]
     }
   },
@@ -119,7 +264,7 @@ export default {
   },
   
   watch:{
-    PeModule: function(){
+    PeM: function(){
       if(this.CompletedPe.indexOf(this.PeM) == -1){
         this.CompletedPe.push(this.PeM);
         var list = this.listA;
@@ -151,10 +296,6 @@ th, td {
   text-align: left;
   padding: 5px;
 }
-
-/* tr:nth-child(even) {
-  opacity: 0.5;
-} */
 
 tr:hover {
   background-color: #dddddd;
