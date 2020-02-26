@@ -1,63 +1,58 @@
 <template>
-  <div>
+  <div><br><br>
     Completed Module Code:
-    <input type="text" maxlength="8" v-model="Module"/>
 
+    <input type="text" maxlength="8" v-model="mod"/><button v-on:click="assign">Add</button>
     <p id="Completed">
       <h1>Completed Modules</h1>
+      <CoreMods v-bind:Module = "Module"></CoreMods>
+      <PE  v-bind:Module = "Module"></PE>
+      <UE v-bind:Module = "Module" v-bind:extra = "extra"></UE>
+    <GE @goToUE= "addModule" v-bind:Module = "Module"></GE>
 
-      <div id="CM">
-        <b>Core Modules</b>
-        {{CompletedCore}}
-      </div>
-      <div id="PE">
-        <b>Programme Electives</b>
-      </div>
-      <div id="UE">
-        <b>Unrestricted Electives</b>
-      </div>
-      <div id="GE">
-        <b>General Electives</b>
-      </div>
-
+    
   </div>
 </template>
 
 <script>
+import CoreMods from './CoreMods.vue'
+import PE from './PE.vue'
+import GE from './GE.vue'
+import UE from './UE.vue'
+
 export default {
+  components: {
+    CoreMods,
+    PE,
+    GE,
+    UE
+  },
   data() {
     return {
-      CompletedCore: [],
-      Module: ""
+
+   
+      mod:"",
+      Module: "",
+      extra: ""
     }
-  }
+  },
+  methods: {
+    addModule() {
+      this.extra = this.Module;
+      //this.extra = "";
+    },
+    assign() {
+      this.Module = this.mod;
+      this.mod = "";
+
+    }
+  },
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-#CM, #PE, #UE, #GE {
-  display: inline-block;
-  box-sizing: border-box;
-  padding: 10px;
-  margin: 0;
-  border: 2px solid black; 
-  width: 25%;
-  height: 180px;
-  overflow: auto;
-} 
-#CM {
-  background: #fbefcc;
-}
-#PE {
-  background: #f9ccac;
-}
-#UE {
-  background: #f4a688;
-}
-#GE {
-  background: #e0876a;
-}
+
 @media only screen and (max-width: 768px) {
   #divL, #divR {
     float: none;

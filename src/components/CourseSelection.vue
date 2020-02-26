@@ -11,15 +11,24 @@
       </optgroup>
     </select>    
     <br>
+
     <font>You have selected: </font><b><i>{{major}}</i></b>
+    <ModInputField :modules="Core"></ModInputField>
   </div>
 </template>
 
 <script>
+import ModInputField from './ModInputField.vue'
 export default {
+  components: {
+    ModInputField
+  },
   data() {
     return {
-      major: ""
+      major: "",
+      Core: ["CS1010S", "BT1101", "IS1103", "EC1301", "MA1101R", "MA1311", "MA1521", "MA1102R", "MKT1705X", "CS2030", "CS2040", 
+    "BT2101", "BT2102", "IS2101", "ST2334", "BT3103", "BT3102", "IS3103", "BT4101", "BT4103", "IS4010"],
+      PE: []
     }
   }
 }
@@ -28,12 +37,12 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 select {
-  color: orange;
-  font: 12px/30px Georgia, serif;
+  color: rgba(255, 115, 0, 0.849);
+  font: 10px/30px Optima, sans-serif;
   font-size: 18px;
 }
 optgroup {
-  background-color: black;
+  background-color: white;
   color: orange;
 }
 </style>
