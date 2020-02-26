@@ -1,14 +1,14 @@
 <template>
 <div id="CM">
     <b>Core Modules</b><br>
-    <div v-if="Module !== none">{{checkModule()}}</div>
+    <div v-if="Module !== null">{{checkModule()}}</div>
     <div v-for="(cm,index) in completed_cm" :cm = "cm" :key="index">
     {{cm}}<button v-on:click="remove(cm)"> x </button> </div>
 </div>
 </template>
 
 <script>
-import External from './ExternalWebpage_Core.vue'
+//import External from './ExternalWebpage_Core.vue'
 
 export default {
   props: ['Module'],

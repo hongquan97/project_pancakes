@@ -1,7 +1,7 @@
 <template>
 <div id="GE">
     <b>General Electives</b>
-    <div v-if="!Module.isEmpty">{{checkModule()}}</div>
+    <div v-if="Module !==null">{{checkModule()}}</div>
     <div v-for="(ge,index) in completed_ge" :ge = "ge" :key="index">
     {{ge}}<button v-on:click="remove(ge)">x</button> </div>
 
@@ -64,5 +64,8 @@ export default {
 h1 {
   color: black;
   text-align: center;
+}
+button {
+  color: red;
 }
 </style>
