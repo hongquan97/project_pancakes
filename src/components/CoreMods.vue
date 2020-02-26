@@ -3,7 +3,7 @@
     <b>Core Modules</b><br>
     <div v-if="Module !== null">{{checkModule()}}</div>
     <div v-for="(cm,index) in completed_cm" :cm = "cm" :key="index">
-    {{cm}}<button v-on:click="remove(cm)"> x </button> </div>
+    {{cm}}   <button v-on:click="remove(cm)"> x </button></div>
     <External :CM = "CM"/>
 </div>
 </template>
@@ -14,7 +14,7 @@
 export default {
   props: ['Module'],
   components:{
-    External
+    //External
   },
   data() {
     return {

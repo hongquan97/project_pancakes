@@ -3,7 +3,7 @@
     <b>Unrestricted Electives</b>
     <div v-if="extra !== null">{{checkModule()}}</div>
     <div v-for="(ue, index) in completed_ue" :ue = "ue" :key="index">
-    {{ue}} <button v-on:click="remove(ue)">x</button> </div>
+    {{ue}}   <button v-on:click="remove(ue)">x</button><p></p> </div>
 </div>
 </template>
 
