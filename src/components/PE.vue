@@ -1,11 +1,13 @@
 <template>
       <div id="PE">
+        <External :PeM = "PeM"/>
         <b>Programme Electives</b>
         <div v-if="Module!==none">{{checkModule()}}</div>
     <div v-for="(pe,index) in completed_pe" :pe = "pe" :key="index">
     {{pe}} <button v-on:click="remove(pe)">x</button></div>
-    <External :PeM = "PeM"/>
+    
       </div>
+      
 </template>
 
 <script>
