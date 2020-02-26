@@ -61,5 +61,6 @@ body {
     zoom: 1; /* Trigger hasLayout */
     width: 25%;
     text-align: center;
+    cursor: pointer;
 }
 </style>
