@@ -4,6 +4,7 @@
     <div v-if="Module !== none">{{checkModule()}}</div>
     <div v-for="(cm,index) in completed_cm" :cm = "cm" :key="index">
     {{cm}}<button v-on:click="remove(cm)"> x </button> </div>
+    <External :CM = "CM"/>
 </div>
 </template>
 

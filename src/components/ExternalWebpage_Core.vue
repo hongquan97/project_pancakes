@@ -155,7 +155,7 @@ export default {
   },
   
   watch:{
-    CoreModule: function(){
+    CM: function(){
       if(this.CompletedCore.indexOf(this.CM) == -1){
         this.CompletedCore.push(this.CM);
         var list = this.courseList;
