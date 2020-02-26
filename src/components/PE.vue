@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import External from './ExternalWebpage_PE.vue'
+//import External from './ExternalWebpage_PE.vue'
 
 export default {
   props: ['Module'],
