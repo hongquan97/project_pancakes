@@ -2,7 +2,7 @@
   <div id="app" class = "container">
     <Progress strokeColor="#fbefcc" :transitionDuration="1000" :radius="70" :strokeWidth="15" value="70.00">
       <template v-slot:footer>
-        <b>Core Module</b>
+        <b>Core Modules</b>
       </template>
     </Progress>
     

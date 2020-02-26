@@ -10,7 +10,6 @@
       <UE v-bind:Module = "Module" v-bind:extra = "extra"></UE>
     <GE @goToUE= "addModule" v-bind:Module = "Module"></GE>
 
-    
   </div>
 </template>
 
@@ -29,8 +28,6 @@ export default {
   },
   data() {
     return {
-
-   
       mod:"",
       Module: "",
       extra: ""
@@ -44,7 +41,6 @@ export default {
     assign() {
       this.Module = this.mod;
       this.mod = "";
-
     }
   },
 }
