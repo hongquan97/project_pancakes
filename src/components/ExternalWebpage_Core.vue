@@ -22,8 +22,6 @@
 </template>
 
 <script>
-
-
 export default {
   props:{
     CM:{
@@ -90,7 +88,7 @@ export default {
     },
     {
       modCode: "CS2030",
-      modTitle: "Programming Methodology 1",
+      modTitle: "Programming Methodology I",
       MCs: 4,
       Completed: false
     },
@@ -187,10 +185,6 @@ th, td {
   text-align: left;
   padding: 5px;
 }
-
-/* tr:nth-child(even) {
-  opacity: 0.5;
-} */
 
 tr:hover {
   background-color: #dddddd;
