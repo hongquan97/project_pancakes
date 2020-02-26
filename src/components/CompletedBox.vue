@@ -31,8 +31,8 @@ export default {
   data() {
     return {
       mod:"",
-      Module: "",
-      extra: ""
+      Module:"",
+      extra:""
     }
   },
   methods: {

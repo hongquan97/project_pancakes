@@ -1,14 +1,14 @@
 <template>
 <div id="GE">
     <b>General Electives</b>
-    <div v-if="Module!==none">{{checkModule()}}</div>
+    <div v-if="Module !==null">{{checkModule()}}</div>
     <div v-for="(ge,index) in completed_ge" :ge = "ge" :key="index">
-    {{ge}}<button v-on:click="remove(ge)">x</button> </div>
+    {{ge}}   <button v-on:click="remove(ge)">x</button> </div>
+
 </div>
 </template>
 
 <script>
-//import CompletedBox from './CompletedBox.vue'
 export default {
   props: ['Module'],
   data() {
@@ -17,7 +17,7 @@ export default {
         completed_ge: []
     }
   },
-  methods: {
+  methods: { 
     checkModule() {
       if(!this.completed_ge.includes(this.Module)) {
       var i;
@@ -63,5 +63,8 @@ export default {
 h1 {
   color: black;
   text-align: center;
+}
+button {
+  color: red;
 }
 </style>

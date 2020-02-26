@@ -2,22 +2,22 @@
       <div id="PE">
         
         <b>Programme Electives</b>
-        <div v-if="Module!==none">{{checkModule()}}</div>
+        <div v-if="Module!==null">{{checkModule()}}</div>
         
     <div v-for="(pe,index) in completed_pe" :pe = "pe" :key="index">
-    {{pe}} <button v-on:click="remove(pe)">x</button></div>
+    {{pe}}   <button v-on:click="remove(pe)">x</button></div>
     <External1 :PeM = "PeM"/>
       </div>
       
 </template>
 
 <script>
-import External1 from './ExternalWebpage_PE.vue' 
+//import External1 from './ExternalWebpage_PE.vue' 
 
 export default {
   props: ['Module'],
   components:{
-    External1
+    //External1
   },
   data() {
     return {
@@ -68,5 +68,8 @@ export default {
 h1 {
   color: black;
   text-align: center;
+}
+button {
+  color: red;
 }
 </style>
