@@ -6,18 +6,18 @@
         
     <div v-for="(pe,index) in completed_pe" :pe = "pe" :key="index">
     {{pe}} <button v-on:click="remove(pe)">x</button></div>
-    <External1 :PeM = "PeM"/>
+    <!-- <External1 :PeM = "PeM"/> -->
       </div>
       
 </template>
 
 <script>
-import External1 from './ExternalWebpage_PE.vue' 
+//import External1 from './ExternalWebpage_PE.vue' 
 
 export default {
   props: ['Module'],
   components:{
-    External1
+    //External1
   },
   data() {
     return {

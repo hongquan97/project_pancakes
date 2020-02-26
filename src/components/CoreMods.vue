@@ -9,12 +9,12 @@
 </template>
 
 <script>
-import External from './ExternalWebpage_Core.vue'
+//import External from './ExternalWebpage_Core.vue'
 
 export default {
   props: ['Module'],
   components:{
-    External
+    //External
   },
   data() {
     return {
