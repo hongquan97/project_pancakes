@@ -11,17 +11,15 @@
       </optgroup>
     </select>    
     <br>
-
-    <font>You have selected: </font><b><i>{{major}}</i></b>
-    <ModInputField :modules="Core"></ModInputField>
+    <CompletedBox :Modules="Core"></CompletedBox>
   </div>
 </template>
 
 <script>
-import ModInputField from './ModInputField.vue'
+import CompletedBox from './CompletedBox.vue'
 export default {
   components: {
-    ModInputField
+    CompletedBox
   },
   data() {
     return {

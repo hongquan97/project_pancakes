@@ -26,7 +26,7 @@
 
 export default {
   props:{
-    CoreModule:{
+    CM:{
       type: String
     }
   },
@@ -156,11 +156,11 @@ export default {
   
   watch:{
     CoreModule: function(){
-      if(this.CompletedCore.indexOf(this.CoreModule) == -1){
-        this.CompletedCore.push(this.CoreModule);
+      if(this.CompletedCore.indexOf(this.CM) == -1){
+        this.CompletedCore.push(this.CM);
         var list = this.courseList;
         for(let i = 0; i<list.length; i++){
-          if(list[i].modCode==this.CoreModule){
+          if(list[i].modCode==this.CM){
             list[i].Completed=true;
             break;
           }
