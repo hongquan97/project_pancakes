@@ -1,9 +1,10 @@
 <template>
 <div id="GE">
     <b>General Electives</b>
-    <div v-if="Module!==none">{{checkModule()}}</div>
+    <div v-if="!Module.isEmpty">{{checkModule()}}</div>
     <div v-for="(ge,index) in completed_ge" :ge = "ge" :key="index">
     {{ge}}<button v-on:click="remove(ge)">x</button> </div>
+
 </div>
 </template>
 
@@ -17,7 +18,7 @@ export default {
         completed_ge: []
     }
   },
-  methods: {
+  methods: { 
     checkModule() {
       if(!this.completed_ge.includes(this.Module)) {
       var i;

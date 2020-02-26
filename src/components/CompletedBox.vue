@@ -29,17 +29,14 @@ export default {
   },
   data() {
     return {
-
-   
       mod:"",
-      Module: "",
-      extra: ""
+      Module:"",
+      extra:""
     }
   },
   methods: {
     addModule() {
       this.extra = this.Module;
-      //this.extra = "";
     },
     assign() {
       this.Module = this.mod;
