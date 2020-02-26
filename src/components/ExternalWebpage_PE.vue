@@ -119,7 +119,7 @@ export default {
   },
   
   watch:{
-    PeModule: function(){
+    PeM: function(){
       if(this.CompletedPe.indexOf(this.PeM) == -1){
         this.CompletedPe.push(this.PeM);
         var list = this.listA;
