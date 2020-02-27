@@ -2,17 +2,17 @@
   <div id="app2">
     <Progress strokeColor="#f9ccac" :transitionDuration="1000" :radius="70" :strokeWidth="15" :value="this.pe_len">
       <template v-slot:footer>
-        <b>Programme Electives</b>
+        <nav>
+          <a :href="$router.resolve(to='/PE').href"><b>Programme Electives</b></a>
+        </nav>
       </template>
     </Progress>
-    </div>
+  </div>
 </template>
 
 <script>
 import Progress from "./index.vue";
-
 export default {
-  name: "app2",
   components: {
     Progress
   },
@@ -23,8 +23,8 @@ export default {
 </script>
 
 <style lang="scss">
-#app2 {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+Progress {
+  font-family: Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -33,7 +33,6 @@ export default {
   background:#ffffff;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
 }
 body {
   margin: 0;
