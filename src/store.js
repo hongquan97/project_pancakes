@@ -3,7 +3,7 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
-const store = new Vuex.store({
+export default new Vuex.Store({
     state:{
         CoreModule: ""
     },
@@ -25,4 +25,3 @@ const store = new Vuex.store({
     }
 });
 
-export default store;
