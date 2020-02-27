@@ -9,8 +9,9 @@
       <h1>Completed Modules</h1>
       <CoreMods v-bind:Module = "Module"></CoreMods>
       <PE v-bind:Module="Module"></PE>
-      <UE v-bind:Module="Module" v-bind:extra = "extra"></UE>
-    <GE @goToUE= "addModule" v-bind:Module = "Module"></GE>
+      <UE v-bind:Module="Module" v-bind:extra = "extra"/>
+    <GE @goToUE= "addModule" v-bind:Module = "Module"/>
+   
 
   </div>
 </template>
@@ -20,6 +21,7 @@ import CoreMods from './CoreMods.vue'
 import PE from './PE.vue'
 import GE from './GE.vue'
 import UE from './UE.vue'
+
 
 export default {
   components: {

@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>Core Modules</h1>
+    <p>Module: {{m}}</p>
 
     <div>        
       <table>
@@ -24,15 +25,15 @@
 </template>
 
 <script>
+//import store from './src/store.js'
+
 export default {
-  props:{
-    CM:{
-      type: String
-    }
-  },
+  name: 'External',
+
   data() {
     return {  
       CompletedCore:[],  
+      mod: "",
       courseList: [
       {
         modCode: "BT1101",
@@ -151,16 +152,14 @@ export default {
     }
   },
 
-  methods:{
-  },
-
   watch:{
-    CM: function(){
-      if(this.CompletedCore.indexOf(this.CM) == -1){
-        this.CompletedCore.push(this.CM);
+    '$store.state.CoreModule': function(){
+      var cm = this.$store.state.CoreModule;
+      if(this.CompletedCore.indexOf(cm) == -1){
+        this.CompletedCore.push(cm);
         var list = this.courseList;
         for(let i = 0; i<list.length; i++){
-          if(list[i].modCode==this.CM){
+          if(list[i].modCode==cm){
             list[i].Completed=true;
             break;
           }

@@ -16,6 +16,38 @@
           <td>{{mod.MCs}}</td>
         </tr>
       </table>
+      </div>
+
+          <div>  List <B></B>      
+      <table>
+        <tr>
+          <th>Module Code</th>
+          <th>Module Title</th>
+          <th>MCs</th>
+        </tr>
+
+        <tr v-for="mod in listB" :key="mod.modCode" v-bind:style="mod.Completed? 'opacity:0.5;': 'opacity:1;'">
+          <td>{{mod.modCode}}</td>
+          <td>{{mod.modTitle}}</td>
+          <td>{{mod.MCs}}</td>
+        </tr>
+      </table>
+      </div>
+
+          <div>  List C      
+      <table>
+        <tr>
+          <th>Module Code</th>
+          <th>Module Title</th>
+          <th>MCs</th>
+        </tr>
+
+        <tr v-for="mod in listC" :key="mod.modCode" v-bind:style="mod.Completed? 'opacity:0.5;': 'opacity:1;'">
+          <td>{{mod.modCode}}</td>
+          <td>{{mod.modTitle}}</td>
+          <td>{{mod.MCs}}</td>
+        </tr>
+      </table>
     </div>
     <p>
       <a :href="$router.resolve(to='/').href">Back</a>

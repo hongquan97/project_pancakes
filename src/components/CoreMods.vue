@@ -4,25 +4,21 @@
     <div v-if="Module !== null">{{checkModule()}}</div>
     <div v-for="(cm,index) in completed_cm" :cm = "cm" :key="index">
     {{cm}}   <button v-on:click="remove(cm)"> x </button></div>
-    <External :CM = "CM"/>
+   
 </div>
 </template>
 
 <script>
-//import External from './ExternalWebpage_Core.vue'
 
 export default {
   props: ['Module'],
-  components:{
-    //External
-  },
+
   data() {
     return {
         core: ["BT1101", "CS1010S", "EC1301", "IS1103", "MA1101R", "MA1521", "MA1102R", "MKT1705X", "BT2101",
         "BT2102", "CS2030", "CS2040", "IS2101", "ST2334", "BT3102", "BT3103", "IS3103", "BT4103", "IS4010",
         "BT4101"],
-        completed_cm: [],
-        CM: ""
+        completed_cm: []
     }
   },
   methods: {
@@ -31,7 +27,9 @@ export default {
       if(!this.completed_cm.includes(this.Module)) {
         if (this.core.includes(this.Module)) {
         this.completed_cm.push(this.Module);
-        this.CM = this.Module;
+        this.$store.dispatch('createChange',this.Module);
+        //alert(this.$store.getters.updated);
+        
 
       }
       } //else if (!this.core.includes(this.Module)) {
