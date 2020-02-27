@@ -1,6 +1,6 @@
 <template>
   <div id="app1">
-    <Progress strokeColor="#fbefcc" :transitionDuration="1000" :radius="70" :strokeWidth="15" value="70.00">
+    <Progress strokeColor="#fbefcc" :transitionDuration="1000" :radius="70" :strokeWidth="15" :value="this.cm_len">
       <template v-slot:footer>
         <b>Core Module</b>
       </template>
@@ -14,7 +14,10 @@ import Progress from "./index.vue";
 export default {
   name: "app1",
   components: {
-    Progress
+    Progress,
+  },
+  props: {
+    cm_len: Number
   }
 };
 </script>

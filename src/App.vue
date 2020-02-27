@@ -2,7 +2,7 @@
   <div id="app">
     <NUStudyHeader></NUStudyHeader>
     <cse-sel></cse-sel>
-    <ProgressCharts></ProgressCharts>
+    <!--<ProgressCharts></ProgressCharts>-->
     <Logo></Logo>
     
   </div>
@@ -12,14 +12,14 @@
 <script>
 import NUStudyHeader from './components/NUStudyHeader.vue'
 import CourseSelection from './components/CourseSelection.vue'
-import ProgressCharts from './components/ProgressCharts.vue'
+//import ProgressCharts from './components/ProgressCharts.vue'
 import Logo from './components/Logo.vue'
 export default {
   name: 'App',
   components: {
     NUStudyHeader,
     'cse-sel': CourseSelection,
-    ProgressCharts,
+    //ProgressCharts,
     Logo
   },
 

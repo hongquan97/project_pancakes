@@ -1,6 +1,6 @@
 <template>
   <div id="app2">
-    <Progress strokeColor="#f9ccac" :transitionDuration="1000" :radius="70" :strokeWidth="15" value="50.00">
+    <Progress strokeColor="#f9ccac" :transitionDuration="1000" :radius="70" :strokeWidth="15" :value="this.pe_len">
       <template v-slot:footer>
         <b>Programme Electives</b>
       </template>
@@ -15,6 +15,9 @@ export default {
   name: "app2",
   components: {
     Progress
+  },
+  props: {
+    pe_len: Number
   }
 };
 </script>
