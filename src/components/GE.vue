@@ -1,8 +1,8 @@
 <template>
 <div id="GE">
     <b>General Electives</b>
-    <div v-if="Module !==null">{{checkModule()}}</div>
-    <div v-for="(ge,index) in completed_ge" :ge = "ge" :key="index">
+    <div v-if="Module">{{checkModule()}}</div>
+    <div v-for="(ge,index) in com_g" :ge = "ge" :key="index">
     {{ge}}   <button v-on:click="remove(ge)">x</button> </div>
 
 </div>
@@ -10,30 +10,35 @@
 
 <script>
 export default {
-  props: ['Module'],
+  props: {
+    Module: String,
+    com_g : Array
+  },
   data() {
     return {
         GE : [],
-        completed_ge: []
+        lenG: 0
     }
   },
   methods: { 
     checkModule() {
-      if(!this.completed_ge.includes(this.Module)) {
+      if(!this.com_g.includes(this.Module)) {
       var i;
-      for (i = 0; i < this.completed_ge.length; i++) {
-        if (this.completed_ge[i].substring(0,3) == this.Module.substring(0,3)) {
+      for (i = 0; i < this.com_g.length; i++) {
+        if (this.com_g[i].substring(0,3) == this.Module.substring(0,3)) {
           this.$emit("goToUE", this.Module);
-          this.Module = "";
           return;
         }
       } if (this.Module.length == 7 && this.Module.substring(0,2)=="GE") {
-        this.completed_ge.push(this.Module);
+        this.com_g.push(this.Module);
+        this.lenG = this.com_g.length;
+      this.$emit('changeG', this.lenG);
       }}
-      this.Module = "";
     },
     remove(x) {
-      this.completed_ge.splice(this.completed_ge.indexOf(x), 1);
+      this.$emit('removeG', x);
+      this.lenG = this.com_g.length;
+      this.$emit('changeG', this.lenG);
     }
   }
 }

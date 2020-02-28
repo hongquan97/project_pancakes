@@ -1,8 +1,8 @@
 <template>
 <div id="CM">
-    <b>Core Modules</b><br>
-    <div v-if="Module !== null">{{checkModule()}}</div>
-    <div v-for="(cm,index) in completed_cm" :cm = "cm" :key="index">
+    <b>Core Modules</b><br> 
+    <div v-if="Module">{{checkModule()}}</div>
+    <div v-for="(cm,index) in com_c" :cm = "cm" :key="index">
     {{cm}}   <button v-on:click="remove(cm)"> x </button></div>
    
 </div>
@@ -24,8 +24,7 @@ export default {
 
   methods: {
     checkModule() {
-      
-      if(!this.completed_cm.includes(this.Module)) {
+      if(!this.com_c.includes(this.Module)) {
         if (this.core.includes(this.Module)) {
         this.completed_cm.push(this.Module);
         this.$store.dispatch('createChange',this.Module);
@@ -33,14 +32,11 @@ export default {
         
 
       }
-      } //else if (!this.core.includes(this.Module)) {
-        //this.$emit("goToUE", this.Module);
-       // return;
-//} 
-      this.Module = "";
     },
     remove(x) {
-      this.completed_cm.splice(this.completed_cm.indexOf(x), 1);
+      this.$emit('removeC', x);
+      this.lenC = this.com_c.length;
+      this.$emit('changeC', this.lenC);
     }
   }
 }

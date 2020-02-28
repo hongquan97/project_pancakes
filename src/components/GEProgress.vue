@@ -1,6 +1,6 @@
 <template>
   <div id="app4">
-    <Progress strokeColor="#e0876a" :transitionDuration="1000" :radius="70" :strokeWidth="15" value="80.00">
+    <Progress strokeColor="#e0876a" :transitionDuration="1000" :radius="70" :strokeWidth="15" :value="this.ge_len">
       <template v-slot:footer>
         <b>General Electives</b>
       </template>
@@ -15,6 +15,9 @@ export default {
   name: "app4",
   components: {
     Progress
+  },
+  props: {
+    ge_len: Number
   }
 };
 </script>
