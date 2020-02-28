@@ -21,6 +21,7 @@ export default {
         completed_cm: []
     }
   },
+
   methods: {
     checkModule() {
       
@@ -28,7 +29,7 @@ export default {
         if (this.core.includes(this.Module)) {
         this.completed_cm.push(this.Module);
         this.$store.dispatch('createChange',this.Module);
-        //alert(this.$store.getters.updated);
+        alert(this.$store.state.CoreModule);
         
 
       }

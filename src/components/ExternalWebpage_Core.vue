@@ -25,7 +25,7 @@
 </template>
 
 <script>
-//import store from './src/store.js'
+//import store from './src/store'
 
 export default {
   name: 'External',
@@ -152,9 +152,15 @@ export default {
     }
   },
 
+  computed: {
+    coreModule () {
+      return this.$store.getters.updated;
+  }
+},
+
   watch:{
-    '$store.state.CoreModule': function(){
-      var cm = this.$store.state.CoreModule;
+    'coreModule': function(){s
+      var cm = this.$store.getters.updated;
       if(this.CompletedCore.indexOf(cm) == -1){
         this.CompletedCore.push(cm);
         var list = this.courseList;
