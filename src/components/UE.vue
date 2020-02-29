@@ -1,9 +1,9 @@
 <template>
 <div id="UE">
     <b>Unrestricted Electives</b>
-    <div v-if="extra !== none">{{checkModule()}}</div>
-    <div v-for="(ue, index) in completed_ue" :ue = "ue" :key="index">
-    {{ue}}<button v-on:click="remove(ue)"> x </button> </div>
+    <div v-if="extra">{{checkModule()}}</div>
+    <div v-for="(ue,index) in com_u" :ue = "ue" :key="index">
+    {{ue}}   <button v-on:click="remove(ue)">x</button></div>
 </div>
 </template>
 
@@ -11,22 +11,27 @@
 export default {
   props: {
     Module: String,
-    extra: String
+    extra: String,
+    com_u: Array
   },
   data() {
     return {
         UE : [],
-        completed_ue: []
+        lenU: 0
     }
   },
   methods: {
     checkModule() {
-      if (!this.completed_ue.includes(this.extra)) {
-        this.completed_ue.push(this.extra);
-      }
+      if (!this.com_u.includes(this.extra)&&this.extra.length>0) {
+        this.com_u.push(this.extra);
+        this.lenU = this.com_u.length;
+      this.$emit('changeU', this.lenU);
+      }      
     },
     remove(x) {
-      this.completed_ue.splice(this.completed_ue.indexOf(x), 1);
+      this.$emit('removeU', x);
+      this.lenU = this.com_u.length;
+      this.$emit('changeU', this.lenU);
     }
   }
 }
@@ -57,5 +62,8 @@ export default {
 h1 {
   color: black;
   text-align: center;
+}
+button {
+  color: red;
 }
 </style>

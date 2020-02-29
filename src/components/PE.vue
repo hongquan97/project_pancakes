@@ -7,40 +7,48 @@
     <div v-for="(pe,index) in completed_pe" :pe = "pe" :key="index">
     {{pe}} <button v-on:click="remove(pe)">x</button></div>
     <!-- <External1 :PeM = "PeM"/> -->
+        <div v-if="Module">{{checkModule()}}</div>
+      <div v-for="(pe,index) in com_p" :pe = "pe" :key="index">
+    {{pe}} <button @click="remove(pe)">x</button></div>
+    <!-- <External1 :PeM = "PeM"/>-->
       </div>
       
 </template>
 
 <script>
 //import External1 from './ExternalWebpage_PE.vue' 
+//import External from './ExternalWebpage_PE.vue'
 
 export default {
-  props: ['Module'],
+  props: {
+    Module: String,
+    com_p: Array
+  },
   components:{
     //External1
   },
   data() {
     return {
         PE : ["BT4013", "BT4016", "IS4228", "BT4012", "BT4221", "BT4222", "IS4234", "IS4302"],
-        completed_pe: [],
-        PeM: ""
+        PeM: "",
+        lenP: 0,
     }
   },
   methods: {
     checkModule() {
-      if(!this.completed_pe.includes(this.Module)) {
+      if(!this.com_p.includes(this.Module)) {
         if (this.PE.includes(this.Module)) {
-        this.completed_pe.push(this.Module);
+        this.com_p.push(this.Module);
         this.PeM = this.Module;
         } 
-      } // if (!this.PE.includes(this.Module)) {
-        //.$emit("goToUE", this.Module);
-        //return;
-     // } 
-      this.Module = "";
+        this.lenP = this.com_p.length;
+        this.$emit('changeP', this.lenP);
+      }
     },
     remove(x) {
-      this.completed_pe.splice(this.completed_pe.indexOf(x), 1);
+      this.$emit('removeP', x);
+      this.lenP = this.com_p.length;
+      this.$emit('changeP', this.lenP);
     }
   }
 }
@@ -68,5 +76,8 @@ export default {
 h1 {
   color: black;
   text-align: center;
+}
+button {
+  color: red;
 }
 </style>

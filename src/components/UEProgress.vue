@@ -1,6 +1,6 @@
 <template>
   <div id="app3">
-    <Progress strokeColor="#f4a688" :transitionDuration="1000" :radius="70" :strokeWidth="15" value="60.00">
+    <Progress strokeColor="#f4a688" :transitionDuration="1000" :radius="70" :strokeWidth="15" :value="this.ue_len">
       <template v-slot:footer>
         <b>Unrestricted Electives</b>
       </template>
@@ -15,6 +15,9 @@ export default {
   name: "app3",
   components: {
     Progress
+  },
+  props: {
+    ue_len: Number
   }
 };
 </script>
