@@ -3,7 +3,7 @@
     <NUStudyHeader></NUStudyHeader>
     <cse-sel></cse-sel>
     <ProgressCharts></ProgressCharts>
-    <Logo></Logo>   
+    <Logo></Logo>
   </div>
   
 </template>
