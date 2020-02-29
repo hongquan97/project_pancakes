@@ -10,13 +10,15 @@
           <th>MCs</th>
         </tr>
 
-        <tr v-for="mod in courseList" :key="mod.modCode" v-bind:style="mod.Completed? 'opacity:0.5;': 'opacity:1;'">
+        <tr v-for="mod in courseList" :key="mod.modCode" 
+        v-bind:style="CompletedCore.includes(mod.modCode) ? 'opacity:0.5;': 'opacity:1;'">
           <td>{{mod.modCode}}</td>
           <td>{{mod.modTitle}}</td>
           <td>{{mod.MCs}}</td>
         </tr>
       </table>
     </div>
+
     <p>
       <a :href="$router.resolve(to='/').href">Back</a>
     </p>
@@ -25,14 +27,9 @@
 
 <script>
 export default {
-  props:{
-    CM:{
-      type: String
-    }
-  },
   data() {
     return {  
-      CompletedCore:[],  
+      CompletedCore: this.$store.getters.getModules,
       courseList: [
       {
         modCode: "BT1101",
@@ -150,25 +147,6 @@ export default {
       }]
     }
   },
-
-  methods:{
-  },
-
-  watch:{
-    CM: function(){
-      if(this.CompletedCore.indexOf(this.CM) == -1){
-        this.CompletedCore.push(this.CM);
-        var list = this.courseList;
-        for(let i = 0; i<list.length; i++){
-          if(list[i].modCode==this.CM){
-            list[i].Completed=true;
-            break;
-          }
-        }
-      }
-    }
-
-  }
 }
 </script>
 
@@ -176,6 +154,8 @@ export default {
 table {
   border-collapse: collapse;
   width: 40%;
+  margin-left:auto; 
+  margin-right:auto;
 }
 
 th {

@@ -1,23 +1,18 @@
 <template>
 <div id="CM">
     <b>Core Modules</b><br> 
+    {{updateModules()}}
     <div v-if="Module">{{checkModule()}}</div>
     <div v-for="(cm,index) in com_c" :cm = "cm" :key="index">
     {{cm}}   <button v-on:click="remove(cm)"> x </button></div>
-    <!--<External :CM = "CM"/>-->
 </div>
 </template>
 
 <script>
-//import External from './ExternalWebpage_Core.vue'
-
 export default {
   props: {
     Module: String,
     com_c: Array
-  },
-  components:{
-    //External
   },
   data() {
     return {
@@ -26,7 +21,8 @@ export default {
         "BT4101"],
         CM: "",
         added_module: "",
-        lenC: 0
+        lenC: 0,
+        CompletedCore: this.$store.getters.getModules
     }
   },
   methods: {
@@ -35,6 +31,7 @@ export default {
         if (this.core.includes(this.Module)) {
           this.added_module = this.Module
         this.com_c.push(this.added_module);
+        this.$store.dispatch("addModule", this.added_module);
         this.CM = this.Module;
         this.lenC = this.com_c.length;
         this.$emit('changeC', this.lenC);
@@ -46,6 +43,17 @@ export default {
       this.$emit('removeC', x);
       this.lenC = this.com_c.length;
       this.$emit('changeC', this.lenC);
+      this.$store.dispatch("removeModule", x);
+    },
+
+    updateModules(){
+      if(this.com_c.length==0){
+        if(this.CompletedCore.length != 0){
+          this.com_c = this.CompletedCore;
+          this.lenC = this.com_c.length;
+          this.$emit('changeC', this.lenC);
+        }
+      }
     }
   }
 }
@@ -62,7 +70,6 @@ export default {
   height: 180px;
   overflow: auto;
   background: #fbefcc;
-
 } 
 @media only screen and (max-width: 768px) {
   #divL, #divR {

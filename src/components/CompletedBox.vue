@@ -10,7 +10,7 @@
       <CoreMods @changeC= "addLenC($event)" @removeC = "removeC($event)" 
       v-bind:Module="Module" :com_c="com_c"></CoreMods>
 
-      <PE @changeP= "addLenP($event)" @removeP = "removeP($event)" 
+      <PE @changeP= "addLenP($event)" @removeP = "removeP($event)"  @goToUE= "addModule"
       v-bind:Module="Module" :com_p="com_p"></PE>
 
       <UE @changeU= "addLenU($event)" @removeU = "removeU($event)" 
@@ -37,7 +37,6 @@ import CMProgress from './CMProgress.vue'
 import PEProgress from './PEProgress.vue'
 import UEProgress from './UEProgress.vue'
 import GEProgress from './GEProgress.vue'
-//import ProgressCharts from './ProgressCharts.vue'
 
 export default {
   components: {
