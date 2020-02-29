@@ -3,8 +3,7 @@
     <NUStudyHeader></NUStudyHeader>
     <cse-sel></cse-sel>
     <ProgressCharts></ProgressCharts>
-    <Logo></Logo>
-    <Router></Router>    
+    <Logo></Logo>   
   </div>
   
 </template>
@@ -14,15 +13,13 @@ import NUStudyHeader from './components/NUStudyHeader.vue'
 import CourseSelection from './components/CourseSelection.vue'
 import ProgressCharts from './components/ProgressCharts.vue'
 import Logo from './components/Logo.vue'
-import Router from './components/Router.vue'
 export default {
   name: 'App',
   components: {
     NUStudyHeader,
     'cse-sel': CourseSelection,
     ProgressCharts,
-    Logo,
-    Router
+    Logo
   },
 
   data() {
