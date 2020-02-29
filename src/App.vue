@@ -4,6 +4,7 @@
     <cse-sel></cse-sel>
     <ProgressCharts></ProgressCharts>
     <Logo></Logo>
+    <router-view></router-view>
   </div>
   
 </template>
