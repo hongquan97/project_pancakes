@@ -11,7 +11,7 @@
         </tr>
 
         <tr v-for="mod in courseList" :key="mod.modCode" 
-        v-bind:style="(CompletedCore.indexOf(mod.modCode) != -1) ? 'opacity:0.5;': 'opacity:1;'">
+        v-bind:style="CompletedCore.includes(mod.modCode) ? 'opacity:0.5;': 'opacity:1;'">
           <td>{{mod.modCode}}</td>
           <td>{{mod.modTitle}}</td>
           <td>{{mod.MCs}}</td>
@@ -154,6 +154,8 @@ export default {
 table {
   border-collapse: collapse;
   width: 40%;
+  margin-left:auto; 
+  margin-right:auto;
 }
 
 th {

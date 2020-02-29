@@ -10,24 +10,84 @@ export default new Vuex.Store({
   })],
 
 	state: {
-		CoreModules: []
+		CoreModules: [],
+		listA: [],
+		listB: [],
+		listC: [],
+		PE: [],
+		specialisation: ""
 	},
 
 	mutations: {
 		add(state, n) {
-			state.CoreModules.splice(-1, 0, n);
+			if(!state.CoreModules.includes(n))
+				state.CoreModules.push(n);
 		},
 		remove(state, n) {
 			const index = state.CoreModules.indexOf(n);
 			if (index > -1) {
 				state.CoreModules.splice(index, 1);
 			}
+		},
+		addSpecial(state,n){
+			state.specialisation=n;
+		},
+		addtoA(state,n){
+			if(!state.listA.includes(n))
+				state.listA.push(n);
+				state.PE.push(n);			
+		},
+		addtoB(state,n){
+			if(!state.listB.includes(n))
+				state.listB.push(n);	
+				state.PE.push(n);		
+		},
+		addtoC(state,n){
+			if(!state.listC.includes(n))
+				state.listC.push(n);
+				state.PE.push(n);			
+		},
+		removepe(state, n) {
+			const index = state.PE.indexOf(n);
+			if (index > -1) {
+				state.PE.splice(index, 1);
+			}
+
+			if(state.listA.includes(n)){	
+				var i = state.listA.indexOf(n);			
+				state.listA.splice(i, 1);
+			}
+			if(state.listB.includes(n)){
+				
+				var i = state.listB.indexOf(n);	
+				state.listB.splice(i, 1);
+			}
+			if(state.listC.includes(n)){
+				var i = state.listC.indexOf(n);	
+				state.listC.splice(i, 1);
+			}
 		}
 	},
+
 
 	getters: {
 		getModules(state) {
 			return state.CoreModules;
+		},
+		getSpec(state){
+			return state.specialisation;
+		},
+		getlistA(state){
+			return state.listA;
+		},
+		getlistB(state){
+			return state.listB;
+		},
+		getlistC(state){
+			return state.listC;
+		},
+		getPE(state){
+			return state.PE;
 		}
 	},
 
@@ -37,6 +97,21 @@ export default new Vuex.Store({
 		},
 		removeModule({commit}, n) {
 			commit("remove", n);
-		}
+		},
+		addSpec({commit}, n) {
+			commit("addSpecial", n);
+		},
+		addA({commit}, n) {
+			commit("addtoA", n);
+		},
+		addB({commit}, n) {
+			commit("addtoB", n);
+		},
+		addC({commit}, n) {
+			commit("addtoC", n);
+		},
+		removePE({commit}, n) {
+			commit("removepe", n);
+		},
 	}
 });
