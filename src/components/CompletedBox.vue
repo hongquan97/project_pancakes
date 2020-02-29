@@ -37,7 +37,6 @@ import CMProgress from './CMProgress.vue'
 import PEProgress from './PEProgress.vue'
 import UEProgress from './UEProgress.vue'
 import GEProgress from './GEProgress.vue'
-//import ProgressCharts from './ProgressCharts.vue'
 
 export default {
   components: {
