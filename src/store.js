@@ -52,23 +52,20 @@ export default new Vuex.Store({
 			if (index > -1) {
 				state.PE.splice(index, 1);
 			}
-
 			if(state.listA.includes(n)){	
 				var i = state.listA.indexOf(n);			
 				state.listA.splice(i, 1);
 			}
 			if(state.listB.includes(n)){
-				
-				var i = state.listB.indexOf(n);	
+				i = state.listB.indexOf(n);	
 				state.listB.splice(i, 1);
 			}
 			if(state.listC.includes(n)){
-				var i = state.listC.indexOf(n);	
+				i = state.listC.indexOf(n);	
 				state.listC.splice(i, 1);
 			}
 		}
 	},
-
 
 	getters: {
 		getModules(state) {

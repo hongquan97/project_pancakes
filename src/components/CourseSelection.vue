@@ -13,7 +13,7 @@
     </select>  
     {{addSpecialisation()}}  
     <br>
-    <CompletedBox :Modules="Core"></CompletedBox>
+    <CompletedBox></CompletedBox>
   </div>
 </template>
 
@@ -29,10 +29,10 @@ export default {
     }
   },
   methods:{
-    addSpecialisation: function(){
+    addSpecialisation: function() {
       this.$store.dispatch("addSpec", this.major);
     }
-    }
+  }
 }
 </script>
 
