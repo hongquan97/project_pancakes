@@ -1,6 +1,7 @@
 <template>
 <div id="CM">
     <b>Core Modules</b><br> 
+    {{updateModules()}}
     <div v-if="Module">{{checkModule()}}</div>
     <div v-for="(cm,index) in com_c" :cm = "cm" :key="index">
     {{cm}}   <button v-on:click="remove(cm)"> x </button></div>
@@ -20,7 +21,8 @@ export default {
         "BT4101"],
         CM: "",
         added_module: "",
-        lenC: 0
+        lenC: 0,
+        CompletedCore: this.$store.getters.getModules
     }
   },
   methods: {
@@ -42,6 +44,16 @@ export default {
       this.lenC = this.com_c.length;
       this.$emit('changeC', this.lenC);
       this.$store.dispatch("removeModule", x);
+    },
+
+    updateModules(){
+      if(this.com_c.length==0){
+        if(this.CompletedCore.length != 0){
+          this.com_c = this.CompletedCore;
+          this.lenC = this.com_c.length;
+          this.$emit('changeC', this.lenC);
+        }
+      }
     }
   }
 }

@@ -10,7 +10,7 @@
       <CoreMods @changeC= "addLenC($event)" @removeC = "removeC($event)" 
       v-bind:Module="Module" :com_c="com_c"></CoreMods>
 
-      <PE @changeP= "addLenP($event)" @removeP = "removeP($event)" 
+      <PE @changeP= "addLenP($event)" @removeP = "removeP($event)"  @goToUE= "addModule"
       v-bind:Module="Module" :com_p="com_p"></PE>
 
       <UE @changeU= "addLenU($event)" @removeU = "removeU($event)" 
