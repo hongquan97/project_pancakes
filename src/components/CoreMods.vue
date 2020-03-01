@@ -39,6 +39,7 @@ export default {
         
       }
     },
+
     remove(x) {
       this.$emit('removeC', x);
       this.lenC = this.com_c.length;
@@ -46,9 +47,9 @@ export default {
       this.$store.dispatch("removeModule", x);
     },
 
-    updateModules(){
-      if(this.com_c.length==0){
-        if(this.CompletedCore.length != 0){
+    updateModules() {
+      if (this.com_c.length == 0) {
+        if (this.CompletedCore.length != 0) {
           this.com_c = this.CompletedCore;
           this.lenC = this.com_c.length;
           this.$emit('changeC', this.lenC);

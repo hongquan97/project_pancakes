@@ -1,14 +1,11 @@
 <template>
-      <div id="PE">
-        {{updateModules()}}
-        
-        <b>Programme Electives</b>
-        <div v-if="Module">{{checkModule()}}</div>
-      <div v-for="(pe,index) in com_p" :pe = "pe" :key="index">
-    {{pe}} <button @click="remove(pe)">x</button></div>
-
-      </div>
-
+  <div id="PE">
+    <b>Programme Electives</b>
+    {{updateModules()}}
+    <div v-if="Module">{{checkModule()}}</div>
+    <div v-for="(pe,index) in com_p" :pe = "pe" :key="index"> 
+      {{pe}} <button @click="remove(pe)">x</button></div>
+  </div>
 </template>
 
 <script>
@@ -35,9 +32,8 @@ export default {
   },
   methods: {
     checkModule() {     
-
       if(!this.com_p.includes(this.Module)) {
-        if(this.com_p.length==6){
+        if (this.com_p.length == 6) {
          this.$emit("goToUE", this.Module);
           return;
       }
@@ -58,6 +54,7 @@ export default {
           }
       }
     },
+
     remove(x) {
       this.$emit('removeP', x);
       this.lenP = this.com_p.length;
@@ -65,9 +62,9 @@ export default {
       this.$store.dispatch("removePE", x);
     },
 
-    updateModules(){
-      if(this.com_p.length==0){
-        if(this.CompletedPE.length != 0){
+    updateModules() {
+      if (this.com_p.length == 0) {
+        if (this.CompletedPE.length != 0){
           this.com_p = this.CompletedPE;
           this.lenP = this.com_p.length;
           this.$emit('changeP', this.lenP);
