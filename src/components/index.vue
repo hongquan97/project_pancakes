@@ -87,9 +87,9 @@ export default {
   },
   methods: {
     increaseNumber(number, className) {
-      if (number == 0) {
+      /*if (number == 0) {
         return;
-      }
+      }*/
       const innerNum = parseInt(
         this.findClosestNumber(this.transitionDuration / 10, number)
       );
@@ -145,7 +145,8 @@ export default {
     value: {
       handler: function(v) {
         const n = Number(v);
-        if (Number.isNaN(n) || n == 0) {
+        //if (Number.isNaN(n) || n == 0) {
+        if (Number.isNaN(n)){
           return;
         }
         this.clearHandlers();

@@ -1,8 +1,10 @@
 <template>
-  <div id="app">
-    <Progress :transitionDuration="1000" :radius="70" :strokeWidth="15" value="50.00">
+  <div id="app1">
+    <Progress strokeColor="#fbefcc" :transitionDuration="1000" :radius="70" :strokeWidth="15" :value="this.cm_len">
       <template v-slot:footer>
-        <b>Programme Electives</b>
+        <nav>
+          <a :href="$router.resolve(to='/CM').href"><b>Core Modules</b></a>
+        </nav>
       </template>
     </Progress>
   </div>
@@ -10,18 +12,19 @@
 
 <script>
 import Progress from "./index.vue";
-
 export default {
-  name: "app",
   components: {
-    Progress
+    Progress,
+  },
+  props: {
+    cm_len: Number
   }
 };
 </script>
 
 <style lang="scss">
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+Progress {
+  font-family: Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

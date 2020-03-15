@@ -1,25 +1,36 @@
 <template>
   <div>
+    <br>
     <select required v-model="major">        
       <optgroup label="Degree Type">
         <option value="" disabled selected hidden>Please select your course of study</option>
-        <option value="Business Analytics">Business Analytics</option>
-        <option value="Business Analytics (Financial Analytics Specialisation)">
+        <option value="BA">Business Analytics</option>
+        <option value="BA-FS">
         Business Analytics (Financial Analytics Specialisation)</option>
-        <option value="Business Analytics (Marketing Analytics Specialisation)">
+        <option value="BA-MS">
         Business Analytics (Marketing Analytics Specialisation)</option>
       </optgroup>
-    </select>    
+    </select>  
+    {{addSpecialisation()}}  
     <br>
-    <font>You have selected: </font><b><i>{{major}}</i></b>
+    <CompletedBox></CompletedBox>
   </div>
 </template>
 
 <script>
+import CompletedBox from './CompletedBox.vue'
 export default {
+  components: {
+    CompletedBox
+  },
   data() {
     return {
       major: ""
+    }
+  },
+  methods:{
+    addSpecialisation: function() {
+      this.$store.dispatch("addSpec", this.major);
     }
   }
 }
@@ -28,12 +39,12 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 select {
-  color: orange;
-  font: 12px/30px Georgia, serif;
+  color: rgba(255, 115, 0, 0.849);
+  font: 10px/30px Optima, sans-serif;
   font-size: 18px;
 }
 optgroup {
-  background-color: black;
+  background-color: white;
   color: orange;
 }
 </style>
