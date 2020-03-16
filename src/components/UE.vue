@@ -1,6 +1,7 @@
 <template>
 <div id="UE">
     <b>Unrestricted Electives</b>
+    {{updateModules()}}
     <div v-if="extra">{{checkModule()}}</div>
     <div v-for="(ue,index) in com_u" :ue = "ue" :key="index">
     {{ue}}   <button v-on:click="remove(ue)">x</button></div>
@@ -17,7 +18,8 @@ export default {
   data() {
     return {
         UE : [],
-        lenU: 0
+        lenU: 0,
+        CompletedPE: this.$store.getters.getUE
     }
   },
   methods: {
@@ -26,12 +28,24 @@ export default {
         this.com_u.push(this.extra);
         this.lenU = this.com_u.length;
       this.$emit('changeU', this.lenU);
+      this.$store.dispatch("addUE", this.extra);
       }      
     },
     remove(x) {
       this.$emit('removeU', x);
       this.lenU = this.com_u.length;
       this.$emit('changeU', this.lenU);
+      this.$store.dispatch("removeUE", x);
+    },
+    
+    updateModules(){
+      if(this.com_u.length==0){
+        if(this.CompletedPE.length != 0){
+          this.com_u = this.CompletedPE;
+          this.lenU = this.com_u.length;
+          this.$emit('changeU', this.lenU);
+        }
+      }
     }
   }
 }

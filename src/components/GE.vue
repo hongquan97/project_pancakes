@@ -1,6 +1,7 @@
 <template>
 <div id="GE">
     <b>General Electives</b>
+    {{updateModules()}}
     <div v-if="Module">{{checkModule()}}</div>
     <div v-for="(ge,index) in com_g" :ge = "ge" :key="index">
     {{ge}}   <button v-on:click="remove(ge)">x</button> </div>
@@ -17,7 +18,8 @@ export default {
   data() {
     return {
         GE : [],
-        lenG: 0
+        lenG: 0,
+        CompletedGE: this.$store.getters.getGE
     }
   },
   methods: { 
@@ -31,6 +33,7 @@ export default {
         }
       } if (this.Module.length == 7 && this.Module.substring(0,2)=="GE") {
         this.com_g.push(this.Module);
+        this.$store.dispatch("addGE", this.Module);
         this.lenG = this.com_g.length;
       this.$emit('changeG', this.lenG);
       }}
@@ -39,6 +42,17 @@ export default {
       this.$emit('removeG', x);
       this.lenG = this.com_g.length;
       this.$emit('changeG', this.lenG);
+      this.$store.dispatch("removeGE", x);
+    },
+
+    updateModules(){
+      if(this.com_g.length==0){
+        if(this.CompletedGE.length != 0){
+          this.com_g = this.CompletedGE;
+          this.lenG = this.com_g.length;
+          this.$emit('changeG', this.lenG);
+        }
+      }
     }
   }
 }

@@ -15,6 +15,8 @@ export default new Vuex.Store({
 		listB: [],
 		listC: [],
 		PE: [],
+		GE: [],
+		UE: [],
 		specialisation: ""
 	},
 
@@ -46,6 +48,26 @@ export default new Vuex.Store({
 			if(!state.listC.includes(n))
 				state.listC.push(n);
 				state.PE.push(n);			
+		},
+		addtoGE(state,n){
+			if(!state.GE.includes(n))
+				state.GE.push(n);			
+		},
+		removefromGE(state, n) {
+			const index = state.GE.indexOf(n);
+			if (index > -1) {
+				state.GE.splice(index, 1);
+			}
+		},
+		addtoUE(state,n){
+			if(!state.UE.includes(n))
+				state.UE.push(n);			
+		},
+		removefromUE(state, n) {
+			const index = state.UE.indexOf(n);
+			if (index > -1) {
+				state.UE.splice(index, 1);
+			}
 		},
 		removepe(state, n) {
 			const index = state.PE.indexOf(n);
@@ -88,6 +110,12 @@ export default new Vuex.Store({
 		},
 		getPE(state){
 			return state.PE;
+		},
+		getGE(state){
+			return state.GE;
+		},
+		getUE(state){
+			return state.UE;
 		}
 	},
 
@@ -112,6 +140,18 @@ export default new Vuex.Store({
 		},
 		removePE({commit}, n) {
 			commit("removepe", n);
+		},
+		addGE({commit}, n) {
+			commit("addtoGE", n);
+		},
+		removeGE({commit}, n) {
+			commit("removefromGE", n);
+		},
+		addUE({commit}, n) {
+			commit("addtoUE", n);
+		},
+		removeUE({commit}, n) {
+			commit("removefromUE", n);
 		},
 	}
 });
