@@ -4,8 +4,6 @@ node_modules
 config.js
 serviceAccount.json
 firebase.js
-import.js
-moduleInfo.json
 
 # local env files
 .env.local
