@@ -74,13 +74,15 @@ export default new Vuex.Store({
 			if (index > -1) {
 				state.PE.splice(index, 1);
 			}
+
 			var i = 0;
+
 			if(state.listA.includes(n)){	
 				i = state.listA.indexOf(n);			
 				state.listA.splice(i, 1);
 			}
 			if(state.listB.includes(n)){
-				
+
 				i = state.listB.indexOf(n);	
 				state.listB.splice(i, 1);
 			}
@@ -90,7 +92,6 @@ export default new Vuex.Store({
 			}
 		}
 	},
-
 
 	getters: {
 		getModules(state) {
