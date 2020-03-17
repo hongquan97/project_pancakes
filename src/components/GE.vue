@@ -19,17 +19,24 @@ export default {
     return {
         GE : [],
         lenG: 0,
-        CompletedGE: this.$store.getters.getGE
+        CompletedGE: this.$store.getters.getGE,
+        moduleList: this.$store.getters.getList
     }
   },
   methods: { 
     checkModule() {
       if(!this.com_g.includes(this.Module)) {
+        if(this.com_g.length == 5){
+          this.$emit("goToUE", this.Module);
+          return;
+        }
       var i;
       for (i = 0; i < this.com_g.length; i++) {
         if (this.com_g[i].substring(0,3) == this.Module.substring(0,3)) {
-          this.$emit("goToUE", this.Module);
-          return;
+          
+            this.$emit("goToUE", this.Module);
+            return;
+         
         }
       } if (this.Module.length == 7 && this.Module.substring(0,2)=="GE") {
         this.com_g.push(this.Module);

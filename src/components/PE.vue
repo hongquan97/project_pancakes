@@ -27,15 +27,17 @@ export default {
         "BT4240", "IS4241", "IE4210", "ST3131", "ST4245", "IS3221", "I3261", "BT4014", "IS4228", "IS4302"],
         PeM: "",
         lenP: 0,
-        CompletedPE: this.$store.getters.getPE
+        CompletedPE: this.$store.getters.getPE,
+        moduleList: this.$store.getters.getList
     }
   },
   methods: {
     checkModule() {     
       if(!this.com_p.includes(this.Module)) {
         if (this.com_p.length == 6) {
-         this.$emit("goToUE", this.Module);
-          return;
+            this.$emit("goToUE", this.Module);
+             return;
+          
       }
         if (this.PE.includes(this.Module)) {
         this.com_p.push(this.Module);

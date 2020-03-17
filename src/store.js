@@ -10,6 +10,7 @@ export default new Vuex.Store({
   })],
 
 	state: {
+		listOfModules: [],
 		CoreModules: [],
 		listA: [],
 		listB: [],
@@ -90,6 +91,10 @@ export default new Vuex.Store({
 				i = state.listC.indexOf(n);	
 				state.listC.splice(i, 1);
 			}
+		},
+
+		addtoList(state, n){
+			state.listOfModules = n;
 		}
 	},
 
@@ -117,6 +122,9 @@ export default new Vuex.Store({
 		},
 		getUE(state){
 			return state.UE;
+		},
+		getList(state){
+			return state.listOfModules;
 		}
 	},
 
@@ -154,5 +162,8 @@ export default new Vuex.Store({
 		removeUE({commit}, n) {
 			commit("removefromUE", n);
 		},
+		addList({commit}, n){
+			commit("addToList", n);
+		}
 	}
 });
