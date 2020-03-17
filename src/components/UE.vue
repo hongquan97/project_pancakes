@@ -1,11 +1,12 @@
 <template>
 <div id="UE">
     <b>Unrestricted Electives</b>
-    {{updateModules()}}
+    
     <div v-if="extra">{{checkModule()}}</div>
     <div v-if="Module">{{checkModule()}}</div>
+    {{updateModules()}}
     <div v-for="(ue,index) in com_u" :ue = "ue" :key="index">
-    {{ue}}   <button @click="remove(ue)">x</button></div>
+      {{ue}}   <button @click="remove(ue)">x</button></div>
 </div>
 </template>
 
@@ -48,7 +49,7 @@ export default {
         this.com_u.push(this.Module);
         this.lenU = this.com_u.length;
       this.$emit('changeU', this.lenU);
-      this.$store.dispatch("addUE", this.extra);
+      this.$store.dispatch("addUE", this.Module);
       this.Module="";
       }  
        } 
