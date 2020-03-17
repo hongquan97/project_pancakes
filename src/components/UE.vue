@@ -3,8 +3,9 @@
     <b>Unrestricted Electives</b>
     {{updateModules()}}
     <div v-if="extra">{{checkModule()}}</div>
+    <div v-if="Module">{{checkModule()}}</div>
     <div v-for="(ue,index) in com_u" :ue = "ue" :key="index">
-    {{ue}}   <button v-on:click="remove(ue)">x</button></div>
+    {{ue}}   <button @click="remove(ue)">x</button></div>
 </div>
 </template>
 
@@ -19,29 +20,52 @@ export default {
     return {
         UE : [],
         lenU: 0,
-        CompletedPE: this.$store.getters.getUE
+        CompletedUE: this.$store.getters.getUE,
+        PeList: this.$store.getters.getPE,
+        CoreList: this.$store.getters.getModules
     }
   },
   methods: {
+
     checkModule() {
       if (!this.com_u.includes(this.extra)&&this.extra.length>0) {
         this.com_u.push(this.extra);
         this.lenU = this.com_u.length;
       this.$emit('changeU', this.lenU);
       this.$store.dispatch("addUE", this.extra);
-      }      
+      this.extra = "";
+      }
+      if (!this.com_u.includes(this.extra)&&this.extra.length>0) {
+        this.com_u.push(this.extra);
+        this.lenU = this.com_u.length;
+      this.$emit('changeU', this.lenU);
+      this.$store.dispatch("addUE", this.extra);
+      } 
+       if (!this.com_u.includes(this.Module)) {         
+         if(!(this.Module.substring(0,2)=="GE")){
+           if( (!this.PeList.includes(this.Module)) && (!this.CoreList.includes(this.Module)) ){
+       
+        this.com_u.push(this.Module);
+        this.lenU = this.com_u.length;
+      this.$emit('changeU', this.lenU);
+      this.$store.dispatch("addUE", this.extra);
+      this.Module="";
+      }  
+       } 
+       }
     },
     remove(x) {
       this.$emit('removeU', x);
       this.lenU = this.com_u.length;
       this.$emit('changeU', this.lenU);
       this.$store.dispatch("removeUE", x);
+      
     },
     
     updateModules(){
       if(this.com_u.length==0){
-        if(this.CompletedPE.length != 0){
-          this.com_u = this.CompletedPE;
+        if(this.CompletedUE.length != 0){
+          this.com_u = this.CompletedUE;
           this.lenU = this.com_u.length;
           this.$emit('changeU', this.lenU);
         }

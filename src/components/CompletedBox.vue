@@ -85,6 +85,7 @@ export default {
         this.mod = "";
       } else if (!this.list_of_modules.includes(this.mod)){ // check for invalid module code
         alert("This module does not exist! Please enter a valid module code.")
+        this.mod = "";
       } else {
         this.Module = this.mod;
         this.mod = "";
@@ -121,6 +122,7 @@ export default {
       const indexU = this.com_u.indexOf(x);
       this.com_u.splice(indexU, 1);
       this.extra = "";
+      this.Module = "";
     },
     fetchItems:function(){
       let item={}
@@ -133,6 +135,15 @@ export default {
             this.list_of_modules.push(item);
         })
       })
+      this.list_of_modules.push("ACC1002");
+      this.list_of_modules.push("ACC1006");
+      this.list_of_modules.push("CS1231");
+      this.list_of_modules.push("BT1101");
+      this.list_of_modules.push("ACC1006");
+      this.list_of_modules.push("BT4016");
+      this.list_of_modules.push("GET1028");
+      this.list_of_modules.push("GET1001");
+      this.$store.dispatch("addList", this.list_of_modules);
     },
   },
   created(){
