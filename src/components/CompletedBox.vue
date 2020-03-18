@@ -3,7 +3,7 @@
     <br><br>
     Completed Module Code:
     <input type="text" maxlength="8" v-model="mod" v-on:keyup.enter="checkInput"/>
-    <button v-on:click="checkInput">Add</button>
+    <button v-on:click.prevent="addItem">Add Item</button>
     <p id="Completed">
       <h1>Completed Modules</h1>
 
@@ -66,6 +66,13 @@ export default {
     }
   },
   methods: {
+    addItem: function () {
+        // Save item to database
+        database.collection('itemList').doc().set(this.item);
+        this.item.category = "";
+        this.item.name = ""; 
+      }
+    },
     addModule() {
       this.extra = this.Module;
       this.Module = "";
