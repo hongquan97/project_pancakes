@@ -3,7 +3,7 @@
     <b>General Electives</b>
     {{updateModules()}}
     <div v-if="Module">{{checkModule()}}</div>
-    <div v-for="(ge,index) in com_g" :ge = "ge" :key="index">
+    <div v-for="(ge,index) in CompletedGE" :ge = "ge" :key="index">
     {{ge}}   <button v-on:click="remove(ge)">x</button> </div>
 
 </div>
@@ -30,19 +30,18 @@ export default {
           this.$emit("goToUE", this.Module);
           return;
         }
-      var i;
-      for (i = 0; i < this.com_g.length; i++) {
+      
+      for (var i = 0; i < this.com_g.length; i++) {
         if (this.com_g[i].substring(0,3) == this.Module.substring(0,3)) {
-          
             this.$emit("goToUE", this.Module);
             return;
-         
         }
-      } if (this.Module.length == 7 && this.Module.substring(0,2)=="GE") {
-        this.com_g.push(this.Module);
+      } 
+
+      if (this.Module.length == 7 && this.Module.substring(0,2)=="GE") {
         this.$store.dispatch("addGE", this.Module);
         this.lenG = this.com_g.length;
-      this.$emit('changeG', this.lenG);
+        this.$emit('changeG', this.lenG);
       }}
     },
     remove(x) {
