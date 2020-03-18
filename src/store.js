@@ -93,7 +93,7 @@ export default new Vuex.Store({
 			}
 		},
 
-		addtoList(state, n){
+		addToList(state, n){
 			state.listOfModules = n;
 		}
 	},
