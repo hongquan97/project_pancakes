@@ -47,7 +47,7 @@
       </table>
   </div>
     <p>
-      <a :href="$router.resolve(to='/').href">Back</a>
+      <router-link :to="{name:'Home'}">Back</router-link>
     </p>
   </div>
 </template>
