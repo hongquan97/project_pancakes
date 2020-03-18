@@ -37,6 +37,7 @@ import CMProgress from './CMProgress.vue'
 import PEProgress from './PEProgress.vue'
 import UEProgress from './UEProgress.vue'
 import GEProgress from './GEProgress.vue'
+import database from '../../firebase.js'
 
 export default {
   components: {
@@ -62,7 +63,7 @@ export default {
       com_p: [],
       com_u: [],
       com_g: [],
-
+      list_of_modules: [], // consists of all the valid module codes
     }
   },
   methods: {
@@ -81,6 +82,17 @@ export default {
       this.mod = this.mod.toUpperCase().trim();
       if (this.mod == "") {
         alert("Enter something!");
+      } else if (this.ge_len == 100){ // when GE reaches 100%
+        alert("You have fulfilled the General Electives requirement. This module will go to your Unrestricted Electives instead.")
+        this.Module = this.mod;
+        this.mod = "";
+      } else if (this.pe_len == 100){ // when PE reaches 100%
+        alert("You have fulfilled the Programme Electives requirement. This module will go to your Unrestricted Electives instead.")
+        this.Module = this.mod;
+        this.mod = "";
+      } else if (!this.list_of_modules.includes(this.mod)){ // check for invalid module code
+        alert("This module does not exist! Please enter a valid module code.")
+        this.mod = "";
       } else {
         this.Module = this.mod;
         this.mod = "";
@@ -117,9 +129,33 @@ export default {
       const indexU = this.com_u.indexOf(x);
       this.com_u.splice(indexU, 1);
       this.extra = "";
-    }
-
+      this.Module = "";
+    },
+    fetchItems:function(){
+      let item={}
+      //Get all the items from DB
+      database.collection('moduleInfo').get().then((querySnapShot)=>{
+        //Loop through each item
+        querySnapShot.forEach(doc=>{
+            //console.log(doc.id+"==>"+doc.data())
+            item=doc.data().moduleCode;
+            this.list_of_modules.push(item);
+        })
+      })
+      this.list_of_modules.push("ACC1002");
+      this.list_of_modules.push("ACC1006");
+      this.list_of_modules.push("CS1231");
+      this.list_of_modules.push("BT1101");
+      this.list_of_modules.push("ACC1006");
+      this.list_of_modules.push("BT4016");
+      this.list_of_modules.push("GET1028");
+      this.list_of_modules.push("GET1001");
+      this.$store.dispatch("addList", this.list_of_modules);
+    },
   },
+  created(){
+    this.fetchItems();
+  }
 }
 </script>
 
