@@ -2,7 +2,7 @@
 <div id="UE">
     <b>Unrestricted Electives</b>
     
-    <div v-if="extra">{{checkModule()}}</div>
+    <div v-if="extra">{{checkExtra()}}</div>
     <div v-if="Module">{{checkModule()}}</div>
     {{updateModules()}}
     <div v-for="(ue,index) in com_u" :ue = "ue" :key="index">
@@ -27,22 +27,20 @@ export default {
     }
   },
   methods: {
+    checkExtra(){
+          if (!this.com_u.includes(this.extra)&&this.extra.length>0) {
+        this.com_u.push(this.extra);
+        this.lenU = this.com_u.length;
+      this.$emit('changeU', this.lenU);
+      this.$store.dispatch("addUE", this.extra);
+     
+      }
+    },
 
     checkModule() {
-      if (!this.com_u.includes(this.extra)&&this.extra.length>0) {
-        this.com_u.push(this.extra);
-        this.lenU = this.com_u.length;
-      this.$emit('changeU', this.lenU);
-      this.$store.dispatch("addUE", this.extra);
-      this.extra = "";
-      }
-      if (!this.com_u.includes(this.extra)&&this.extra.length>0) {
-        this.com_u.push(this.extra);
-        this.lenU = this.com_u.length;
-      this.$emit('changeU', this.lenU);
-      this.$store.dispatch("addUE", this.extra);
-      } 
-       if (!this.com_u.includes(this.Module)) {         
+  
+       if (!this.com_u.includes(this.Module)) { 
+          
          if(!(this.Module.substring(0,2)=="GE")){
            if( (!this.PeList.includes(this.Module)) && (!this.CoreList.includes(this.Module)) ){
        
@@ -54,6 +52,7 @@ export default {
       }  
        } 
        }
+       
     },
     remove(x) {
       this.$emit('removeU', x);
