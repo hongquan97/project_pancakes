@@ -22,11 +22,11 @@ export default new Vuex.Store({
 	},
 
 	mutations: {
-		add(state, n) {
+		addCore(state, n) {
 			if(!state.CoreModules.includes(n))
 				state.CoreModules.push(n);
 		},
-		remove(state, n) {
+		removeCore(state, n) {
 			const index = state.CoreModules.indexOf(n);
 			if (index > -1) {
 				state.CoreModules.splice(index, 1);
@@ -35,42 +35,42 @@ export default new Vuex.Store({
 		addSpecial(state,n){
 			state.specialisation=n;
 		},
-		addtoA(state,n){
+		addToA(state,n){
 			if(!state.listA.includes(n))
 				state.listA.push(n);
 				state.PE.push(n);			
 		},
-		addtoB(state,n){
+		addToB(state,n){
 			if(!state.listB.includes(n))
 				state.listB.push(n);	
 				state.PE.push(n);		
 		},
-		addtoC(state,n){
+		addToC(state,n){
 			if(!state.listC.includes(n))
 				state.listC.push(n);
 				state.PE.push(n);			
 		},
-		addtoGE(state,n){
+		addToGE(state,n){
 			if(!state.GE.includes(n))
 				state.GE.push(n);			
 		},
-		removefromGE(state, n) {
+		removeFromGE(state, n) {
 			const index = state.GE.indexOf(n);
 			if (index > -1) {
 				state.GE.splice(index, 1);
 			}
 		},
-		addtoUE(state,n){
+		addToUE(state,n){
 			if(!state.UE.includes(n))
 				state.UE.push(n);			
 		},
-		removefromUE(state, n) {
+		removeFromUE(state, n) {
 			const index = state.UE.indexOf(n);
 			if (index > -1) {
 				state.UE.splice(index, 1);
 			}
 		},
-		removepe(state, n) {
+		removePE(state, n) {
 			const index = state.PE.indexOf(n);
 			if (index > -1) {
 				state.PE.splice(index, 1);
@@ -105,13 +105,13 @@ export default new Vuex.Store({
 		getSpec(state){
 			return state.specialisation;
 		},
-		getlistA(state){
+		getListA(state){
 			return state.listA;
 		},
-		getlistB(state){
+		getListB(state){
 			return state.listB;
 		},
-		getlistC(state){
+		getListC(state){
 			return state.listC;
 		},
 		getPE(state){
@@ -130,37 +130,37 @@ export default new Vuex.Store({
 
 	actions: {
 		addModule({commit}, n) {
-			commit("add", n);
+			commit("addCore", n);
 		},
 		removeModule({commit}, n) {
-			commit("remove", n);
+			commit("removeCore", n);
 		},
 		addSpec({commit}, n) {
 			commit("addSpecial", n);
 		},
 		addA({commit}, n) {
-			commit("addtoA", n);
+			commit("addToA", n);
 		},
 		addB({commit}, n) {
-			commit("addtoB", n);
+			commit("addToB", n);
 		},
 		addC({commit}, n) {
-			commit("addtoC", n);
+			commit("addToC", n);
 		},
 		removePE({commit}, n) {
-			commit("removepe", n);
+			commit("removePE", n);
 		},
 		addGE({commit}, n) {
-			commit("addtoGE", n);
+			commit("addToGE", n);
 		},
 		removeGE({commit}, n) {
-			commit("removefromGE", n);
+			commit("removeFromGE", n);
 		},
 		addUE({commit}, n) {
-			commit("addtoUE", n);
+			commit("addToUE", n);
 		},
 		removeUE({commit}, n) {
-			commit("removefromUE", n);
+			commit("removeFromUE", n);
 		},
 		addList({commit}, n){
 			commit("addToList", n);

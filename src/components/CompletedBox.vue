@@ -30,7 +30,7 @@
 </template>
 
 <script>
-	import CoreMods from './CoreMods.vue'
+	import CoreMods from './CM.vue'
 	import PE from './PE.vue'
 	import GE from './GE.vue'
 	import UE from './UE.vue'
@@ -38,7 +38,7 @@
 	import PEProgress from './PEProgress.vue'
 	import UEProgress from './UEProgress.vue'
 	import GEProgress from './GEProgress.vue'
-	import database from '../../firebase.js'
+	//import database from '../../firebase.js'
 	export default {
 		components: {
 			CoreMods,
@@ -126,13 +126,13 @@
 		},
 
 		fetchItems:function() {
-			let item = {}
-			database.collection('moduleInfo').get().then((querySnapShot) => {
-				querySnapShot.forEach(doc => {
-					item = doc.data().moduleCode;
-					this.list_of_modules.push(item);
-				})
-			})
+			//let item = {}
+			//database.collection('moduleInfo').get().then((querySnapShot) => {
+			// 	querySnapShot.forEach(doc => {
+			// 		item = doc.data().moduleCode;
+			// 		this.list_of_modules.push(item);
+			//	})
+			//})
 			this.list_of_modules.push("ACC1002");
 			this.list_of_modules.push("ACC1006");
 			this.list_of_modules.push("CS1231");
