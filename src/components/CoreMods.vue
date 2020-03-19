@@ -30,26 +30,26 @@ export default {
 			if(!this.com_c.includes(this.Module)) {
 				if (this.core.includes(this.Module)) {
 					this.$store.dispatch("addModule", this.Module);
-					this.lenC = this.com_c.length;
-					this.$emit('changeC', this.lenC);
+					//this.lenC = this.com_c.length;
+					this.$emit('changeC', false);
 				}
 
 			}
 		},
-
+		
 		remove(x) {
 			this.$emit('removeC', x);
-			this.lenC = this.com_c.length;
-			this.$emit('changeC', this.lenC);
+			//this.lenC = this.com_c.length;
+			this.$emit('changeC', x);
 			this.$store.dispatch("removeModule", x);
 		},
 
 		updateModules() {
 			if (this.com_c.length == 0) {
 				if (this.CompletedCore.length != 0) {
-					this.com_c = this.CompletedCore;
-					this.lenC = this.com_c.length;
-					this.$emit('changeC', this.lenC);
+					//this.com_c = this.CompletedCore;
+					//this.lenC = this.com_c.length;
+					this.$emit('changeC', false);
 				}
 			}
 		}
