@@ -12,6 +12,7 @@
 
 <script>
 export default {
+<<<<<<< Updated upstream
 	props: {
 		Module: String,
 		com_c: Array
@@ -54,6 +55,55 @@ export default {
 			}
 		}
 	}
+=======
+  props: {
+    Module: String,
+    com_c: Array
+  },
+  data() {
+    return {
+        core: ["BT1101", "CS1010S", "EC1301", "IS1103", "MA1101R", "MA1521", "MA1102R", "MKT1705X", "BT2101",
+        "BT2102", "CS2030", "CS2040", "IS2101", "ST2334", "BT3102", "BT3103", "IS3103", "BT4103", "IS4010",
+        "BT4101"],
+        CM: "",
+        added_module: "",
+        lenC: 0,
+        CompletedCore: this.$store.getters.getModules
+    }
+  },
+  methods: {
+    checkModule() {
+      if(!this.com_c.includes(this.Module)) {
+        if (this.core.includes(this.Module)) {
+          this.added_module = this.Module
+        this.com_c.push(this.added_module);
+        this.$store.dispatch("addModule", this.added_module);
+        this.CM = this.Module;
+        //this.lenC = this.com_c.length;
+        this.$emit('changeC', false);
+        }
+        
+      }
+    },
+
+    remove(x) {
+      this.$emit('removeC', x);
+      //this.lenC = this.com_c.length;
+      this.$emit('changeC', x);
+      this.$store.dispatch("removeModule", x);
+    },
+
+    updateModules() {
+      if (this.com_c.length == 0) {
+        if (this.CompletedCore.length != 0) {
+          this.com_c = this.CompletedCore;
+          //this.lenC = this.com_c.length;
+          this.$emit('changeC', false);
+        }
+      }
+    }
+  }
+>>>>>>> Stashed changes
 }
 </script>
 
