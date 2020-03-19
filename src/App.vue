@@ -2,19 +2,19 @@
   <div id="app">
     <NUStudyHeader></NUStudyHeader>
     <router-view></router-view>
-    <Logo></Logo>
+    <Footer></Footer>
   </div>
   
 </template>
 
 <script>
 import NUStudyHeader from './components/NUStudyHeader.vue'
-import Logo from './components/Logo.vue'
+import Footer from './components/Footer.vue'
 export default {
   name: 'App',
   components: {
     NUStudyHeader,
-    Logo
+    Footer
   }
 }
 </script>

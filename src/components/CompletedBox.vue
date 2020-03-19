@@ -29,42 +29,41 @@
 </template>
 
 <script>
-import CoreMods from './CoreMods.vue'
-import PE from './PE.vue'
-import GE from './GE.vue'
-import UE from './UE.vue'
-import CMProgress from './CMProgress.vue'
-import PEProgress from './PEProgress.vue'
-import UEProgress from './UEProgress.vue'
-import GEProgress from './GEProgress.vue'
-//import database from '../../firebase.js'
-
-export default {
-  components: {
-    CoreMods,
-    PE,
-    GE,
-    UE,
-    CMProgress,
-    PEProgress,
-    UEProgress,
-    GEProgress
-  },
-  data() {
-    return {
-      mod:"",
-      Module:"",
-      extra:"",
-      special: "", //store this.Module to check if it is > 4MC
-      numOfMC: 0,
-      cm_len: 0.00,
-      pe_len: 0.00,
-      ue_len: 0.00,
-      ge_len: 0.00,
-      com_c: [],
-      com_p: [],
-      com_u: [],
-      com_g: [],
+<<<<<<< HEAD
+  import CoreMods from './CM.vue'
+  import PE from './PE.vue'
+  import GE from './GE.vue'
+  import UE from './UE.vue'
+  import CMProgress from './CMProgress.vue'
+  import PEProgress from './PEProgress.vue'
+  import UEProgress from './UEProgress.vue'
+  import GEProgress from './GEProgress.vue'
+  //import database from '../../firebase.js'
+  export default {
+    components: {
+      CoreMods,
+      PE,
+      GE,
+      UE,
+      CMProgress,
+      PEProgress,
+      UEProgress,
+      GEProgress
+    },
+    data() {
+      return {
+        mod:"",
+        Module:"",
+        extra:"",
+        special: "", //store this.Module to check if it is > 4MC
+        cm_len: 0.00,
+        pe_len: 0.00,
+        ue_len: 0.00,
+        ge_len: 0.00,
+        com_c: this.$store.getters.getModules,
+        com_p: this.$store.getters.getPE,
+        com_u: this.$store.getters.getUE,
+        com_g: this.$store.getters.getGE,
       list_of_modules: [], // consists of all the valid module codes
     }
   },
@@ -85,16 +84,16 @@ export default {
         alert("You have fulfilled the Programme Electives requirement. This module will go to your Unrestricted Electives instead.")
         this.Module = this.mod;
         this.mod = "";
-      } /*else if (!this.list_of_modules.includes(this.mod)){ // check for invalid module code
+      } else if (!this.list_of_modules.includes(this.mod)){ // check for invalid module code
         alert("This module does not exist! Please enter a valid module code.")
         this.mod = "";
-      }*/ else {
+      } else {
         this.Module = this.mod;
         this.special = this.mod;
         this.mod = "";
       }
     },
-    addLenC: function(isRemove) { //function takes in module when removed and boolean (false) when added
+    addLenC: function(isRemove) { // function takes in module when removed and boolean (false) when added
       if (isRemove) {
         if (isRemove == "BT4101" || isRemove == "IS4010") {
           this.numOfMC -= 12;
@@ -145,31 +144,33 @@ export default {
       this.extra = "";
       this.Module = "";
     },
-    /*fetchItems:function(){
-      let item={}
-      //Get all the items from DB
-      database.collection('moduleInfo').get().then((querySnapShot)=>{
-        //Loop through each item
-        querySnapShot.forEach(doc=>{
-            //console.log(doc.id+"==>"+doc.data())
-            item=doc.data().moduleCode;
-            this.list_of_modules.push(item);
-        })
-      })
+
+    fetchItems:function() {
+      //let item = {}
+      //database.collection('moduleInfo').get().then((querySnapShot) => {
+      //  querySnapShot.forEach(doc => {
+      //    item = doc.data().moduleCode;
+      //    this.list_of_modules.push(item);
+      //  })
+      //})
       this.list_of_modules.push("ACC1002");
       this.list_of_modules.push("ACC1006");
       this.list_of_modules.push("CS1231");
       this.list_of_modules.push("BT1101");
-      this.list_of_modules.push("ACC1006");
       this.list_of_modules.push("BT4016");
       this.list_of_modules.push("GET1028");
       this.list_of_modules.push("GET1001");
       this.$store.dispatch("addList", this.list_of_modules);
-    },*/
+    },
   },
-  /*created(){
+  
+  created() {
     this.fetchItems();
-  }*/
+    this.addLenC(this.com_c.length);
+    this.addLenP(this.com_p.length);
+    this.addLenU(this.com_u.length);
+    this.addLenG(this.com_g.length);
+  }
 }
 </script>
 
