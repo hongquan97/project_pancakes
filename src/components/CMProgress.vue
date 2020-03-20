@@ -2,6 +2,7 @@
   <div id="app1">
     <Progress strokeColor="#fbefcc" :transitionDuration="1000" :radius="70" :strokeWidth="15" :value="this.cm_len">
       <template v-slot:footer>
+        <b>Core Modules</b>
         <nav>
           <router-link :to="{name:'CMPage'}"><b>Core Modules</b></router-link>
         </nav>
