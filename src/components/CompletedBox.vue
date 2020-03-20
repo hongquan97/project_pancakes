@@ -7,16 +7,16 @@
     <p id="Completed">
       <h1>Completed Modules</h1>
 
-      <CoreMods @changeC= "addLenC($event)" @removeC = "removeC($event)" 
+      <CoreMods @changeC= "updateLenC()"
       v-bind:Module="Module" :com_c="com_c"></CoreMods>
 
-      <PE @changeP= "addLenP($event)" @removeP = "removeP($event)"  @goToUE= "addModule"
+      <PE @changeP= "updateLenP($event)" @removeP = "removeP($event)"  @goToUE= "addModule"
       v-bind:Module="Module" :com_p="com_p"></PE>
 
-      <UE @changeU= "addLenU($event)" @removeU = "removeU($event)" 
+      <UE @changeU= "updateLenU($event)" @removeU = "removeU($event)" 
       v-bind:Module="Module" v-bind:extra="extra" :com_u="com_u"></UE>
 
-      <GE @changeG= "addLenG($event)" @goToUE= "addModule" @removeG = "removeG($event)" 
+      <GE @changeG= "updateLenG($event)" @goToUE= "addModule" @removeG = "removeG($event)" 
       v-bind:Module="Module" :com_g="com_g"></GE>
 
     <div id="app" class = "container">
@@ -54,7 +54,7 @@
         mod:"",
         Module:"",
         extra:"",
-        special: "", //store this.Module to check if it is > 4MC
+        numOfMC: 0,
         cm_len: 0.00,
         pe_len: 0.00,
         ue_len: 0.00,
@@ -88,44 +88,32 @@
         this.mod = "";
       } else {
         this.Module = this.mod;
-        this.special = this.mod;
         this.mod = "";
       }
     },
-    addLenC: function(isRemove) { // function takes in module when removed and boolean (false) when added
-      if (isRemove) {
-        if (isRemove == "BT4101" || isRemove == "IS4010") {
-          this.numOfMC -= 12;
-        } else if (isRemove == "BT4103") {
-          this.numOfMC -= 8;
-        } else {
-          this.numOfMC -= 4;
-        }
-      } else {
-        if (this.special == "BT4101" || this.special == "IS4010") {
+    updateLenC: function() {
+      var i;
+      this.numOfMC = 0;
+      this.Module = "";
+      for (i = 0; i < this.com_c.length; i++) {
+        if (this.com_c[i] == "BT4101" || this.com_c[i] == "IS4010") {
           this.numOfMC += 12;
-        } else if (this.special == "BT4103") {
+        } else if (this.com_c[i] == "BT4103") {
           this.numOfMC += 8;
         } else {
           this.numOfMC += 4;
         }
       }
-      this.special = "";
       this.cm_len = ((this.numOfMC*100)/72).toFixed(2);
     },
-    addLenP: function(num) {
+    updateLenP: function(num) {
       this.pe_len = ((num*400)/24).toFixed(2);
     },
-    addLenU: function(num) {
+    updateLenU: function(num) {
       this.ue_len = ((num*400)/32).toFixed(2);
     },
-    addLenG: function(num) {
+    updateLenG: function(num) {
       this.ge_len = ((num*400)/20).toFixed(2);
-    },
-    removeC(x) {
-      const indexC = this.com_c.indexOf(x);
-      this.com_c.splice(indexC, 1);
-      this.Module = "";
     },
     removeP(x) {
       const indexP = this.com_p.indexOf(x)
@@ -159,16 +147,17 @@
       this.list_of_modules.push("BT4016");
       this.list_of_modules.push("GET1028");
       this.list_of_modules.push("GET1001");
+      this.list_of_modules.push("IS4010");
       this.$store.dispatch("addList", this.list_of_modules);
     },
   },
   
   created() {
     this.fetchItems();
-    this.addLenC(this.com_c.length);
-    this.addLenP(this.com_p.length);
-    this.addLenU(this.com_u.length);
-    this.addLenG(this.com_g.length);
+    this.updateLenC();
+    this.updateLenP(this.com_p.length);
+    this.updateLenU(this.com_u.length);
+    this.updateLenG(this.com_g.length);
   }
 }
 </script>

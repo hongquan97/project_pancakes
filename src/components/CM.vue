@@ -1,7 +1,6 @@
 <template>
   <div id="CM">
     <b>Core Modules</b><br> 
-    {{updateModules()}}
     <div v-if="Module">{{checkModule()}}</div>
     <div v-for="(cm,index) in CompletedCore" :cm = "cm" :key="index">
       {{cm}}   
@@ -30,26 +29,14 @@ export default {
       if(!this.com_c.includes(this.Module)) {
         if (this.core.includes(this.Module)) {
           this.$store.dispatch("addModule", this.Module);
-          this.lenC = this.com_c.length;
-          this.$emit('changeC', this.lenC);
+          this.$emit('changeC');
         }
       }
     },
     remove(x) {
-      this.$emit('removeC', x);
-      this.lenC = this.com_c.length;
-      this.$emit('changeC', this.lenC);
       this.$store.dispatch("removeModule", x);
+      this.$emit('changeC');
     },
-    updateModules() {
-      if (this.com_c.length == 0) {
-        if (this.CompletedCore.length != 0) {
-          this.com_c = this.CompletedCore;
-          this.lenC = this.com_c.length;
-          this.$emit('changeC', this.lenC);
-        }
-      }
-    }
   }
 }
 </script>
