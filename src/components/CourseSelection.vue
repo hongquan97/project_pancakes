@@ -4,15 +4,16 @@
     <select required v-model="major">        
       <optgroup label="Degree Type">
         <option value="" disabled selected hidden>Please select your course of study</option>
-        <option value="Business Analytics">Business Analytics</option>
-        <option value="Business Analytics (Financial Analytics Specialisation)">
+        <option value="BA">Business Analytics</option>
+        <option value="BA-FS">
         Business Analytics (Financial Analytics Specialisation)</option>
-        <option value="Business Analytics (Marketing Analytics Specialisation)">
+        <option value="BA-MS">
         Business Analytics (Marketing Analytics Specialisation)</option>
       </optgroup>
-    </select>    
+    </select>  
+    {{addSpecialisation()}}  
     <br>
-    <CompletedBox :Modules="Core"></CompletedBox>
+    <CompletedBox></CompletedBox>
   </div>
 </template>
 
@@ -24,10 +25,12 @@ export default {
   },
   data() {
     return {
-      major: "",
-      Core: ["CS1010S", "BT1101", "IS1103", "EC1301", "MA1101R", "MA1311", "MA1521", "MA1102R", "MKT1705X", "CS2030", "CS2040", 
-    "BT2101", "BT2102", "IS2101", "ST2334", "BT3103", "BT3102", "IS3103", "BT4101", "BT4103", "IS4010"],
-      PE: []
+      major: ""
+    }
+  },
+  methods:{
+    addSpecialisation: function() {
+      this.$store.dispatch("addSpec", this.major);
     }
   }
 }

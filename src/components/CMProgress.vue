@@ -4,7 +4,7 @@
       <template v-slot:footer>
         <b>Core Modules</b>
         <nav>
-          <a :href="$router.resolve(to='/CM').href"><b>Core Modules</b></a>
+          <router-link :to="{name:'CMPage'}"><b>Core Modules</b></router-link>
         </nav>
       </template>
     </Progress>
