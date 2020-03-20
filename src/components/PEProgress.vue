@@ -3,7 +3,7 @@
     <Progress strokeColor="#f9ccac" :transitionDuration="1000" :radius="70" :strokeWidth="15" :value="this.pe_len">
       <template v-slot:footer>
         <nav>
-          <a :href="$router.resolve(to='/PE').href"><b>Programme Electives</b></a>
+          <router-link :to="{name:'PEPage'}"><b>Programme Electives</b></router-link>
         </nav>
       </template>
     </Progress>

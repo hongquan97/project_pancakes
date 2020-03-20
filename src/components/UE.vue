@@ -1,13 +1,13 @@
 <template>
-<div id="UE">
+  <div id="UE">
     <b>Unrestricted Electives</b>
-    
     <div v-if="extra">{{checkExtra()}}</div>
     <div v-if="Module">{{checkModule()}}</div>
-    {{updateModules()}}
     <div v-for="(ue,index) in com_u" :ue = "ue" :key="index">
-      {{ue}}   <button @click="remove(ue)">x</button></div>
-</div>
+      {{ue}}   
+      <button @click="remove(ue)">x</button>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -19,57 +19,34 @@ export default {
   },
   data() {
     return {
-        UE : [],
-        lenU: 0,
-        CompletedUE: this.$store.getters.getUE,
-        PeList: this.$store.getters.getPE,
-        CoreList: this.$store.getters.getModules
+      UE : [],
+      lenU: 0,
+      PeList: this.$store.getters.getPE,
+      CoreList: this.$store.getters.getModules
     }
   },
   methods: {
     checkExtra(){
-          if (!this.com_u.includes(this.extra)&&this.extra.length>0) {
-        this.com_u.push(this.extra);
-        this.lenU = this.com_u.length;
-      this.$emit('changeU', this.lenU);
-      this.$store.dispatch("addUE", this.extra);
-     
+      if (!this.com_u.includes(this.extra)&&this.extra.length>0) {
+        this.$store.dispatch("addUE", this.extra);
+        this.$emit('changeU');     
       }
     },
 
     checkModule() {
-  
-       if (!this.com_u.includes(this.Module)) { 
-          
-         if(!(this.Module.substring(0,2)=="GE")){
-           if( (!this.PeList.includes(this.Module)) && (!this.CoreList.includes(this.Module)) ){
-       
-        this.com_u.push(this.Module);
-        this.lenU = this.com_u.length;
-      this.$emit('changeU', this.lenU);
-      this.$store.dispatch("addUE", this.Module);
-      this.Module="";
-      }  
-       } 
-       }
-       
-    },
-    remove(x) {
-      this.$emit('removeU', x);
-      this.lenU = this.com_u.length;
-      this.$emit('changeU', this.lenU);
-      this.$store.dispatch("removeUE", x);
-      
-    },
-    
-    updateModules(){
-      if(this.com_u.length==0){
-        if(this.CompletedUE.length != 0){
-          this.com_u = this.CompletedUE;
-          this.lenU = this.com_u.length;
-          this.$emit('changeU', this.lenU);
-        }
+      if (!this.com_u.includes(this.Module)) { 
+        if(!(this.Module.substring(0,2)=="GE")){
+          if( (!this.PeList.includes(this.Module)) && (!this.CoreList.includes(this.Module)) ){
+            this.$store.dispatch("addUE", this.Module);
+            this.$emit('changeU');
+          }  
+        } 
       }
+    },
+
+    remove(x) {
+      this.$store.dispatch("removeUE", x);
+      this.$emit('changeU');
     }
   }
 }
