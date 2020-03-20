@@ -1,6 +1,6 @@
 <template>
   <div class="logoImage">
-    <img v-bind:src="image"/>
+    <img v-bind:src="image" height="150px" width="280px"/>
   </div>
 </template>
 
@@ -8,7 +8,7 @@
 export default {
   data() {
     return {
-      image: './assets/nustudy-250x120.png'
+      image: './assets/nustudy.JPG'
     }
   }
 }
@@ -23,7 +23,6 @@ export default {
   font-size: 4rem;
   font-weight: normal;
   margin: 0px;
-  height="230px" width="230px"
 }*/
 div {
   background-color: #FAEBCC;

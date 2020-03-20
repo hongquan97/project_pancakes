@@ -147,10 +147,12 @@
 
     fetchItems:function() {
       //let item = {}
+      //let MC = {}
       //database.collection('moduleInfo').get().then((querySnapShot) => {
       //  querySnapShot.forEach(doc => {
       //    item = doc.data().moduleCode;
-      //    this.list_of_modules.push(item);
+      //    MC = doc.data().MC;
+      //    this.list_of_modules.push({Code: item, ModCredits: MC});
       //  })
       //})
       this.list_of_modules.push("ACC1002");
