@@ -5,7 +5,7 @@
     <input type="text" maxlength="8" v-model="mod" v-on:keyup.enter="checkInput"/>
     <button v-on:click="checkInput">Add</button>
     <p id="Completed">
-      <h1>Completed Modules</h1>
+      <h3>Completed Modules</h3>
 
       <CoreMods @changeC= "addLenC($event)" @removeC = "removeC($event)" 
       v-bind:Module="Module" :com_c="com_c"></CoreMods>
@@ -146,7 +146,7 @@ export default {
 div {
   font-family: Helvetica, sans-serif;
 }
-h1 {
+h3 {
   color: black;
   text-align: center;
 }
