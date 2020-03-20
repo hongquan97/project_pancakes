@@ -31,7 +31,7 @@ export default {
         if (this.core.includes(this.Module)) {
           this.$store.dispatch("addModule", this.Module);
           this.lenC = this.com_c.length;
-          this.$emit('changeC', this.lenC);
+          this.$emit('changeC', false);
         }
       }
     },
@@ -46,7 +46,7 @@ export default {
         if (this.CompletedCore.length != 0) {
           this.com_c = this.CompletedCore;
           this.lenC = this.com_c.length;
-          this.$emit('changeC', this.lenC);
+          this.$emit('changeC', false);
         }
       }
     }

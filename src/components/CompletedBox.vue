@@ -54,7 +54,8 @@
         mod:"",
         Module:"",
         extra:"",
-        special: "", //store this.Module to check if it is > 4MC
+        special: "", // store this.Module to check if it is > 4MC
+        numOfMC: 0,
         cm_len: 0.00,
         pe_len: 0.00,
         ue_len: 0.00,
@@ -75,11 +76,11 @@
       this.mod = this.mod.toUpperCase().trim();
       if (this.mod == "") {
         alert("Enter something!");
-      } else if (this.ge_len == 100){ // when GE reaches 100%
+      } else if (this.ge_len == 100) { // when GE reaches 100%
         alert("You have fulfilled the General Electives requirement. This module will go to your Unrestricted Electives instead.")
         this.Module = this.mod;
         this.mod = "";
-      } else if (this.pe_len == 100){ // when PE reaches 100%
+      } else if (this.pe_len == 100) { // when PE reaches 100%
         alert("You have fulfilled the Programme Electives requirement. This module will go to your Unrestricted Electives instead.")
         this.Module = this.mod;
         this.mod = "";
@@ -92,7 +93,7 @@
         this.mod = "";
       }
     },
-    addLenC: function(isRemove) { // function takes in module when removed and boolean (false) when added
+    updateLenC: function(isRemove) { // function takes in module when removed and boolean (false) when added
       if (isRemove) {
         if (isRemove == "BT4101" || isRemove == "IS4010") {
           this.numOfMC -= 12;
@@ -113,13 +114,13 @@
       this.special = "";
       this.cm_len = ((this.numOfMC*100)/72).toFixed(2);
     },
-    addLenP: function(num) {
+    updateLenP: function(num) {
       this.pe_len = ((num*400)/24).toFixed(2);
     },
-    addLenU: function(num) {
+    updateLenU: function(num) {
       this.ue_len = ((num*400)/32).toFixed(2);
     },
-    addLenG: function(num) {
+    updateLenG: function(num) {
       this.ge_len = ((num*400)/20).toFixed(2);
     },
     removeC(x) {
@@ -165,10 +166,10 @@
   
   created() {
     this.fetchItems();
-    this.addLenC(this.com_c.length);
-    this.addLenP(this.com_p.length);
-    this.addLenU(this.com_u.length);
-    this.addLenG(this.com_g.length);
+    this.updateLenC(false);
+    this.updateLenP(this.com_p.length);
+    this.updateLenU(this.com_u.length);
+    this.updateLenG(this.com_g.length);
   }
 }
 </script>
