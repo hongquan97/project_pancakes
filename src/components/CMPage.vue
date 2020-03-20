@@ -159,7 +159,7 @@ table {
 }
 
 th {
-  background: #F7DCAC;
+  background: #FAEBCC;
 }
 
 th, td {
