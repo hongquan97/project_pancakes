@@ -2,7 +2,7 @@
   <div id="CM">
     <b>Core Modules</b><br> 
     <div v-if="Module">{{checkModule()}}</div>
-    <div v-for="(cm,index) in CompletedCore" :cm = "cm" :key="index">
+    <div v-for="(cm,index) in com_c" :cm = "cm" :key="index">
       {{cm}}   
       <button v-on:click="remove(cm)"> x </button>
     </div>
@@ -20,8 +20,7 @@ export default {
       core: ["BT1101", "CS1010S", "EC1301", "IS1103", "MA1101R", "MA1521", "MA1102R", "MKT1705X", "BT2101",
       "BT2102", "CS2030", "CS2040", "IS2101", "ST2334", "BT3102", "BT3103", "IS3103", "BT4103", "IS4010",
       "BT4101"],
-      lenC: 0,
-      CompletedCore: this.$store.getters.getModules
+      lenC: 0
     }
   },
   methods: {
@@ -33,10 +32,11 @@ export default {
         }
       }
     },
+
     remove(x) {
       this.$store.dispatch("removeModule", x);
       this.$emit('changeC');
-    },
+    }
   }
 }
 </script>
