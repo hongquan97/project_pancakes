@@ -22,7 +22,7 @@ export default {
 <style scoped>
 h1 {
   text-align: center;
-  font-family: Helvetica, sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
   color:orange;
   font-size: 4rem;
   font-weight: normal;

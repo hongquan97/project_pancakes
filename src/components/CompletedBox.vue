@@ -54,7 +54,6 @@
         mod:"",
         Module:"",
         extra:"",
-        special: "", // store this.Module to check if it is > 4MC
         numOfMC: 0,
         cm_len: 0.00,
         pe_len: 0.00,
@@ -92,7 +91,7 @@
         this.mod = "";
       }
     },
-    updateLenC: function() { // function takes in module when removed and boolean (false) when added
+    updateLenC: function() {
       this.Module = "";
       this.numOfMC = 0;
       for (var i = 0; i < this.com_c.length; i++) {
@@ -105,7 +104,7 @@
         }
       }
 
-      this.cm_len = ((this.numOfMC*100)/72).toFixed(2);
+      this.cm_len = ((this.numOfMC*100)/84).toFixed(2);
     },
 
     updateLenP: function() {
