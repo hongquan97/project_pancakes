@@ -39,7 +39,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 select {
-  color: rgba(255, 115, 0, 0.849);
+  color: darkorange;
   font: 10px/30px Optima, sans-serif;
   font-size: 18px;
 }

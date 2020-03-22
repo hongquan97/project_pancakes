@@ -1,10 +1,6 @@
 <template>
-  <div class="headerStyle">
-
-    <header>
-      <h1>{{header}}</h1>
-    </header>
-
+  <div>
+    <img v-bind:src="image" height="150px" width="280px"/>
   </div>
 </template>
 
@@ -12,7 +8,7 @@
 export default {
   data() {
     return {
-      header: 'NUStudy'
+      image: './assets/nustudy.JPG'
     }
   }
 }
@@ -20,13 +16,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1 {
-  text-align: center;
-  font-family: 'Helvetica Neue', Helvetica, sans-serif;
-  color:orange;
-  font-size: 4rem;
-  font-weight: normal;
-  margin: 0px;
+div {
+  background-color: #FAEBCC;
 }
-
 </style>

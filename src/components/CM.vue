@@ -51,7 +51,7 @@ export default {
   width: 24.5%;
   height: 180px;
   overflow: auto;
-  background: #fbefcc;
+  background: #FAEBCC;
 } 
 @media only screen and (max-width: 768px) {
   #divL, #divR {
