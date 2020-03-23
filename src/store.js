@@ -38,17 +38,20 @@ export default new Vuex.Store({
 		addToA(state,n){
 			if(!state.listA.includes(n))
 				state.listA.push(n);
-				state.PE.push(n);			
+				if (!state.PE.includes(n))
+					state.PE.push(n);			
 		},
 		addToB(state,n){
 			if(!state.listB.includes(n))
 				state.listB.push(n);	
-				state.PE.push(n);		
+				if (!state.PE.includes(n))
+					state.PE.push(n);		
 		},
 		addToC(state,n){
 			if(!state.listC.includes(n))
 				state.listC.push(n);
-				state.PE.push(n);			
+				if (!state.PE.includes(n))
+					state.PE.push(n);				
 		},
 		addToGE(state,n){
 			if(!state.GE.includes(n))
