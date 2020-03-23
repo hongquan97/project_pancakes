@@ -6,7 +6,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
 	plugins: [createPersistedState({
-    storage: window.sessionStorage,
+    storage: window.localStorage,
   })],
 
 	state: {
@@ -32,28 +32,28 @@ export default new Vuex.Store({
 				state.CoreModules.splice(index, 1);
 			}
 		},
-		addSpecial(state,n){
+		addSpecial(state,n) {
 			state.specialisation=n;
 		},
-		addToA(state,n){
+		addToA(state,n) {
 			if(!state.listA.includes(n))
 				state.listA.push(n);
 				if (!state.PE.includes(n))
 					state.PE.push(n);			
 		},
-		addToB(state,n){
+		addToB(state,n) {
 			if(!state.listB.includes(n))
 				state.listB.push(n);	
 				if (!state.PE.includes(n))
 					state.PE.push(n);		
 		},
-		addToC(state,n){
+		addToC(state,n) {
 			if(!state.listC.includes(n))
 				state.listC.push(n);
 				if (!state.PE.includes(n))
 					state.PE.push(n);				
 		},
-		addToGE(state,n){
+		addToGE(state,n) {
 			if(!state.GE.includes(n))
 				state.GE.push(n);			
 		},
@@ -63,7 +63,7 @@ export default new Vuex.Store({
 				state.GE.splice(index, 1);
 			}
 		},
-		addToUE(state,n){
+		addToUE(state,n) {
 			if(!state.UE.includes(n))
 				state.UE.push(n);			
 		},
@@ -81,22 +81,22 @@ export default new Vuex.Store({
 
 			var i = 0;
 
-			if(state.listA.includes(n)){	
+			if(state.listA.includes(n)) {	
 				i = state.listA.indexOf(n);			
 				state.listA.splice(i, 1);
 			}
-			if(state.listB.includes(n)){
+			if(state.listB.includes(n)) {
 
 				i = state.listB.indexOf(n);	
 				state.listB.splice(i, 1);
 			}
-			if(state.listC.includes(n)){
+			if(state.listC.includes(n)) {
 				i = state.listC.indexOf(n);	
 				state.listC.splice(i, 1);
 			}
 		},
 
-		addToList(state, n){
+		addToList(state, n) {
 			state.listOfModules = n;
 		}
 	},
@@ -105,28 +105,28 @@ export default new Vuex.Store({
 		getModules(state) {
 			return state.CoreModules;
 		},
-		getSpec(state){
+		getSpec(state) {
 			return state.specialisation;
 		},
-		getListA(state){
+		getListA(state) {
 			return state.listA;
 		},
-		getListB(state){
+		getListB(state) {
 			return state.listB;
 		},
-		getListC(state){
+		getListC(state) {
 			return state.listC;
 		},
-		getPE(state){
+		getPE(state) {
 			return state.PE;
 		},
-		getGE(state){
+		getGE(state) {
 			return state.GE;
 		},
-		getUE(state){
+		getUE(state) {
 			return state.UE;
 		},
-		getList(state){
+		getList(state) {
 			return state.listOfModules;
 		}
 	},
@@ -165,7 +165,7 @@ export default new Vuex.Store({
 		removeUE({commit}, n) {
 			commit("removeFromUE", n);
 		},
-		addList({commit}, n){
+		addList({commit}, n) {
 			commit("addToList", n);
 		}
 	}
