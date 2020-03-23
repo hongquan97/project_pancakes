@@ -1,25 +1,26 @@
 <template>
   <div>
-    <br><br>
+    <br>
     Completed Module Code:
     <input type="text" maxlength="8" v-model="mod" v-on:keyup.enter="checkInput"/>
     <button v-on:click="checkInput">Add</button>
-    <p id="Completed">
-      <h1>Completed Modules</h1>
+    <br>
 
-      <CoreMods @changeC= "updateLenC()" 
-      v-bind:Module="Module" :com_c="com_c"></CoreMods>
+    <p>Completed Modules</p>
 
-      <PE @changeP= "updateLenP()" @goToUE= "addModule"
-      v-bind:Module="Module" :com_p="com_p"></PE>
+    <CoreMods @changeC= "updateLenC()" 
+    v-bind:Module="Module" :com_c="com_c"></CoreMods>
 
-      <UE @changeU= "updateLenU()" 
-      v-bind:Module="Module" v-bind:extra="extra" :com_u="com_u"></UE>
+    <PE @changeP= "updateLenP()" @goToUE= "addModule"
+    v-bind:Module="Module" :com_p="com_p"></PE>
 
-      <GE @changeG= "updateLenG()" @goToUE= "addModule"
-      v-bind:Module="Module" :com_g="com_g"></GE>
+    <UE @changeU= "updateLenU()" 
+    v-bind:Module="Module" v-bind:extra="extra" :com_u="com_u"></UE>
 
-    <div id="app" class = "container">
+    <GE @changeG= "updateLenG()" @goToUE= "addModule"
+    v-bind:Module="Module" :com_g="com_g"></GE>
+
+    <div id="app" class="container">
     <CMProgress :cm_len= parseFloat(cm_len)></CMProgress>
     <PEProgress :pe_len= parseFloat(pe_len)></PEProgress>
     <UEProgress :ue_len= parseFloat(ue_len)></UEProgress>
@@ -148,9 +149,10 @@
       //  })
       //})
       this.list_of_modules.push("ACC1002");
-      this.list_of_modules.push("ACC1006");
+      this.list_of_modules.push("BT4221");
       this.list_of_modules.push("IS4010");
       this.list_of_modules.push("BT1101");
+      this.list_of_modules.push("BT2101");
       this.list_of_modules.push("BT4016");
       this.list_of_modules.push("GET1028");
       this.list_of_modules.push("GET1001");
@@ -171,11 +173,18 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 div {
-  font-family: Helvetica, sans-serif;
+  font-family: -apple- system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, 
+  Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
 }
-h1 {
+p {
+  font-family: -apple- system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, 
+  Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-size: 2rem;
+  font-weight: 600;
   color: black;
   text-align: center;
+  margin-top: 40px;
+  margin-bottom: 10px;
 }
 .container > div {
     display: inline-block;
@@ -184,5 +193,33 @@ h1 {
     zoom: 1; /* Trigger hasLayout */
     width: 25%;
     text-align: center;
+}
+input {
+  font-family: -apple- system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, 
+  Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  border-radius: 8px;
+  padding: 1px 10px;
+  font-weight: 400;
+  margin-left: 0.2em;
+  margin-right: 0.5em;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(169, 169, 169);
+}
+input:focus {
+  outline: none;
+  box-shadow: 0 0 3pt 3pt #FAEBCC;
+}
+button {
+  font-family: -apple- system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, 
+  Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  border-radius: 8px;
+  border-width: 2px;
+  background-color: initial;
+  padding: 1px 10px;
+}
+button:focus {
+  outline: none;
+  box-shadow: 0 0 3pt 3pt #FAEBCC;
 }
 </style>

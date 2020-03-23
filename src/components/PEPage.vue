@@ -47,6 +47,7 @@
       </table>
   </div>
     <p>
+      <br>
       <router-link :to="{name:'Home'}">Back</router-link>
     </p>
   </div>
