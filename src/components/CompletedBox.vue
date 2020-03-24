@@ -21,10 +21,10 @@
     v-bind:Module="Module" :com_g="com_g"></GE>
 
     <div id="app" class="container">
-    <CMProgress :cm_len= parseFloat(cm_len)></CMProgress>
-    <PEProgress :pe_len= parseFloat(pe_len)></PEProgress>
-    <UEProgress :ue_len= parseFloat(ue_len)></UEProgress>
-    <GEProgress :ge_len= parseFloat(ge_len)></GEProgress>
+      <CMProgress :cm_len= parseFloat(cm_len)></CMProgress>
+      <PEProgress :pe_len= parseFloat(pe_len)></PEProgress>
+      <UEProgress :ue_len= parseFloat(ue_len)></UEProgress>
+      <GEProgress :ge_len= parseFloat(ge_len)></GEProgress>
     </div>
   </div>
 </template>
@@ -38,7 +38,7 @@
   import PEProgress from './PEProgress.vue'
   import UEProgress from './UEProgress.vue'
   import GEProgress from './GEProgress.vue'
-  //import database from '../../firebase.js'
+  import database from '../../firebase.js'
   export default {
     components: {
       CoreMods,
@@ -50,6 +50,7 @@
       UEProgress,
       GEProgress
     },
+
     data() {
       return {
         mod:"",
@@ -64,14 +65,16 @@
         com_p: this.$store.getters.getPE,
         com_u: this.$store.getters.getUE,
         com_g: this.$store.getters.getGE,
-      list_of_modules: [], // consists of all the valid module codes
+        list_of_modules: this.$store.getters.getList // consists of all NUS modules
     }
   },
+
   methods: {
     addModule() {
       this.extra = this.Module;
       this.Module = "";
     },
+
     checkInput: function() {
       this.mod = this.mod.toUpperCase().trim();
       if (this.mod == "") {
@@ -92,6 +95,7 @@
         this.mod = "";
       }
     },
+
     updateLenC: function() {
       this.Module = "";
       this.numOfMC = 0;
@@ -124,7 +128,7 @@
       for (var i = 0; i < this.com_u.length; i++) {
         this.numOfMC += 4;
       }
-      
+
       this.ue_len = ((this.numOfMC*100)/32).toFixed(2);
     },
 
@@ -138,28 +142,25 @@
       this.ge_len = ((this.numOfMC*100)/20).toFixed(2);
     },
 
-    fetchItems:function() {
-      //let item = {}
-      //let MC = {}
-      //database.collection('moduleInfo').get().then((querySnapShot) => {
-      //  querySnapShot.forEach(doc => {
-      //    item = doc.data().moduleCode;
-      //    MC = doc.data().MC;
-      //    this.list_of_modules.push({Code: item, ModCredits: MC});
-      //  })
-      //})
-      this.list_of_modules.push("ACC1002");
-      this.list_of_modules.push("BT4221");
-      this.list_of_modules.push("IS4010");
-      this.list_of_modules.push("BT1101");
-      this.list_of_modules.push("BT2101");
-      this.list_of_modules.push("BT4016");
-      this.list_of_modules.push("GET1028");
-      this.list_of_modules.push("GET1001");
-      this.$store.dispatch("addList", this.list_of_modules);
-    },
+    fetchItems: function() {
+      if (this.list_of_modules.length == 0) {
+        let item = {}
+        database.collection('moduleInfo').get().then((querySnapShot) => {
+          querySnapShot.forEach(doc => {
+            item = doc.data().moduleCode;
+            this.$store.dispatch("addList", item);
+          })
+        })
+      } else {
+        /* 
+        If we have already fetched from the database before, we will not do 
+        it again since NUS modules are fixed for the semester. We will make 
+        use of the module information stored in our users' local storage. 
+        */
+      } 
+    }
   },
-  
+
   created() {
     this.fetchItems();
     this.updateLenC();
@@ -187,12 +188,12 @@ p {
   margin-bottom: 10px;
 }
 .container > div {
-    display: inline-block;
-    display: -moz-inline-box;
-    *display: inline; /* For IE7 */
-    zoom: 1; /* Trigger hasLayout */
-    width: 25%;
-    text-align: center;
+  display: inline-block;
+  display: -moz-inline-box;
+  *display: inline; /* For IE7 */
+  zoom: 1; /* Trigger hasLayout */
+  width: 25%;
+  text-align: center;
 }
 input {
   font-family: -apple- system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, 
