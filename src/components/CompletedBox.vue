@@ -142,6 +142,7 @@
       this.ge_len = ((this.numOfMC*100)/20).toFixed(2);
     },
 
+
     fetchItems: function() {
       if (this.list_of_modules.length == 0) {
         let item = {}
@@ -160,7 +161,7 @@
       } 
     }
   },
-
+  
   created() {
     this.fetchItems();
     this.updateLenC();
