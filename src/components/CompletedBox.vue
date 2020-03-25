@@ -100,13 +100,6 @@
       this.Module = "";
       this.numOfMC = 0;
       for (var i = 0; i < this.com_c.length; i++) {
-        /*if (this.com_c[i] == "BT4101" || this.com_c[i] == "IS4010") {
-          this.numOfMC += 12;
-        } else if (this.com_c[i] == "BT4013") {
-          this.numOfMC += 8;
-        } else {
-          this.numOfMC += 4;
-        }*/
         this.numOfMC += this.list_of_modules.find(o =>o.code == this.com_c[i]).mc;
       }
 
