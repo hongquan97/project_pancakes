@@ -87,7 +87,7 @@
         alert("You have fulfilled the Programme Electives requirement. This module will go to your Unrestricted Electives instead.")
         this.Module = this.mod;
         this.mod = "";
-      } else if (!this.list_of_modules.includes(this.mod)){ // check for invalid module code
+      } else if (!this.list_of_modules.find(o =>o.code == this.mod)){ // check for invalid module code
         alert("This module does not exist! Please enter a valid module code.")
         this.mod = "";
       } else {
@@ -100,13 +100,7 @@
       this.Module = "";
       this.numOfMC = 0;
       for (var i = 0; i < this.com_c.length; i++) {
-        if (this.com_c[i] == "BT4101" || this.com_c[i] == "IS4010") {
-          this.numOfMC += 12;
-        } else if (this.com_c[i] == "BT4013") {
-          this.numOfMC += 8;
-        } else {
-          this.numOfMC += 4;
-        }
+        this.numOfMC += this.list_of_modules.find(o =>o.code == this.com_c[i]).mc;
       }
 
       this.cm_len = ((this.numOfMC*100)/84).toFixed(2);
@@ -116,7 +110,7 @@
       this.Module = "";
       this.numOfMC = 0;
       for (var i = 0; i < this.com_p.length; i++) {
-        this.numOfMC += 4;
+        this.numOfMC += this.list_of_modules.find(o =>o.code == this.com_p[i]).mc;
       }
 
       this.pe_len = ((this.numOfMC*100)/24).toFixed(2);
@@ -126,7 +120,7 @@
       this.Module = "";
       this.numOfMC = 0;
       for (var i = 0; i < this.com_u.length; i++) {
-        this.numOfMC += 4;
+        this.numOfMC += this.list_of_modules.find(o =>o.code == this.com_u[i]).mc
       }
 
       this.ue_len = ((this.numOfMC*100)/32).toFixed(2);
@@ -136,7 +130,7 @@
       this.Module = "";
       this.numOfMC = 0;
       for (var i = 0; i < this.com_g.length; i++) {
-        this.numOfMC += 4;
+        this.numOfMC += this.list_of_modules.find(o =>o.code == this.com_g[i]).mc
       }
 
       this.ge_len = ((this.numOfMC*100)/20).toFixed(2);
@@ -148,7 +142,8 @@
         let item = {}
         database.collection('moduleInfo').get().then((querySnapShot) => {
           querySnapShot.forEach(doc => {
-            item = doc.data().moduleCode;
+            item = {code : doc.data().moduleCode, mc: parseInt(doc.data().moduleCredit)};
+            console.log(item);
             this.$store.dispatch("addList", item);
           })
         })
