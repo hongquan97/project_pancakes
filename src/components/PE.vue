@@ -4,7 +4,7 @@
     <div v-if="Module">{{checkModule()}}</div>
     <div v-for="(pe,index) in com_p" :pe = "pe" :key="index"> 
       {{pe}} 
-      <button @click="remove(pe)">x</button>
+      <span @click="remove(pe)" id="button"> x </span>
     </div>
   </div>
 </template>
@@ -24,7 +24,7 @@ export default {
       "BT4240", "IS4241", "IE4210", "ST3131", "ST4245"],
       C: ["IS3221", "I3261", "BT4014", "IS4228", "IS4302"],
       PE:["DBA3712", "IE3120", "IS3240", "BT4013", "BT4016", "BT4221", "BT4212", "DBA4811", "IS4241", "IS4250", "MKT4418",
-      "IE2110", "DBA3701", "CS3244", "DBA3803", "BSE4711", "BT4012", "BT4015", "BT4221", "BT4222", 
+      "IE2110", "DBA3701", "CS3244", "DBA3803", "BSE4711", "BT4012", "BT4015", "BT4222", 
       "BT4240", "IS4241", "IE4210", "ST3131", "ST4245", "IS3221", "I3261", "BT4014", "IS4228", "IS4302"],
       lenP: 0,
       moduleList: this.$store.getters.getList
@@ -83,7 +83,14 @@ h1 {
   color: black;
   text-align: center;
 }
-button {
+#button {
+  font-size: 20px;
+  font-weight: 600;
   color: red;
+  opacity: 0.4;
+  cursor: pointer;
+}
+#button:hover {
+  opacity: 1;
 }
 </style>

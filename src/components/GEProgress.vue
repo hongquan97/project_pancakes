@@ -1,8 +1,8 @@
 <template>
-  <div id="app4">
+  <div>
     <Progress strokeColor="#e0876a" :transitionDuration="1000" :radius="70" :strokeWidth="15" :value="this.ge_len">
       <template v-slot:footer>
-        <b>General Electives</b>
+        <p>General Electives</p>
       </template>
     </Progress>
   </div>
@@ -10,9 +10,7 @@
 
 <script>
 import Progress from "./index.vue";
-
 export default {
-  name: "app4",
   components: {
     Progress
   },
@@ -23,7 +21,7 @@ export default {
 </script>
 
 <style lang="scss">
-#app4 {
+#Progress {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -37,5 +35,9 @@ export default {
 body {
   margin: 0;
   padding: 0;
+}
+p {
+  margin-top: 0em;
+  font-weight: 600;
 }
 </style>
