@@ -64,7 +64,6 @@
         com_u: this.$store.getters.getUE,
         com_g: this.$store.getters.getGE,
         list_of_modules: [], // consists of all the valid module codes
-        //spec: this.$store.getters.getSpec,
     }
   },
   methods: {
