@@ -1,9 +1,9 @@
 <template>
-  <div id="app2">
+  <div>
     <Progress strokeColor="#f9ccac" :transitionDuration="1000" :radius="70" :strokeWidth="15" :value="this.pe_len">
       <template v-slot:footer>
         <nav>
-            <router-link :to="{name:'PEPage'}"><b>Programme Electives</b></router-link>
+         <router-link :to="{name:'PEPage'}"><p>Programme Electives</p></router-link>
         </nav>
       </template>
     </Progress>
@@ -42,5 +42,9 @@ Progress {
 body {
   margin: 0;
   padding: 0;
+}
+p {
+  margin-top: 0em;
+  font-weight: 600;
 }
 </style>

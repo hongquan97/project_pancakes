@@ -5,7 +5,7 @@
     <div v-if="Module">{{checkModule()}}</div>
     <div v-for="(ue,index) in com_u" :ue = "ue" :key="index">
       {{ue}}   
-      <button @click="remove(ue)">x</button>
+      <span @click="remove(ue)" id="button"> x </span>
     </div>
   </div>
 </template>
@@ -67,10 +67,7 @@ export default {
   height: 180px;
   overflow: auto;
   background:#f4a688;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 } 
-
 @media only screen and (max-width: 768px) {
   #divL, #divR {
     float: none;
@@ -82,7 +79,14 @@ h1 {
   color: black;
   text-align: center;
 }
-button {
+#button {
+  font-size: 20px;
+  font-weight: 600;
   color: red;
+  opacity: 0.4;
+  cursor: pointer;
+}
+#button:hover {
+  opacity: 1;
 }
 </style>

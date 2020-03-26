@@ -4,7 +4,7 @@
     <div v-if="Module">{{checkModule()}}</div>
     <div v-for="(ge,index) in com_g" :ge = "ge" :key="index">
       {{ge}}   
-      <button v-on:click="remove(ge)">x</button> 
+      <span v-on:click="remove(ge)" id="button"> x </span> 
     </div>
 </div>
 </template>
@@ -53,7 +53,6 @@ export default {
 
 <style scoped>
 #GE {
-
   display: inline-block;
   border-radius: 15px;
   box-sizing: border-box;
@@ -76,7 +75,14 @@ h1 {
   color: black;
   text-align: center;
 }
-button {
+#button {
+  font-size: 20px;
+  font-weight: 600;
   color: red;
+  opacity: 0.4;
+  cursor: pointer;
+}
+#button:hover {
+  opacity: 1;
 }
 </style>
