@@ -3,7 +3,7 @@
     <Progress strokeColor="#f9ccac" :transitionDuration="1000" :radius="70" :strokeWidth="15" :value="this.pe_len">
       <template v-slot:footer>
         <nav>
-          <router-link :to="{name:'PEPage'}"><b>Programme Electives</b></router-link>
+            <router-link :to="{name:'PEPage'}"><b>Programme Electives</b></router-link>
         </nav>
       </template>
     </Progress>
@@ -18,6 +18,11 @@ export default {
   },
   props: {
     pe_len: Number
+  },
+  data() {
+    return {
+      spec: this.$store.getters.getSpec
+    }
   }
 };
 </script>

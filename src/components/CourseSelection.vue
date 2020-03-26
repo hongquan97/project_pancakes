@@ -1,17 +1,17 @@
 <template>
   <div>
     <br>
-    <select required v-model="major">        
+    <select required v-model="major" @change="addSpecialisation($event)">        
       <optgroup label="Degree Type">
         <option value="" disabled selected hidden>Please select your course of study</option>
-        <option value="BA">Business Analytics</option>
-        <option value="BA-FS">
+        <option value="Business Analytics">Business Analytics</option>
+        <option value="Business Analytics (Financial Analytics Specialisation)">
         Business Analytics (Financial Analytics Specialisation)</option>
-        <option value="BA-MS">
+        <option value="Business Analytics (Marketing Analytics Specialisation)">
         Business Analytics (Marketing Analytics Specialisation)</option>
       </optgroup>
-    </select>  
-    {{addSpecialisation()}}  
+    </select>
+    <br><b>{{this.$store.getters.getSpec}}</b>
     <br>
     <CompletedBox></CompletedBox>
   </div>
@@ -30,7 +30,9 @@ export default {
   },
   methods:{
     addSpecialisation: function() {
-      this.$store.dispatch("addSpec", this.major);
+      if (!this.$store.state.selected){
+        this.$store.dispatch("addSpec", this.major);
+      }
     }
   }
 }

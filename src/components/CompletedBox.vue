@@ -1,6 +1,6 @@
 <template>
   <div>
-    <br><br>
+    <br>
     Completed Module Code:
     <input type="text" maxlength="8" v-model="mod" v-on:keyup.enter="checkInput"/>
     <button v-on:click="checkInput">Add</button>
@@ -63,7 +63,8 @@
         com_p: this.$store.getters.getPE,
         com_u: this.$store.getters.getUE,
         com_g: this.$store.getters.getGE,
-      list_of_modules: [], // consists of all the valid module codes
+        list_of_modules: [], // consists of all the valid module codes
+        //spec: this.$store.getters.getSpec,
     }
   },
   methods: {
@@ -72,6 +73,10 @@
       this.Module = "";
     },
     checkInput: function() {
+      if (!this.$store.state.selected){
+        alert("HELLO DONT BE FUNNY select course of study first!");
+        return;
+      }
       this.mod = this.mod.toUpperCase().trim();
       if (this.mod == "") {
         alert("Enter something!");
@@ -152,8 +157,24 @@
       this.list_of_modules.push("IS4010");
       this.list_of_modules.push("BT1101");
       this.list_of_modules.push("BT4016");
+      this.list_of_modules.push("BT4013");
+      this.list_of_modules.push("IS4228");
+      this.list_of_modules.push("BT4012");
+      this.list_of_modules.push("BT4221");
+      this.list_of_modules.push("BT4222");
+      this.list_of_modules.push("IS4234");
       this.list_of_modules.push("GET1028");
       this.list_of_modules.push("GET1001");
+      this.list_of_modules.push("BT4212");
+      this.list_of_modules.push("BT4211");
+      this.list_of_modules.push("IS4241");
+      this.list_of_modules.push("IE3120");
+      //this.list_of_modules.push("GET1001");
+      //this.list_of_modules.push("GET1001");
+
+
+
+
       this.$store.dispatch("addList", this.list_of_modules);
     },
   },
