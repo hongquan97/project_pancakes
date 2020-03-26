@@ -76,6 +76,10 @@
     },
 
     checkInput: function() {
+      if (!this.$store.state.selected){
+        alert("HELLO DONT BE FUNNY select course of study first!");
+        return;
+      }
       this.mod = this.mod.toUpperCase().trim();
       if (this.mod == "") {
         alert("Enter something!");
@@ -136,7 +140,6 @@
       this.ge_len = ((this.numOfMC*100)/20).toFixed(2);
     },
 
-
     fetchItems: function() {
       if (this.list_of_modules.length == 0) {
         let item = {}
@@ -155,6 +158,7 @@
         */
       } 
     }
+
   },
   
   created() {

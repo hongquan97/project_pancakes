@@ -21,8 +21,12 @@ export default {
     return {
       UE : [],
       lenU: 0,
-      PeList: this.$store.getters.getPE,
-      CoreList: this.$store.getters.getModules
+      core: ["BT1101", "CS1010S", "EC1301", "IS1103", "MA1101R", "MA1521", "MA1102R", "MKT1705X", "BT2101",
+      "BT2102", "CS2030", "CS2040", "IS2101", "ST2334", "BT3102", "BT3103", "IS3103", "BT4103", "IS4010",
+      "BT4101"],
+      PE: ["DBA3712", "IE3120", "IS3240", "BT4013", "BT4016", "BT4212", "DBA4811", "IS4250", "MKT4418",
+      "IE2110", "DBA3701", "CS3244", "DBA3803", "BSE4711", "BT4012", "BT4015", "BT4221", "BT4222", 
+      "BT4240", "IS4241", "IE4210", "ST3131", "ST4245", "IS3221", "I3261", "BT4014", "IS4228", "IS4302", "BT4211"]
     }
   },
   methods: {
@@ -36,7 +40,7 @@ export default {
     checkModule() {
       if (!this.com_u.includes(this.Module)) { 
         if(!(this.Module.substring(0,2)=="GE")){
-          if( (!this.PeList.includes(this.Module)) && (!this.CoreList.includes(this.Module)) ){
+          if( (!this.PE.includes(this.Module)) && (!this.core.includes(this.Module)) ){
             this.$store.dispatch("addUE", this.Module);
             this.$emit('changeU');
           }  
