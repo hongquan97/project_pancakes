@@ -146,7 +146,6 @@
         database.collection('moduleInfo').get().then((querySnapShot) => {
           querySnapShot.forEach(doc => {
             item = {code : doc.data().moduleCode, mc: parseInt(doc.data().moduleCredit)};
-            console.log(item);
             this.$store.dispatch("addList", item);
           })
         })
