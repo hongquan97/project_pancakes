@@ -41,11 +41,23 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 select {
+  font-family: -apple- system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, 
+  Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   color: darkorange;
-  font: 10px/30px Optima, sans-serif;
+  font: 10px/30px;
   font-size: 18px;
+  border-radius: 6px;
+}
+select:focus {
+  outline: none;
+  box-shadow: 0 0 3pt 3pt #FAEBCC;
+}
+option:checked { 
+  background-color: #FAEBCC; 
 }
 optgroup {
+  font-family: -apple- system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, 
+  Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   background-color: white;
   color: orange;
 }
