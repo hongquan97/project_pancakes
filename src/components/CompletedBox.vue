@@ -95,6 +95,7 @@
         alert("This module does not exist! Please enter a valid module code.")
         this.mod = "";
       } else {
+        console.log("a")
         this.Module = this.mod;
         this.mod = "";
       }
@@ -146,7 +147,6 @@
         database.collection('moduleInfo').get().then((querySnapShot) => {
           querySnapShot.forEach(doc => {
             item = {code : doc.data().moduleCode, mc: parseInt(doc.data().moduleCredit)};
-            console.log(item);
             this.$store.dispatch("addList", item);
           })
         })
