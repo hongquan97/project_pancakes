@@ -98,6 +98,9 @@ export default {
                 this.$store.dispatch("addFSElect", this.Module)
               }
             }
+            else {
+              this.$emit("goToUE", this.Module);
+            }
           }
 
 
@@ -112,6 +115,9 @@ export default {
               } else {
                 this.$store.dispatch("addMSElect", this.Module)
               }
+            }
+            else {
+              this.$emit("goToUE", this.Module);
             }
           }
         
