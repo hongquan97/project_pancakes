@@ -95,7 +95,6 @@
         alert("This module does not exist! Please enter a valid module code.")
         this.mod = "";
       } else {
-        console.log("a")
         this.Module = this.mod;
         this.mod = "";
       }

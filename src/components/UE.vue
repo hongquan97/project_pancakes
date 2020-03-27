@@ -38,11 +38,8 @@ export default {
     },
 
     checkModule() {
-      console.log("h")
       if (!this.com_u.includes(this.Module)) { 
-        console.log("g")
         if(!(this.Module.substring(0,2)=="GE")){
-          console.log("j")
           if( (!this.PE.includes(this.Module)) && (!this.core.includes(this.Module)) ){
             this.$store.dispatch("addUE", this.Module);
             this.$emit('changeU');
