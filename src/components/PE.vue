@@ -83,6 +83,7 @@ export default {
                 this.$store.dispatch("addC", this.Module)
               }
             }
+
           }
 
 
@@ -90,13 +91,16 @@ export default {
             if(this.FS_Compulsory.includes(this.Module)){
               this.$store.dispatch("addFSCom", this.Module)
             }
-            if(this.FS_Elective.includes(this.Module)){
+            else if(this.FS_Elective.includes(this.Module)){
               if(this.FSElect.length == 3) {
                 alert("You can only take a maximum of 3 elective modules. This module will go to UE.")
                 this.$emit("goToUE", this.Module);
               } else {
                 this.$store.dispatch("addFSElect", this.Module)
               }
+            }
+            else{
+              this.$emit("goToUE", this.Module);
             }
           }
 
@@ -105,13 +109,16 @@ export default {
             if(this.MS_Compulsory.includes(this.Module)){
               this.$store.dispatch("addMSCom", this.Module)
             }
-            if(this.MS_Elective.includes(this.Module)){
+            else if(this.MS_Elective.includes(this.Module)){
               if(this.MSElect.length == 3) {
                 alert("You can only take a maximum of 3 elective modules. This module will go to UE.")
                 this.$emit("goToUE", this.Module);
               } else {
                 this.$store.dispatch("addMSElect", this.Module)
               }
+            }
+            else{
+              this.$emit("goToUE", this.Module);
             }
           }
         
