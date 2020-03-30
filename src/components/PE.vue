@@ -41,14 +41,13 @@ export default {
   },
   methods: {
     checkModule() {   
-      
       if(!this.com_p.includes(this.Module)) {
-         
+
         if (this.com_p.length == 6) {
           this.$emit("goToUE", this.Module);
         }
-        if (this.PE.includes(this.Module)) {
 
+        if (this.PE.includes(this.Module)) {
 
           if (this.$store.getters.getSpec[0] == "Business Analytics") {
             if (this.Module.substring(2,3)!="4") {
@@ -88,6 +87,7 @@ export default {
             }
           }
 
+          }
 
           else if (this.$store.getters.getSpec[0] == "Business Analytics (Financial Analytics Specialisation)") {
             if(this.FS_Compulsory.includes(this.Module)){
@@ -130,8 +130,8 @@ export default {
           }
           
         }
-      },
-
+      }
+    },
 
     remove(x) {
       this.$store.dispatch("removePE", x);
@@ -139,7 +139,6 @@ export default {
     }
   }
 }
-
 </script>
 
 <style scoped>

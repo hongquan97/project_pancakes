@@ -138,18 +138,13 @@
         database.collection('moduleInfo').get().then((querySnapShot) => {
           querySnapShot.forEach(doc => {
             item = {code : doc.data().moduleCode, mc: parseInt(doc.data().moduleCredit)};
-            this.list_of_modules.push(item)
-            this.$store.dispatch("addList", this.list_of_modules);
-          })
-        })
-      } else {
         /* 
-        If we have already fetched from the database before, we will not do 
         it again since NUS modules are fixed for the semester. We will make 
         use of the module information stored in our users' local storage. 
         */
       } 
     }
+   }
   },
   
   created() {
