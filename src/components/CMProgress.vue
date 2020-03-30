@@ -1,9 +1,9 @@
 <template>
-  <div id="app1">
+  <div>
     <Progress strokeColor="#fbefcc" :transitionDuration="1000" :radius="70" :strokeWidth="15" :value="this.cm_len">
       <template v-slot:footer>
         <nav>
-          <router-link :to="{name:'CMPage'}"><b>Core Modules</b></router-link>
+          <router-link :to="{name:'CMPage'}"><p>Core Modules</p></router-link>
         </nav>
       </template>
     </Progress>
@@ -37,5 +37,16 @@ Progress {
 body {
   margin: 0;
   padding: 0;
+}
+p {
+  font-weight: 600;
+}
+a {
+  color: #ff5138;
+  text-decoration: underline;
+  background-color: initial;
+}
+a:hover {
+  color: #a30a0a;
 }
 </style>

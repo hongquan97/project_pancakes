@@ -11,7 +11,7 @@
         </tr>
 
         <tr v-for="mod in listA" :key="mod.modCode" 
-         v-bind:style="CompletedA.includes(mod.modCode) ? 'opacity:0.5;': 'opacity:1;'">
+         v-bind:style="PE.includes(mod.modCode) ? 'opacity:0.5;': 'opacity:1;'">
           <td>{{mod.modCode}}</td>
           <td>{{mod.modTitle}}</td>
           <td>{{mod.MCs}}</td>
@@ -25,7 +25,7 @@
         </tr>
 
         <tr v-for="mod in listB" :key="mod.modCode" 
-        v-bind:style="CompletedB.includes(mod.modCode) ? 'opacity:0.5;': 'opacity:1;'">
+        v-bind:style="PE.includes(mod.modCode) ? 'opacity:0.5;': 'opacity:1;'">
           <td>{{mod.modCode}}</td>
           <td>{{mod.modTitle}}</td>
           <td>{{mod.MCs}}</td>
@@ -39,7 +39,7 @@
         </tr>
 
         <tr v-for="mod in listC" :key="mod.modCode"
-        v-bind:style="CompletedC.includes(mod.modCode) ? 'opacity:0.5;': 'opacity:1;'" >
+        v-bind:style="PE.includes(mod.modCode) ? 'opacity:0.5;': 'opacity:1;'" >
           <td>{{mod.modCode}}</td>
           <td>{{mod.modTitle}}</td>
           <td>{{mod.MCs}}</td>
@@ -47,6 +47,7 @@
       </table>
   </div>
     <p>
+      <br>
       <router-link :to="{name:'Home'}">Back</router-link>
     </p>
   </div>
@@ -61,9 +62,7 @@ export default {
   },
   data() {
     return {  
-      CompletedA: this.$store.getters.getListA, 
-      CompletedB: this.$store.getters.getListB, 
-      CompletedC: this.$store.getters.getListC,
+      PE: this.$store.getters.getPE,
       listA: [
       {
         modCode: "DBA3712",
@@ -275,7 +274,7 @@ table {
   }
 
 th {
-  background: #F7DCAC;
+  background: #FAEBCC;
 }
 
 th, td {
