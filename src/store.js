@@ -6,7 +6,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
 	plugins: [createPersistedState({
-    storage: window.sessionStorage,
+    storage: window.localStorage,
   })],
 
 	state: {
@@ -37,69 +37,70 @@ export default new Vuex.Store({
 				state.CoreModules.splice(index, 1);
 			}
 		},
+
 		addSpecial(state,n){
 			state.specialisation.push(n);
 			state.selected = true;
 
 
 		},
-		addToA(state,n){
+		addToA(state,n) {
 			if (!state.listA.includes(n)) {
 				state.listA.push(n);
-				if (!state.PE.includes(n)){
+				if (!state.PE.includes(n)) {
 					state.PE.push(n);	
 				}
 			}	
 		},
-		addToB(state,n){
+		addToB(state,n) {
 			if (!state.listB.includes(n)) {
 				state.listB.push(n);
-				if (!state.PE.includes(n)){
+				if (!state.PE.includes(n)) {
 					state.PE.push(n);	
 				}
 			}	
 		},
-		addToC(state,n){
+		addToC(state,n) {
 			if (!state.listC.includes(n)) {
 				state.listC.push(n);
-				if (!state.PE.includes(n)){
+				if (!state.PE.includes(n)) {
 					state.PE.push(n);	
 				}
 			}	
 		},
-		addToFSCom(state,n){
+		addToFSCom(state,n) {
 			if (!state.FSCom.includes(n)) {
 				state.FSCom.push(n);
-				if (!state.PE.includes(n)){
+				if (!state.PE.includes(n)) {
 					state.PE.push(n);	
 				}
 			}	
 		},
-		addToFSElect(state,n){
+		addToFSElect(state,n) {
 			if (!state.FSElect.includes(n)) {
 				state.FSElect.push(n);
-				if (!state.PE.includes(n)){
+				if (!state.PE.includes(n)) {
 					state.PE.push(n);	
 				}
 			}	
 		},
-		addToMSCom(state,n){
+		addToMSCom(state,n) {
 			if (!state.MSCom.includes(n)) {
 				state.MSCom.push(n);
-				if (!state.PE.includes(n)){
+				if (!state.PE.includes(n)) {
 					state.PE.push(n);	
 				}
 			}	
 		},
-		addToMSElect(state,n){
+		addToMSElect(state,n) {
 			if (!state.MSElect.includes(n)) {
 				state.MSElect.push(n);
-				if (!state.PE.includes(n)){
+				if (!state.PE.includes(n)) {
 					state.PE.push(n);	
 				}
 			}	
 		},
-		addToGE(state,n){
+		addToGE(state,n) {
 			if(!state.GE.includes(n))
 				state.GE.push(n);			
 		},
@@ -109,7 +110,7 @@ export default new Vuex.Store({
 				state.GE.splice(index, 1);
 			}
 		},
-		addToUE(state,n){
+		addToUE(state,n) {
 			if(!state.UE.includes(n))
 				state.UE.push(n);			
 		},
@@ -127,88 +128,90 @@ export default new Vuex.Store({
 
 			var i = 0;
 
-			if(state.listA.includes(n)){	
+			if(state.listA.includes(n)) {	
 				i = state.listA.indexOf(n);			
 				state.listA.splice(i, 1);
 			}
-			if(state.listB.includes(n)){
+			if(state.listB.includes(n)) {
 
 				i = state.listB.indexOf(n);	
 				state.listB.splice(i, 1);
 			}
-			if(state.listC.includes(n)){
+			if(state.listC.includes(n)) {
 				i = state.listC.indexOf(n);	
 				state.listC.splice(i, 1);
 			}
-			if(state.FSCom.includes(n)){
+			if(state.FSCom.includes(n)) {
 				i = state.FSCom.indexOf(n);	
 				state.FSCom.splice(i, 1);
 			}
-			if(state.FSElect.includes(n)){
+			if(state.FSElect.includes(n)) {
 				i = state.FSElect.indexOf(n);	
 				state.FSElect.splice(i, 1);
 			}
-			if(state.MSCom.includes(n)){
+			if(state.MSCom.includes(n)) {
 				i = state.MSCom.indexOf(n);	
 				state.MSCom.splice(i, 1);
 			}
-			if(state.MSElect.includes(n)){
+			if(state.MSElect.includes(n)) {
 				i = state.MSElect.indexOf(n);	
 				state.MSElect.splice(i, 1);
 			}
 		},
 
-		addToList(state, n){
-			state.listOfModules = n;
-		},
 		removeFromSpec(state) {			
 				state.specialisation.splice(0, 1);
 				state.selected=false;
-		}
-			
+		},			
+
+		addToList(state, n) {
+			if(!state.listOfModules.includes(n)) {
+        state.listOfModules.push(n);
+      }
+    }
 	},
 
 	getters: {
 		getModules(state) {
 			return state.CoreModules;
 		},
-		getSpec(state){
+		getSpec(state) {
 			return state.specialisation;
 		},
-		getListA(state){
+		getListA(state) {
 			return state.listA;
 		},
-		getListB(state){
+		getListB(state) {
 			return state.listB;
 		},
-		getListC(state){
+		getListC(state) {
 			return state.listC;
 		},
-		getFSCom(state){
+		getFSCom(state) {
 			return state.FSCom;
 		},
-		getFSElect(state){
+		getFSElect(state) {
 			return state.FSElect;
 		},
-		getMSCom(state){
+		getMSCom(state) {
 			return state.MSCom;
 		},
-		getMSElect(state){
+		getMSElect(state) {
 			return state.MSElect;
 		},
-		getPE(state){
+		getPE(state) {
 			return state.PE;
 		},
-		getGE(state){
+		getGE(state) {
 			return state.GE;
 		},
-		getUE(state){
+		getUE(state) {
 			return state.UE;
 		},
-		getList(state){
+		getList(state) { 
 			return state.listOfModules;
 		},
-		getSelected(state){
+		getSelected(state) {
 			return state.selected;
 		}
 	},
@@ -259,7 +262,7 @@ export default new Vuex.Store({
 		removeUE({commit}, n) {
 			commit("removeFromUE", n);
 		},
-		addList({commit}, n){
+		addList({commit}, n) {
 			commit("addToList", n);
 		},
 		removeSpec({commit}) {

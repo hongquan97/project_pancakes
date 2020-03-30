@@ -29,7 +29,7 @@
   </div>
 </template>
 
-<script>
+  <script>
   import CoreMods from './CM.vue'
   import PE from './PE.vue'
   import GE from './GE.vue'
@@ -138,8 +138,8 @@
         database.collection('moduleInfo').get().then((querySnapShot) => {
           querySnapShot.forEach(doc => {
             item = {code : doc.data().moduleCode, mc: parseInt(doc.data().moduleCredit)};
-            this.list_of_modules.push(item)
-            this.$store.dispatch("addList", this.list_of_modules);
+            this.$store.dispatch("addList", item);
+
           })
         })
       } else {
