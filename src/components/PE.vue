@@ -87,7 +87,6 @@ export default {
             }
           }
 
-          }
 
           else if (this.$store.getters.getSpec[0] == "Business Analytics (Financial Analytics Specialisation)") {
             if(this.FS_Compulsory.includes(this.Module)){
@@ -124,21 +123,22 @@ export default {
               this.$emit("goToUE", this.Module);
             }
           }
+          
             this.lenP = this.com_p.length;
             this.$emit('changeP', this.lenP);
+        }
             
           }
           
-        }
-      }
-    },
+        },
 
     remove(x) {
       this.$store.dispatch("removePE", x);
       this.$emit('changeP');
     }
   }
-}
+  }
+
 </script>
 
 <style scoped>

@@ -38,7 +38,7 @@ export default new Vuex.Store({
 			}
 		},
 		addSpecial(state,n) {
-			state.specialisation = n;
+			state.specialisation.push(n);
 			state.selected = true;
 
 
