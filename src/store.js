@@ -37,7 +37,8 @@ export default new Vuex.Store({
 				state.CoreModules.splice(index, 1);
 			}
 		},
-		addSpecial(state,n) {
+
+		addSpecial(state,n){
 			state.specialisation.push(n);
 			state.selected = true;
 
@@ -157,11 +158,12 @@ export default new Vuex.Store({
 				state.MSElect.splice(i, 1);
 			}
 		},
+
 		removeFromSpec(state) {			
 				state.specialisation.splice(0, 1);
 				state.selected=false;
-		},
-			
+		},			
+
 		addToList(state, n) {
 			if(!state.listOfModules.includes(n)) {
         state.listOfModules.push(n);

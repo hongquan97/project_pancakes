@@ -29,7 +29,7 @@
   </div>
 </template>
 
-<script>
+  <script>
   import CoreMods from './CM.vue'
   import PE from './PE.vue'
   import GE from './GE.vue'
