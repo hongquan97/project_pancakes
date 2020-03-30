@@ -22,7 +22,7 @@ export default new Vuex.Store({
 		PE: [],
 		GE: [],
 		UE: [],
-		specialisation: "",
+		specialisation: [],
 		selected: false,
 	},
 
@@ -38,8 +38,10 @@ export default new Vuex.Store({
 			}
 		},
 		addSpecial(state,n){
-			state.specialisation=n;
+			state.specialisation.push(n);
 			state.selected = true;
+
+
 		},
 		addToA(state,n){
 			if (!state.listA.includes(n)) {
@@ -158,7 +160,12 @@ export default new Vuex.Store({
 
 		addToList(state, n){
 			state.listOfModules = n;
+		},
+		removeFromSpec(state) {			
+				state.specialisation.splice(0, 1);
+				state.selected=false;
 		}
+			
 	},
 
 	getters: {
@@ -254,6 +261,9 @@ export default new Vuex.Store({
 		},
 		addList({commit}, n){
 			commit("addToList", n);
+		},
+		removeSpec({commit}) {
+			commit("removeFromSpec");
 		}
 	}
 });

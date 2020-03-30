@@ -1,7 +1,7 @@
 <template>
   <div>
     <br>
-    <select required v-model="major" @change="addSpecialisation($event)">        
+    <select required v-model="major" @change="addSpecialisation($event)" >        
       <optgroup label="Degree Type">
         <option value="" disabled selected hidden>Please select your course of study</option>
         <option value="Business Analytics">Business Analytics</option>
@@ -11,7 +11,10 @@
         Business Analytics (Marketing Analytics Specialisation)</option>
       </optgroup>
     </select>
-    <br><b>{{this.$store.getters.getSpec}}</b>
+    <br>  <div v-for="s in spec" v-bind:key="s">
+      <b>{{s}}</b>  
+      <span v-on:click="remove(s)" id="button"> x </span> 
+    </div>
     <br>
     <CompletedBox></CompletedBox>
   </div>
@@ -25,15 +28,23 @@ export default {
   },
   data() {
     return {
-      major: ""
+      major: "",
+      spec: this.$store.getters.getSpec
     }
   },
   methods:{
     addSpecialisation: function() {
       if (!this.$store.state.selected){
         this.$store.dispatch("addSpec", this.major);
+         window.location.reload()
       }
+    },
+      remove(x) {
+      this.$store.dispatch("removeSpec", x);
+
     }
+   
+ 
   }
 }
 </script>
@@ -60,5 +71,15 @@ optgroup {
   Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   background-color: white;
   color: orange;
+}
+#button {
+  font-size: 20px;
+  font-weight: 600;
+  color: red;
+  opacity: 0.4;
+  cursor: pointer;
+}
+#button:hover {
+  opacity: 1;
 }
 </style>

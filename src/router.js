@@ -14,7 +14,7 @@ export default new Router({
 		{ path: '/', name: 'Home', component: Home },
 		{ path: '/CM', name: 'CMPage', component: CMPage },
 		{ path: '/PE', name: 'PEPage', component: () => {
-				switch (store.getters.getSpec) {
+				switch (store.getters.getSpec[0]) {
 					case "Business Analytics":
 						return import('./components/PEPage');
 					case "Business Analytics (Financial Analytics Specialisation)":

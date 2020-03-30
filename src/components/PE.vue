@@ -50,7 +50,7 @@ export default {
         if (this.PE.includes(this.Module)) {
 
 
-          if (this.$store.getters.getSpec == "Business Analytics") {
+          if (this.$store.getters.getSpec[0] == "Business Analytics") {
             if (this.Module.substring(2,3)!="4") {
               for (var i = 0; i < this.com_p.length; i++) {
                 if (this.com_p[i].substring(2,3)!="4") {
@@ -67,7 +67,7 @@ export default {
                 this.$store.dispatch("addA", this.Module)
               }
             }
-            if(this.B.includes(this.Module)){
+            else if(this.B.includes(this.Module)){
               if (this.user_B.length == 4) {
                 alert ("You need at least 2 PE modules from List A")
                 this.$emit("goToUE", this.Module);
@@ -75,7 +75,7 @@ export default {
                 this.$store.dispatch("addB", this.Module)
               }
             }
-            if(this.C.includes(this.Module)){
+            else if(this.C.includes(this.Module)){
               if (this.user_C.length == 2) {
                 alert ("You need at least 2 PE modules from List A and List B each")
                 this.$emit("goToUE", this.Module);
@@ -83,14 +83,17 @@ export default {
                 this.$store.dispatch("addC", this.Module)
               }
             }
+            else{
+              this.$emit("goToUE", this.Module);
+            }
           }
 
 
-          else if (this.$store.getters.getSpec == "Business Analytics (Financial Analytics Specialisation)") {
+          else if (this.$store.getters.getSpec[0] == "Business Analytics (Financial Analytics Specialisation)") {
             if(this.FS_Compulsory.includes(this.Module)){
               this.$store.dispatch("addFSCom", this.Module)
             }
-            if(this.FS_Elective.includes(this.Module)){
+            else if(this.FS_Elective.includes(this.Module)){
               if(this.FSElect.length == 3) {
                 alert("You can only take a maximum of 3 elective modules. This module will go to UE.")
                 this.$emit("goToUE", this.Module);
@@ -98,14 +101,18 @@ export default {
                 this.$store.dispatch("addFSElect", this.Module)
               }
             }
+            else{
+              this.$emit("goToUE", this.Module);
+            }
+
           }
 
 
-          else if (this.$store.getters.getSpec == "Business Analytics (Marketing Analytics Specialisation)") {
+          else if (this.$store.getters.getSpec[0] == "Business Analytics (Marketing Analytics Specialisation)") {
             if(this.MS_Compulsory.includes(this.Module)){
               this.$store.dispatch("addMSCom", this.Module)
             }
-            if(this.MS_Elective.includes(this.Module)){
+            else if(this.MS_Elective.includes(this.Module)){
               if(this.MSElect.length == 3) {
                 alert("You can only take a maximum of 3 elective modules. This module will go to UE.")
                 this.$emit("goToUE", this.Module);
@@ -113,12 +120,15 @@ export default {
                 this.$store.dispatch("addMSElect", this.Module)
               }
             }
+            else{
+              this.$emit("goToUE", this.Module);
+            }
           }
-        
+            this.lenP = this.com_p.length;
+            this.$emit('changeP', this.lenP);
             
           }
-          this.lenP = this.com_p.length;
-            this.$emit('changeP', this.lenP);
+          
         }
       },
 
