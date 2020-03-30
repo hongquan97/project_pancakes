@@ -88,8 +88,6 @@ export default {
           }
 
 
-          }
-
           else if (this.$store.getters.getSpec[0] == "Business Analytics (Financial Analytics Specialisation)") {
             if(this.FS_Compulsory.includes(this.Module)){
               this.$store.dispatch("addFSCom", this.Module)
@@ -102,7 +100,6 @@ export default {
                 this.$store.dispatch("addFSElect", this.Module)
               }
             }
-
             else{
               this.$emit("goToUE", this.Module);
             }
@@ -111,7 +108,6 @@ export default {
 
 
           else if (this.$store.getters.getSpec[0] == "Business Analytics (Marketing Analytics Specialisation)") {
-
             if(this.MS_Compulsory.includes(this.Module)){
               this.$store.dispatch("addMSCom", this.Module)
             }
@@ -123,27 +119,26 @@ export default {
                 this.$store.dispatch("addMSElect", this.Module)
               }
             }
-
             else{
               this.$emit("goToUE", this.Module);
             }
           }
+          
             this.lenP = this.com_p.length;
             this.$emit('changeP', this.lenP);
+        }
             
           }
           
-
-        }
-      }
-    },
+        },
 
     remove(x) {
       this.$store.dispatch("removePE", x);
       this.$emit('changeP');
     }
   }
-}
+  }
+
 </script>
 
 <style scoped>
