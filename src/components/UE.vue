@@ -3,7 +3,7 @@
     <b>Unrestricted Electives</b>
     <div v-if="extra">{{checkExtra()}}</div>
     <div v-if="Module">{{checkModule()}}</div>
-    <div v-for="(ue,index) in com_u" :ue = "ue" :key="index">
+    <div v-for="(ue,index) in com_u" :ue="ue" :key="index">
       {{ue}}   
       <span @click="remove(ue)" id="button"> x </span>
     </div>
@@ -31,15 +31,15 @@ export default {
   },
   methods: {
     checkExtra(){
-      if (!this.com_u.includes(this.extra)&&this.extra.length>0) {
+      if (!this.com_u.includes(this.extra) && this.extra.length > 0) {
         this.$store.dispatch("addUE", this.extra);
-        this.$emit('changeU');     
+        this.$emit('changeU');
       }
     },
 
     checkModule() {
       if (!this.com_u.includes(this.Module)) { 
-        if(!(this.Module.substring(0,2)=="GE")){
+        if(!(this.Module.substring(0,2) == "GE")){
           if( (!this.PE.includes(this.Module)) && (!this.core.includes(this.Module)) ){
             this.$store.dispatch("addUE", this.Module);
             this.$emit('changeU');

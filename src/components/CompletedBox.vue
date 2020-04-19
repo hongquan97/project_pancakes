@@ -8,23 +8,23 @@
 
     <p>Completed Modules</p>
 
-    <CoreMods @changeC= "updateLenC()" 
+    <CoreMods @changeC="updateLenC()" 
     v-bind:Module="Module" :com_c="com_c"></CoreMods>
 
-    <PE @changeP= "updateLenP()" @goToUE= "addModule"
+    <PE @changeP="updateLenP()" @goToUE="addModule"
     v-bind:Module="Module" :com_p="com_p"></PE>
 
-    <UE @changeU= "updateLenU()" 
+    <UE @changeU="updateLenU()" 
     v-bind:Module="Module" v-bind:extra="extra" :com_u="com_u"></UE>
 
-    <GE @changeG= "updateLenG()" @goToUE= "addModule"
+    <GE @changeG="updateLenG()" @goToUE="addModule"
     v-bind:Module="Module" :com_g="com_g"></GE>
 
     <div id="app" class="container">
-      <CMProgress :cm_len= parseFloat(cm_len)></CMProgress>
-      <PEProgress :pe_len= parseFloat(pe_len)></PEProgress>
-      <UEProgress :ue_len= parseFloat(ue_len)></UEProgress>
-      <GEProgress :ge_len= parseFloat(ge_len)></GEProgress>
+      <CMProgress :cm_len=parseFloat(cm_len)></CMProgress>
+      <PEProgress :pe_len=parseFloat(pe_len)></PEProgress>
+      <UEProgress :ue_len=parseFloat(ue_len)></UEProgress>
+      <GEProgress :ge_len=parseFloat(ge_len)></GEProgress>
     </div>
   </div>
 </template>
@@ -53,9 +53,9 @@
 
     data() {
       return {
-        mod:"",
-        Module:"",
-        extra:"",
+        mod: "",
+        Module: "",
+        extra: "",
         numOfMC: 0,
         cm_len: 0.00,
         pe_len: 0.00,
@@ -77,7 +77,7 @@
 
     checkInput: function() {
       if (!this.$store.state.selected){
-        alert("HELLO DONT BE FUNNY select course of study first!");
+        alert("Please select your course of study first!");
         return;
       }
       this.mod = this.mod.toUpperCase().trim();
@@ -104,7 +104,7 @@
       this.Module = "";
       this.numOfMC = 0;
       for (var i = 0; i < this.com_c.length; i++) {
-        this.numOfMC += this.list_of_modules.find(o =>o.code == this.com_c[i]).mc;
+        this.numOfMC += this.list_of_modules.find(o => o.code == this.com_c[i]).mc;
       }
 
       this.cm_len = ((this.numOfMC*100)/84).toFixed(2);
@@ -114,7 +114,7 @@
       this.Module = "";
       this.numOfMC = 0;
       for (var i = 0; i < this.com_p.length; i++) {
-        this.numOfMC += this.list_of_modules.find(o =>o.code == this.com_p[i]).mc;
+        this.numOfMC += this.list_of_modules.find(o => o.code == this.com_p[i]).mc;
       }
 
       this.pe_len = ((this.numOfMC*100)/24).toFixed(2);
@@ -122,9 +122,10 @@
 
     updateLenU: function() {
       this.Module = "";
+      this.extra = "";
       this.numOfMC = 0;
       for (var i = 0; i < this.com_u.length; i++) {
-        this.numOfMC += this.list_of_modules.find(o =>o.code == this.com_u[i]).mc
+        this.numOfMC += this.list_of_modules.find(o => o.code == this.com_u[i]).mc;
       }
 
       this.ue_len = ((this.numOfMC*100)/32).toFixed(2);
@@ -134,7 +135,7 @@
       this.Module = "";
       this.numOfMC = 0;
       for (var i = 0; i < this.com_g.length; i++) {
-        this.numOfMC += this.list_of_modules.find(o =>o.code == this.com_g[i]).mc
+        this.numOfMC += this.list_of_modules.find(o =>o.code == this.com_g[i]).mc;
       }
 
       this.ge_len = ((this.numOfMC*100)/20).toFixed(2);
