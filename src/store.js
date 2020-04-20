@@ -41,9 +41,8 @@ export default new Vuex.Store({
 		addSpecial(state,n){
 			state.specialisation.push(n);
 			state.selected = true;
-
-
 		},
+
 		addToA(state,n) {
 			if (!state.listA.includes(n)) {
 				state.listA.push(n);
@@ -161,7 +160,7 @@ export default new Vuex.Store({
 
 		removeFromSpec(state) {			
 				state.specialisation.splice(0, 1);
-				state.selected=false;
+				state.selected = false;
 		},			
 
 		addToList(state, n) {
@@ -226,6 +225,9 @@ export default new Vuex.Store({
 		addSpec({commit}, n) {
 			commit("addSpecial", n);
 		},
+    removeSpec({commit}) {
+      commit("removeFromSpec");
+    },
 		addA({commit}, n) {
 			commit("addToA", n);
 		},
@@ -264,9 +266,6 @@ export default new Vuex.Store({
 		},
 		addList({commit}, n) {
 			commit("addToList", n);
-		},
-		removeSpec({commit}) {
-			commit("removeFromSpec");
 		}
 	}
 });
