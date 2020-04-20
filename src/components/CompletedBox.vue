@@ -91,7 +91,7 @@
         alert("You have fulfilled the Programme Electives requirement. This module will go to your Unrestricted Electives instead.")
         this.Module = this.mod;
         this.mod = "";
-      } else if (!this.list_of_modules.find(o =>o.code == this.mod)){ // check for invalid module code
+      } else if (!this.list_of_modules.find(o => o.code == this.mod)) { // check for invalid module code
         alert("This module does not exist! Please enter a valid module code.")
         this.mod = "";
       } else {
@@ -108,6 +108,7 @@
       }
       this.cm_len = ((this.numOfMC*100)/84).toFixed(2);
     },
+
     updateLenP: function() {
       this.Module = "";
       this.numOfMC = 0;
@@ -116,6 +117,7 @@
       }
       this.pe_len = ((this.numOfMC*100)/24).toFixed(2);
     },
+
     updateLenU: function() {
       this.Module = "";
       this.extra = "";
@@ -125,15 +127,17 @@
       }
       this.ue_len = ((this.numOfMC*100)/32).toFixed(2);
     },
+
     updateLenG: function() {
       this.Module = "";
       this.numOfMC = 0;
       for (var i = 0; i < this.com_g.length; i++) {
-        this.numOfMC += this.list_of_modules.find(o =>o.code == this.com_g[i]).mc;
+        this.numOfMC += this.list_of_modules.find(o => o.code == this.com_g[i]).mc;
       }
       this.ge_len = ((this.numOfMC*100)/20).toFixed(2);
     },
- fetchItems: function() {
+
+    fetchItems: function() {
       if (this.list_of_modules.length == 0) {
         let item = {}
         database.collection('moduleInfo').get().then((querySnapShot) => {

@@ -11,7 +11,8 @@
         Business Analytics (Marketing Analytics Specialisation)</option>
       </optgroup>
     </select>
-    <br>  <div v-for="s in spec" v-bind:key="s">
+    <br>  
+    <div v-for="s in spec" v-bind:key="s">
       <b>{{s}}</b>  
       <span v-on:click="remove(s)" id="button"> x </span> 
     </div>
@@ -32,19 +33,16 @@ export default {
       spec: this.$store.getters.getSpec
     }
   },
-  methods:{
+  methods: {
     addSpecialisation: function() {
       if (!this.$store.state.selected){
         this.$store.dispatch("addSpec", this.major);
-         window.location.reload()
+        window.location.reload()
       }
     },
       remove(x) {
       this.$store.dispatch("removeSpec", x);
-
     }
-   
- 
   }
 }
 </script>
