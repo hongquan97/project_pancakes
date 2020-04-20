@@ -8,24 +8,24 @@ import store from './store'
 Vue.use(Router);
 
 export default new Router({
-	
 	mode: 'history',
   routes: [
-		{ path: '/', name: 'Home', component: Home },
-		{ path: '/CM', name: 'CMPage', component: CMPage },
-		{ path: '/PE', name: 'PEPage', component: () => {
-				switch (store.getters.getSpec[0]) {
-					case "Business Analytics":
-						return import('./components/PEPage');
-					case "Business Analytics (Financial Analytics Specialisation)":
-						return import ('./components/PEPage_FS');
-					case "Business Analytics (Marketing Analytics Specialisation)":
-						return import ('./components/PEPage_MS');
-				default:
-					return import('./components/PEPage');
-				}
-  }
-		},
-		{ path: '*', component: NotFound }
+    { path: '/', name: 'Home', component: Home },
+    { path: '/CM', name: 'CMPage', component: CMPage },
+    { path: '/PE', name: 'PEPage', component: () => {
+      switch (store.getters.getSpec[0]) {
+       case "Business Analytics":
+       return import('./components/PEPage');
+       case "Business Analytics (Financial Analytics Specialisation)":
+       return import ('./components/PEPage_FS');
+       case "Business Analytics (Marketing Analytics Specialisation)":
+       return import ('./components/PEPage_MS');
+       default:
+       return import('./components/PEPage');
+      }
+    }
+  },
+
+  { path: '*', component: NotFound }
   ]
 })
