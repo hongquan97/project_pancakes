@@ -1,100 +1,92 @@
 <template>
-	<div id="UE">
-		<b>Unrestricted Electives</b>
-		<div v-if="extra">{{checkExtra()}}</div>
-		<div v-if="Module">{{checkModule()}}</div>
-		{{updateModules()}}
-		<div v-for="(ue,index) in CompletedUE" :ue = "ue" :key="index">
-			{{ue}}   
-			<button @click="remove(ue)">x</button>
-		</div>
-	</div>
+  <div id="UE">
+    <b>Unrestricted Electives</b>
+    <div v-if="extra">{{checkExtra()}}</div>
+    <div v-if="Module">{{checkModule()}}</div>
+    <div v-for="(ue,index) in com_u" :ue="ue" :key="index">
+      {{ue}}   
+      <span @click="remove(ue)" id="button"> x </span>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
-	props: {
-		Module: String,
-		extra: String,
-		com_u: Array
-	},
-	data() {
-		return {
-			UE : [],
-			lenU: 0,
-			CompletedUE: this.$store.getters.getUE,
-			PeList: this.$store.getters.getPE,
-			CoreList: this.$store.getters.getModules
-		}
-	},
-	methods: {
-		checkExtra(){
-			if (!this.com_u.includes(this.extra)&&this.extra.length>0) {
-				this.$store.dispatch("addUE", this.extra);
-				this.lenU = this.com_u.length;
-				this.$emit('changeU', this.lenU);			
-			}
-		},
+  props: {
+    Module: String,
+    extra: String,
+    com_u: Array
+  },
+  data() {
+    return {
+      UE : [],
+      lenU: 0,
+      core: ["BT1101", "CS1010S", "EC1301", "IS1103", "MA1101R", "MA1521", "MA1102R", "MKT1705X", "BT2101",
+      "BT2102", "CS2030", "CS2040", "IS2101", "ST2334", "BT3102", "BT3103", "IS3103", "BT4103", "IS4010",
+      "BT4101"],
+      PE: ["DBA3712", "IE3120", "IS3240", "BT4013", "BT4016", "BT4212", "DBA4811", "IS4250", "MKT4418",
+      "IE2110", "DBA3701", "CS3244", "DBA3803", "BSE4711", "BT4012", "BT4015", "BT4221", "BT4222", 
+      "BT4240", "IS4241", "IE4210", "ST3131", "ST4245", "IS3221", "I3261", "BT4014", "IS4228", "IS4302", "BT4211"]
+    }
+  },
+  methods: {
+    checkExtra(){
+      if (!this.com_u.includes(this.extra) && this.extra.length > 0) {
+        this.$store.dispatch("addUE", this.extra);
+        this.$emit('changeU');
+      }
+    },
 
-		checkModule() {
-			if (!this.com_u.includes(this.Module)) { 
-				if(!(this.Module.substring(0,2)=="GE")){
-					if( (!this.PeList.includes(this.Module)) && (!this.CoreList.includes(this.Module)) ){
-						this.$store.dispatch("addUE", this.Module);
-						this.lenU = this.com_u.length;
-						this.$emit('changeU', this.lenU);
-					}  
-				} 
-			}
-		},
+    checkModule() {
+      if (!this.com_u.includes(this.Module)) { 
+        if(!(this.Module.substring(0,2) == "GE")){
+          if( (!this.PE.includes(this.Module)) && (!this.core.includes(this.Module)) ){
+            this.$store.dispatch("addUE", this.Module);
+            this.$emit('changeU');
+          }  
+        } 
+      }
+    },
 
-		remove(x) {
-			this.$emit('removeU', x);
-			this.lenU = this.com_u.length;
-			this.$emit('changeU', this.lenU);
-			this.$store.dispatch("removeUE", x);
-		},
-
-		updateModules(){
-			if(this.com_u.length==0){
-				if(this.CompletedUE.length != 0){
-					this.com_u = this.CompletedUE;
-					this.lenU = this.com_u.length;
-					this.$emit('changeU', this.lenU);
-				}
-			}
-		}
-	}
+    remove(x) {
+      this.$store.dispatch("removeUE", x);
+      this.$emit('changeU');
+    }
+  }
 }
 </script>
 
 <style scoped>
 #UE {
-	border-radius: 15px;
-	display: inline-block;
-	box-sizing: border-box;
-	padding: 10px;
-	margin: 2px 2px;
-	width: 24.5%;
-	height: 180px;
-	overflow: auto;
-	background:#f4a688;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+  border-radius: 15px;
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 10px;
+  margin: 2px 2px;
+  width: 24.5%;
+  height: 180px;
+  overflow: auto;
+  background:#f4a688;
 } 
-
 @media only screen and (max-width: 768px) {
-	#divL, #divR {
-		float: none;
-		display: block;
-		width: 100%;
-	}
+  #divL, #divR {
+    float: none;
+    display: block;
+    width: 100%;
+  }
 }
 h1 {
-	color: black;
-	text-align: center;
+  color: black;
+  text-align: center;
 }
-button {
-	color: red;
+#button {
+  font-size: 20px;
+  font-weight: 600;
+  color: red;
+  opacity: 0.4;
+  cursor: pointer;
+}
+#button:hover {
+  opacity: 1;
 }
 </style>

@@ -4,7 +4,6 @@
     <router-view></router-view>
     <Footer></Footer>
   </div>
-  
 </template>
 
 <script>
@@ -21,7 +20,8 @@ export default {
 
 <style>
 #app {
-  font-family: Helvetica, sans-serif;
+  font-family: -apple- system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, 
+  Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

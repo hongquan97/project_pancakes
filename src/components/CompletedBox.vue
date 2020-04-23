@@ -1,34 +1,35 @@
 <template>
   <div>
-    <br><br>
+    <br>
     Completed Module Code:
     <input type="text" maxlength="8" v-model="mod" v-on:keyup.enter="checkInput"/>
     <button v-on:click="checkInput">Add</button>
-    <p id="Completed">
-      <h1>Completed Modules</h1>
+    <br>
 
-      <CoreMods @changeC= "addLenC($event)" @removeC = "removeC($event)" 
-      v-bind:Module="Module" :com_c="com_c"></CoreMods>
+    <p>Completed Modules</p>
 
-      <PE @changeP= "addLenP($event)" @removeP = "removeP($event)"  @goToUE= "addModule"
-      v-bind:Module="Module" :com_p="com_p"></PE>
+    <CoreMods @changeC="updateLenC()" 
+    v-bind:Module="Module" :com_c="com_c"></CoreMods>
 
-      <UE @changeU= "addLenU($event)" @removeU = "removeU($event)" 
-      v-bind:Module="Module" v-bind:extra="extra" :com_u="com_u"></UE>
+    <PE @changeP="updateLenP()" @goToUE="addModule"
+    v-bind:Module="Module" :com_p="com_p"></PE>
 
-      <GE @changeG= "addLenG($event)" @goToUE= "addModule" @removeG = "removeG($event)" 
-      v-bind:Module="Module" :com_g="com_g"></GE>
+    <UE @changeU="updateLenU()" 
+    v-bind:Module="Module" v-bind:extra="extra" :com_u="com_u"></UE>
 
-    <div id="app" class = "container">
-    <CMProgress :cm_len= parseFloat(cm_len)></CMProgress>
-    <PEProgress :pe_len= parseFloat(pe_len)></PEProgress>
-    <UEProgress :ue_len= parseFloat(ue_len)></UEProgress>
-    <GEProgress :ge_len= parseFloat(ge_len)></GEProgress>
+    <GE @changeG="updateLenG()" @goToUE="addModule"
+    v-bind:Module="Module" :com_g="com_g"></GE>
+
+    <div id="app" class="container">
+      <CMProgress :cm_len=parseFloat(cm_len)></CMProgress>
+      <PEProgress :pe_len=parseFloat(pe_len)></PEProgress>
+      <UEProgress :ue_len=parseFloat(ue_len)></UEProgress>
+      <GEProgress :ge_len=parseFloat(ge_len)></GEProgress>
     </div>
   </div>
 </template>
 
-<script>
+  <script>
   import CoreMods from './CM.vue'
   import PE from './PE.vue'
   import GE from './GE.vue'
@@ -37,7 +38,7 @@
   import PEProgress from './PEProgress.vue'
   import UEProgress from './UEProgress.vue'
   import GEProgress from './GEProgress.vue'
-  //import database from '../../firebase.js'
+  import database from '../../firebase.js'
   export default {
     components: {
       CoreMods,
@@ -49,12 +50,12 @@
       UEProgress,
       GEProgress
     },
+
     data() {
       return {
-        mod:"",
-        Module:"",
-        extra:"",
-        special: "", // store this.Module to check if it is > 4MC
+        mod: "",
+        Module: "",
+        extra: "",
         numOfMC: 0,
         cm_len: 0.00,
         pe_len: 0.00,
@@ -64,15 +65,21 @@
         com_p: this.$store.getters.getPE,
         com_u: this.$store.getters.getUE,
         com_g: this.$store.getters.getGE,
-      list_of_modules: [], // consists of all the valid module codes
+        list_of_modules: this.$store.getters.getList // consists of all NUS modules
     }
   },
+
   methods: {
     addModule() {
       this.extra = this.Module;
       this.Module = "";
     },
+
     checkInput: function() {
+      if (!this.$store.state.selected){
+        alert("Please select your course of study first!");
+        return;
+      }
       this.mod = this.mod.toUpperCase().trim();
       if (this.mod == "") {
         alert("Enter something!");
@@ -84,92 +91,77 @@
         alert("You have fulfilled the Programme Electives requirement. This module will go to your Unrestricted Electives instead.")
         this.Module = this.mod;
         this.mod = "";
-      } else if (!this.list_of_modules.includes(this.mod)){ // check for invalid module code
+      } else if (!this.list_of_modules.find(o => o.code == this.mod)) { // check for invalid module code
         alert("This module does not exist! Please enter a valid module code.")
         this.mod = "";
       } else {
         this.Module = this.mod;
-        this.special = this.mod;
         this.mod = "";
       }
     },
-    updateLenC: function(isRemove) { // function takes in module when removed and boolean (false) when added
-      if (isRemove) {
-        if (isRemove == "BT4101" || isRemove == "IS4010") {
-          this.numOfMC -= 12;
-        } else if (isRemove == "BT4103") {
-          this.numOfMC -= 8;
-        } else {
-          this.numOfMC -= 4;
-        }
-      } else {
-        if (this.special == "BT4101" || this.special == "IS4010") {
-          this.numOfMC += 12;
-        } else if (this.special == "BT4103") {
-          this.numOfMC += 8;
-        } else {
-          this.numOfMC += 4;
-        }
+
+    updateLenC: function() {
+      this.Module = "";
+      this.numOfMC = 0;
+      for (var i = 0; i < this.com_c.length; i++) {
+        this.numOfMC += this.list_of_modules.find(o => o.code == this.com_c[i]).mc;
       }
-      this.special = "";
-      this.cm_len = ((this.numOfMC*100)/72).toFixed(2);
-    },
-    updateLenP: function(num) {
-      this.pe_len = ((num*400)/24).toFixed(2);
-    },
-    updateLenU: function(num) {
-      this.ue_len = ((num*400)/32).toFixed(2);
-    },
-    updateLenG: function(num) {
-      this.ge_len = ((num*400)/20).toFixed(2);
-    },
-    removeC(x) {
-      const indexC = this.com_c.indexOf(x);
-      this.com_c.splice(indexC, 1);
-      this.Module = "";
-    },
-    removeP(x) {
-      const indexP = this.com_p.indexOf(x)
-      this.com_p.splice(indexP, 1);
-      this.Module = "";
-    },
-    removeG(x) {
-      const indexG = this.com_g.indexOf(x);
-      this.com_g.splice(indexG, 1);
-      this.Module = "";
-    },
-    removeU(x) {
-      const indexU = this.com_u.indexOf(x);
-      this.com_u.splice(indexU, 1);
-      this.extra = "";
-      this.Module = "";
+      this.cm_len = ((this.numOfMC*100)/84).toFixed(2);
     },
 
-    fetchItems:function() {
-      //let item = {}
-      //database.collection('moduleInfo').get().then((querySnapShot) => {
-      //  querySnapShot.forEach(doc => {
-      //    item = doc.data().moduleCode;
-      //    this.list_of_modules.push(item);
-      //  })
-      //})
-      this.list_of_modules.push("ACC1002");
-      this.list_of_modules.push("ACC1006");
-      this.list_of_modules.push("CS1231");
-      this.list_of_modules.push("BT1101");
-      this.list_of_modules.push("BT4016");
-      this.list_of_modules.push("GET1028");
-      this.list_of_modules.push("GET1001");
-      this.$store.dispatch("addList", this.list_of_modules);
+    updateLenP: function() {
+      this.Module = "";
+      this.numOfMC = 0;
+      for (var i = 0; i < this.com_p.length; i++) {
+        this.numOfMC += this.list_of_modules.find(o => o.code == this.com_p[i]).mc;
+      }
+      this.pe_len = ((this.numOfMC*100)/24).toFixed(2);
     },
+
+    updateLenU: function() {
+      this.Module = "";
+      this.extra = "";
+      this.numOfMC = 0;
+      for (var i = 0; i < this.com_u.length; i++) {
+        this.numOfMC += this.list_of_modules.find(o => o.code == this.com_u[i]).mc;
+      }
+      this.ue_len = ((this.numOfMC*100)/32).toFixed(2);
+    },
+
+    updateLenG: function() {
+      this.Module = "";
+      this.numOfMC = 0;
+      for (var i = 0; i < this.com_g.length; i++) {
+        this.numOfMC += this.list_of_modules.find(o => o.code == this.com_g[i]).mc;
+      }
+      this.ge_len = ((this.numOfMC*100)/20).toFixed(2);
+    },
+
+    fetchItems: function() {
+      if (this.list_of_modules.length == 0) {
+        let item = {}
+        database.collection('moduleInfo').get().then((querySnapShot) => {
+          querySnapShot.forEach(doc => {
+            item = {code : doc.data().moduleCode, mc: parseInt(doc.data().moduleCredit)};
+            this.$store.dispatch("addList", item);
+          })
+        })
+      } else {
+        /* 
+        If we have already fetched from the database before, we will not do 
+        it again since NUS modules are fixed for the semester. We will make 
+        use of the module information stored in our users' local storage. 
+        */
+      } 
+    }
   },
   
   created() {
     this.fetchItems();
-    this.updateLenC(false);
-    this.updateLenP(this.com_p.length);
-    this.updateLenU(this.com_u.length);
-    this.updateLenG(this.com_g.length);
+    this.updateLenC();
+    this.updateLenP();
+    this.updateLenU();
+    this.updateLenG();
   }
 }
 </script>
@@ -177,18 +169,53 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 div {
-  font-family: Helvetica, sans-serif;
+  font-family: -apple- system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, 
+  Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
 }
-h1 {
+p {
+  font-family: -apple- system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, 
+  Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-size: 2rem;
+  font-weight: 600;
   color: black;
   text-align: center;
+  margin-top: 40px;
+  margin-bottom: 10px;
 }
 .container > div {
-    display: inline-block;
-    display: -moz-inline-box;
-    *display: inline; /* For IE7 */
-    zoom: 1; /* Trigger hasLayout */
-    width: 25%;
-    text-align: center;
+  display: inline-block;
+  display: -moz-inline-box;
+  *display: inline; /* For IE7 */
+  zoom: 1; /* Trigger hasLayout */
+  width: 25%;
+  text-align: center;
+}
+input {
+  font-family: -apple- system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, 
+  Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  border-radius: 8px;
+  padding: 1px 10px;
+  font-weight: 400;
+  margin-left: 0.2em;
+  margin-right: 0.5em;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(169, 169, 169);
+}
+input:focus {
+  outline: none;
+  box-shadow: 0 0 3pt 3pt #FAEBCC;
+}
+button {
+  font-family: -apple- system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, 
+  Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  border-radius: 8px;
+  border-width: 2px;
+  background-color: initial;
+  padding: 1px 10px;
+}
+button:focus {
+  outline: none;
+  box-shadow: 0 0 3pt 3pt #FAEBCC;
 }
 </style>

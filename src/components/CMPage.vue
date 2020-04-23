@@ -20,6 +20,7 @@
     </div>
 
     <p>
+      <br>
       <router-link :to="{name:'Home'}">Back</router-link>
     </p>
   </div>
@@ -159,7 +160,7 @@ table {
 }
 
 th {
-  background: #F7DCAC;
+  background: #FAEBCC;
 }
 
 th, td {

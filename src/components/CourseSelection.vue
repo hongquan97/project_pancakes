@@ -1,17 +1,21 @@
 <template>
   <div>
     <br>
-    <select required v-model="major">        
+    <select required v-model="major" @change="addSpecialisation($event)" >        
       <optgroup label="Degree Type">
         <option value="" disabled selected hidden>Please select your course of study</option>
-        <option value="BA">Business Analytics</option>
-        <option value="BA-FS">
+        <option value="Business Analytics">Business Analytics</option>
+        <option value="Business Analytics (Financial Analytics Specialisation)">
         Business Analytics (Financial Analytics Specialisation)</option>
-        <option value="BA-MS">
+        <option value="Business Analytics (Marketing Analytics Specialisation)">
         Business Analytics (Marketing Analytics Specialisation)</option>
       </optgroup>
-    </select>  
-    {{addSpecialisation()}}  
+    </select>
+    <br>  
+    <div v-for="s in spec" v-bind:key="s">
+      <b>{{s}}</b>  
+      <span v-on:click="remove(s)" id="button"> x </span> 
+    </div>
     <br>
     <CompletedBox></CompletedBox>
   </div>
@@ -25,12 +29,19 @@ export default {
   },
   data() {
     return {
-      major: ""
+      major: "",
+      spec: this.$store.getters.getSpec
     }
   },
-  methods:{
+  methods: {
     addSpecialisation: function() {
-      this.$store.dispatch("addSpec", this.major);
+      if (!this.$store.state.selected){
+        this.$store.dispatch("addSpec", this.major);
+        window.location.reload()
+      }
+    },
+      remove(x) {
+      this.$store.dispatch("removeSpec", x);
     }
   }
 }
@@ -39,12 +50,34 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 select {
-  color: rgba(255, 115, 0, 0.849);
-  font: 10px/30px Optima, sans-serif;
+  font-family: -apple- system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, 
+  Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  color: darkorange;
+  font: 10px/30px;
   font-size: 18px;
+  border-radius: 6px;
+}
+select:focus {
+  outline: none;
+  box-shadow: 0 0 3pt 3pt #FAEBCC;
+}
+option:checked { 
+  background-color: #FAEBCC; 
 }
 optgroup {
+  font-family: -apple- system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, 
+  Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   background-color: white;
   color: orange;
+}
+#button {
+  font-size: 20px;
+  font-weight: 600;
+  color: red;
+  opacity: 0.4;
+  cursor: pointer;
+}
+#button:hover {
+  opacity: 1;
 }
 </style>

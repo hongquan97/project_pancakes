@@ -1,11 +1,11 @@
 <template>
 <div id="GE">
     <b>General Electives</b>
-    {{updateModules()}}
     <div v-if="Module">{{checkModule()}}</div>
-    <div v-for="(ge,index) in CompletedGE" :ge = "ge" :key="index">
-    {{ge}}   <button v-on:click="remove(ge)">x</button> </div>
-
+    <div v-for="(ge,index) in com_g" :ge = "ge" :key="index">
+      {{ge}}   
+      <span v-on:click="remove(ge)" id="button"> x </span> 
+    </div>
 </div>
 </template>
 
@@ -19,7 +19,6 @@ export default {
     return {
         GE : [],
         lenG: 0,
-        CompletedGE: this.$store.getters.getGE,
         moduleList: this.$store.getters.getList
     }
   },
@@ -40,25 +39,13 @@ export default {
 
       if (this.Module.length == 7 && this.Module.substring(0,2)=="GE") {
         this.$store.dispatch("addGE", this.Module);
-        this.lenG = this.com_g.length;
-        this.$emit('changeG', this.lenG);
+        this.$emit('changeG');
       }}
     },
-    remove(x) {
-      this.$emit('removeG', x);
-      this.lenG = this.com_g.length;
-      this.$emit('changeG', this.lenG);
-      this.$store.dispatch("removeGE", x);
-    },
 
-    updateModules(){
-      if(this.com_g.length==0){
-        if(this.CompletedGE.length != 0){
-          this.com_g = this.CompletedGE;
-          this.lenG = this.com_g.length;
-          this.$emit('changeG', this.lenG);
-        }
-      }
+    remove(x) {
+      this.$store.dispatch("removeGE", x);
+      this.$emit('changeG');
     }
   }
 }
@@ -66,7 +53,6 @@ export default {
 
 <style scoped>
 #GE {
-
   display: inline-block;
   border-radius: 15px;
   box-sizing: border-box;
@@ -89,7 +75,14 @@ h1 {
   color: black;
   text-align: center;
 }
-button {
+#button {
+  font-size: 20px;
+  font-weight: 600;
   color: red;
+  opacity: 0.4;
+  cursor: pointer;
+}
+#button:hover {
+  opacity: 1;
 }
 </style>
